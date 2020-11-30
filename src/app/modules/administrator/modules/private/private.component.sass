@@ -1,0 +1,71 @@
+
+@import 'src/sass/imports/variables'
+@import 'src/sass/imports/media-queries'
+
+#header
+  background-color: $COLOR
+  padding: 16px
+
+#logo
+  max-height: 31px
+
+#administrator-menu
+  button
+    border-radius: 0
+  .name, .administrator
+    display: block
+  .administrator
+    font-size: 12px
+    font-weight: bold
+    text-transform: uppercase
+
+.col-full-height
+  background-color: #EEE
+  overflow: auto
+  @include MQ(LG)
+    height: calc(100vh - 63px)
+
+.link-section
+  display: block
+  font-size: 12px
+  text-transform: uppercase
+  font-weight: 500
+  margin: 16px 0 4px 0
+  &:first-child
+    margin-top: 0
+
+#content
+  background-color: #FFF
+  padding: 16px * 2
+
+ul[appNav]
+  display: block
+  padding: 32px 0
+  margin: 0 -15px
+  @include MQ(LG)
+    height: 100%
+  ul, li
+    display: block
+    padding: 0
+    margin: 0
+  li
+    cursor: pointer
+    transition: background-color 0.25s
+    &:hover, &.active
+      > button
+        background-color: #DDD
+  button
+    display: block
+    width: 100%
+    background-color: transparent
+    text-align: left
+    padding: 8px 32px
+    border-width: 0
+    transition: color 0.25s
+  > li
+    > ul
+      height: 0
+      overflow: hidden
+      > li
+        button
+          padding-left: 60px

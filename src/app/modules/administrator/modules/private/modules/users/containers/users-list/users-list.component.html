@@ -1,0 +1,20 @@
+<h1 class="h4">Usuários</h1>
+<app-user-list-search
+  [listSearchData]="formDataModel.search"
+  (listSearchChange)="handleListSearchChange($event)">
+</app-user-list-search>
+<app-user-list
+  [options]="{ select: false, blockUnblock: true }"
+  [list]="list"
+  (listSearchChange)="handleListSearchChange($event)"
+  (listOrderChange)="handleListOrderChange($event)"
+  (listItemSelected)="handleListItemSelected($event)"
+  (blockUnblock)="handleBlockUnblock($event)">
+</app-user-list>
+<app-list-pagination
+  [page]="formDataModel.page"
+  [pageSize]="formDataModel.pageSize"
+  [listSize]="listSize"
+  [listSizeFiltered]="listSizeFiltered"
+  (pageChange)="handleListPageChange($event)">
+</app-list-pagination>

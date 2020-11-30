@@ -1,0 +1,31 @@
+<input #imageUploadFile
+  type="file"
+  accept="image/*"
+  (change)="handleInputFileChanged($event.target.files)">
+<div class="image-upload-image-container">
+  <img *ngIf="imageUploadAbstractControl.value === null"
+    [src]="imageUploadBaseUrl + '/content/images/default.png'">
+  <img *ngIf="imageUploadAbstractControl.value !== null"
+    [src]="imageUploadBaseUrl + '/content/upload/' + imageUploadAbstractControl.value">
+  <div
+    class="image-upload-image-container-controls"
+    [style.display]="imageUploadIsUploading === true ? 'block' : ''">
+    <button
+      type="button"
+      class="btn btn-light btn-sm"
+      [disabled]="imageUploadAbstractControl.value === null"
+      (click)="discardImage()">Descartar imagem</button>
+    <button
+      type="button"
+      class="btn btn-secondary btn-sm"
+      [disabled]="imageUploadAbstractControl.value !== null"
+      (click)="imageUploadFile.click()">
+      Selecionar imagem
+    </button>
+  </div>
+  <div *ngIf="imageUploadIsUploading" class="image-upload-loading-container">
+    <div class="d-flex h-100 align-items-center">
+      <div class="spinner-grow m-auto"></div>
+    </div>
+  </div>
+</div>

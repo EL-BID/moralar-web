@@ -1,0 +1,39 @@
+<h1 class="h4">Notificações</h1>
+<div class="form-row my-3">
+  <div class="col-auto">
+    <button
+      type="button"
+      class="btn btn-dark"
+      [disabled]="listSelected.length === 0"
+      (click)="openModalNotificationForm()">
+      Enviar para
+      <span class="badge badge-light">{{ listSelected.length }}</span>
+    </button>
+  </div>
+  <div class="col-auto">
+    <button
+      type="button"
+      class="btn btn-dark"
+      (click)="listSelected = []; openModalNotificationForm()">
+      Enviar para todos
+    </button>
+  </div>
+</div>
+<app-user-list-search
+  [listSearchData]="formDataModel.search"
+  (listSearchChange)="handleListSearchChange($event)">
+</app-user-list-search>
+<app-user-list
+  [options]="{ select: true, blockUnblock: false }"
+  [list]="list"
+  (listSearchChange)="handleListSearchChange($event)"
+  (listOrderChange)="handleListOrderChange($event)"
+  (listItemSelected)="handleListItemSelected($event)">
+</app-user-list>
+<app-list-pagination
+  [page]="formDataModel.page"
+  [pageSize]="formDataModel.pageSize"
+  [listSize]="listSize"
+  [listSizeFiltered]="listSizeFiltered"
+  (pageChange)="handleListPageChange($event)">
+</app-list-pagination>

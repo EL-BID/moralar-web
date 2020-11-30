@@ -1,0 +1,59 @@
+<app-control-field>
+  <label for="zipCode">CEP</label>
+  <input appControlInput type="tel" id="zipCode" [formControl]="form.controls.zipCode" mask="00000-000">
+  <app-control-error [control]="form.controls.zipCode"></app-control-error>
+</app-control-field>
+<div class="row">
+  <div class="col-lg-6">
+    <app-control-field>
+      <label for="stateId">Estado</label>
+      <select id="stateId" [formControl]="form.controls.stateId">
+        <option [ngValue]="null">Selecione uma opção</option>
+        <option *ngFor="let state of stateList"
+          [ngValue]="state.id">
+          {{ state.name }}
+        </option>
+      </select>
+      <app-control-error [control]="form.controls.stateId"></app-control-error>
+    </app-control-field>
+  </div>
+  <div class="col-lg-6">
+    <app-control-field>
+      <label for="cityId">Cidade</label>
+      <select id="cityId" [formControl]="form.controls.cityId">
+        <option [ngValue]="null">Selecione uma opção</option>
+        <option *ngFor="let city of cityList"
+          [ngValue]="city.id">
+          {{ city.name }}
+        </option>
+      </select>
+      <app-control-error [control]="form.controls.cityId"></app-control-error>
+    </app-control-field>
+  </div>
+</div>
+<app-control-field>
+  <label for="neighborhood">Bairro</label>
+  <input appControlInput type="text" id="neighborhood" [formControl]="form.controls.neighborhood">
+  <app-control-error [control]="form.controls.neighborhood"></app-control-error>
+</app-control-field>
+<app-control-field>
+  <label for="streetAddress">Endereço</label>
+  <input appControlInput type="text" id="streetAddress" [formControl]="form.controls.streetAddress">
+  <app-control-error [control]="form.controls.streetAddress"></app-control-error>
+</app-control-field>
+<div class="row">
+  <div class="col-lg-6">
+    <app-control-field>
+      <label for="number">Número</label>
+      <input appControlInput type="tel" id="number" [formControl]="form.controls.number">
+      <app-control-error [control]="form.controls.number"></app-control-error>
+    </app-control-field>
+  </div>
+  <div class="col-lg-6">
+    <app-control-field>
+      <label for="complement">Complemento</label>
+      <input appControlInput type="text" id="complement" [formControl]="form.controls.complement">
+      <app-control-error [control]="form.controls.complement"></app-control-error>
+    </app-control-field>
+  </div>
+</div>
