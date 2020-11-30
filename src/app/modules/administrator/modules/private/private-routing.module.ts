@@ -22,6 +22,10 @@ const routes: Routes = [
         loadChildren: () => import('./modules/families/families.module').then(m => m.FamiliesModule)
       },
       {
+        path: 'profissionais-tts',
+        loadChildren: () => import('./modules/professionals/professionals.module').then(m => m.ProfessionalsModule)
+      },
+      {
         path: 'usuarios',
         loadChildren: () => import('./modules/users/users.module').then(m => m.UsersModule)
       },

@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { OnDestroyClass } from 'src/app/utils/classes/on-destroy.class';
-import { faTachometerAlt, faHome, faUsers } from '@fortawesome/free-solid-svg-icons';
+import { faTachometerAlt, faUserTie, faHome, faUsers } from '@fortawesome/free-solid-svg-icons';
 import { faIdCard, faBell } from '@fortawesome/free-regular-svg-icons';
 import { UserService } from 'src/app/utils/services/user/user.service';
 import { HttpService } from 'src/app/utils/services/http/http.service';
@@ -18,6 +18,7 @@ export class PrivateComponent extends OnDestroyClass implements OnInit, OnDestro
 
   faTachometerAlt = faTachometerAlt;
   faHome = faHome;
+  faUserTie = faUserTie;
   faUsers = faUsers;
   faIdCard = faIdCard;
   faBell = faBell;

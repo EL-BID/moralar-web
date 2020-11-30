@@ -10,11 +10,11 @@ import { ModalConfirmData } from 'src/app/utils/modules/shared/components/modal-
 import { HttpService } from 'src/app/utils/services/http/http.service';
 
 @Component({
-  selector: 'app-families-list',
-  templateUrl: './families-list.component.html',
-  styleUrls: ['./families-list.component.sass']
+  selector: 'app-professionals-list',
+  templateUrl: './professionals-list.component.html',
+  styleUrls: ['./professionals-list.component.sass']
 })
-export class FamiliesListComponent extends ListContainerClass {
+export class ProfessionalsListComponent extends ListContainerClass {
 
   formDataModel: FormDataModel = {
     columns: [
@@ -44,21 +44,21 @@ export class FamiliesListComponent extends ListContainerClass {
   }
 
   handleDetails(): void {
-    this._router.navigate(['/administrador/app/familias', this.listSelected[0].id]);
+    this._router.navigate(['/administrador/app/profissionais-tts', this.listSelected[0].id]);
   }
 
   handleBlockUnblock(value: any): void {
     let modalConfirmData: ModalConfirmData;
     if (value.block) {
       modalConfirmData = {
-        title: 'Inativar família',
-        content: 'Deseja realmente inativar essa família?',
+        title: 'Inativar profissional de TTS',
+        content: 'Deseja realmente inativar esse profissional de TTS?',
         action: 'inativar',
       };
     } else {
       modalConfirmData = {
-        title: 'Ativar família',
-        content: 'Deseja realmente ativar essa família?',
+        title: 'Ativar profissional de TTS',
+        content: 'Deseja realmente ativar esse profissional de TTS?',
         action: 'ativar',
       };
     }
@@ -67,7 +67,7 @@ export class FamiliesListComponent extends ListContainerClass {
     modalRef.result
       .then((result: any) => {
         if (result) {
-          this._httpService.post('Family/BlockUnblock', value)
+          this._httpService.post('Professional/BlockUnblock', value)
             .pipe(takeUntil(this.onDestroy))
             .subscribe((response: any) => {
               this.megaleiosAlertService.success(response.message);
