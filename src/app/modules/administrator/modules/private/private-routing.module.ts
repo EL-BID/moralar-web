@@ -30,6 +30,10 @@ const routes: Routes = [
         loadChildren: () => import('./modules/public-managers/public-managers.module').then(m => m.PublicManagersModule)
       },
       {
+        path: 'imoveis',
+        loadChildren: () => import('./modules/properties/properties.module').then(m => m.PropertiesModule)
+      },
+      {
         path: 'usuarios',
         loadChildren: () => import('./modules/users/users.module').then(m => m.UsersModule)
       },

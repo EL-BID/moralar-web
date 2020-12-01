@@ -48,6 +48,6 @@ import { CustomCurrencyMaskConfig } from 'src/app/app.module';
       provide: CURRENCY_MASK_CONFIG,
       useValue: CustomCurrencyMaskConfig
     }
-  ],
+  ]
 })
 export class FamiliesModule { }

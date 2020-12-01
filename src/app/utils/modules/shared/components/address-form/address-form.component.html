@@ -1,8 +1,12 @@
-<app-control-field>
-  <label for="zipCode">CEP</label>
-  <input appControlInput type="tel" id="zipCode" [formControl]="form.controls.zipCode" mask="00000-000">
-  <app-control-error [control]="form.controls.zipCode"></app-control-error>
-</app-control-field>
+<div class="row">
+  <div class="col-lg-6">
+    <app-control-field>
+      <label for="zipCode">CEP</label>
+      <input appControlInput type="tel" id="zipCode" [formControl]="form.controls.zipCode" mask="00000-000">
+      <app-control-error [control]="form.controls.zipCode"></app-control-error>
+    </app-control-field>
+  </div>
+</div>
 <div class="row">
   <div class="col-lg-6">
     <app-control-field>
@@ -30,18 +34,20 @@
       <app-control-error [control]="form.controls.cityId"></app-control-error>
     </app-control-field>
   </div>
-</div>
-<app-control-field>
-  <label for="neighborhood">Bairro</label>
-  <input appControlInput type="text" id="neighborhood" [formControl]="form.controls.neighborhood">
-  <app-control-error [control]="form.controls.neighborhood"></app-control-error>
-</app-control-field>
-<app-control-field>
-  <label for="streetAddress">Endereço</label>
-  <input appControlInput type="text" id="streetAddress" [formControl]="form.controls.streetAddress">
-  <app-control-error [control]="form.controls.streetAddress"></app-control-error>
-</app-control-field>
-<div class="row">
+  <div class="col-lg-6">
+    <app-control-field>
+      <label for="neighborhood">Bairro</label>
+      <input appControlInput type="text" id="neighborhood" [formControl]="form.controls.neighborhood">
+      <app-control-error [control]="form.controls.neighborhood"></app-control-error>
+    </app-control-field>
+  </div>
+  <div class="col-lg-6">
+    <app-control-field>
+      <label for="streetAddress">Endereço</label>
+      <input appControlInput type="text" id="streetAddress" [formControl]="form.controls.streetAddress">
+      <app-control-error [control]="form.controls.streetAddress"></app-control-error>
+    </app-control-field>
+  </div>
   <div class="col-lg-6">
     <app-control-field>
       <label for="number">Número</label>

@@ -25,21 +25,13 @@
     <div class="col-lg-6">
       <app-control-field>
         <label>Gênero</label>
-        <div class="row align-items-center">
-          <div *ngFor="let gender of genderList" class="col-auto">
-            <div class="form-row align-items-center">
-              <div class="col-auto">
-                <app-control-radio
-                  [value]="gender.id"
-                  formControlName="gender">
-                </app-control-radio>
-              </div>
-              <div class="col-auto">
-                <label class="mb-0">{{ gender.name }}</label>
-              </div>
-            </div>
-          </div>
-        </div>
+        <select id="gender" formControlName="gender">
+          <option [ngValue]="null">Selecione uma opção</option>
+          <option *ngFor="let gender of genderList"
+            [ngValue]="gender.id">
+            {{ gender.name }}
+          </option>
+        </select>
         <app-control-error [control]="form.controls.gender"></app-control-error>
       </app-control-field>
       <app-control-field>
@@ -84,21 +76,13 @@
     <div class="col-lg-6">
       <app-control-field>
         <label>Gênero</label>
-        <div class="row align-items-center">
-          <div *ngFor="let gender of genderList" class="col-auto">
-            <div class="form-row align-items-center">
-              <div class="col-auto">
-                <app-control-radio
-                  [value]="gender.id"
-                  formControlName="spouseGender">
-                </app-control-radio>
-              </div>
-              <div class="col-auto">
-                <label class="mb-0">{{ gender.name }}</label>
-              </div>
-            </div>
-          </div>
-        </div>
+        <select id="spouseGender" formControlName="spouseGender">
+          <option [ngValue]="null">Selecione uma opção</option>
+          <option *ngFor="let gender of genderList"
+            [ngValue]="gender.id">
+            {{ gender.name }}
+          </option>
+        </select>
         <app-control-error [control]="form.controls.spouseGender"></app-control-error>
       </app-control-field>
       <app-control-field>
