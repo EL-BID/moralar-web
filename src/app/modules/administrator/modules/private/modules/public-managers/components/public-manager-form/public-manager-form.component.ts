@@ -5,11 +5,11 @@ import { FormComponentClass } from 'src/app/utils/classes/form-component.class';
 import { isCpfValid, trimWhiteSpace } from 'src/app/utils/functions/validators.function';
 
 @Component({
-  selector: 'app-professional-form',
-  templateUrl: './professional-form.component.html',
-  styleUrls: ['./professional-form.component.sass']
+  selector: 'app-public-manager-form',
+  templateUrl: './public-manager-form.component.html',
+  styleUrls: ['./public-manager-form.component.sass']
 })
-export class ProfessionalFormComponent extends FormComponentClass implements OnInit {
+export class PublicManagerFormComponent extends FormComponentClass implements OnInit {
 
   phoneMask: string;
 

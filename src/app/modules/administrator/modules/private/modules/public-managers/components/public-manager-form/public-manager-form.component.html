@@ -1,6 +1,6 @@
 <form [formGroup]="form" (ngSubmit)="handleSubmit()">
   <app-control-field>
-    <label for="name">Nome do profissional</label>
+    <label for="name">Nome do gestor</label>
     <input type="text" id="name" formControlName="name">
     <app-control-error [control]="form.controls.name"></app-control-error>
   </app-control-field>
@@ -10,7 +10,7 @@
     <app-control-error [control]="form.controls.role"></app-control-error>
   </app-control-field>
   <app-control-field>
-    <label for="cpf">CPF do profissional</label>
+    <label for="cpf">CPF do gestor</label>
     <input type="tel" id="cpf" formControlName="cpf" mask="000.000.000-00">
     <app-control-error [control]="form.controls.cpf"></app-control-error>
   </app-control-field>

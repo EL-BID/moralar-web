@@ -16,6 +16,7 @@ import { ProfessionalsAddComponent } from './containers/professionals-add/profes
 import { ProfessionalListComponent } from './components/professional-list/professional-list.component';
 import { ProfessionalListSearchComponent } from './components/professional-list-search/professional-list-search.component';
 import { ProfessionalFormComponent } from './components/professional-form/professional-form.component';
+import { NgxMaskModule } from 'ngx-mask';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { ProfessionalFormComponent } from './components/professional-form/profes
     // modules
     ReactiveFormsModule,
     MegaleiosFormsModule,
-    SharedModule
+    SharedModule,
+    NgxMaskModule.forChild()
   ]
 })
 export class ProfessionalsModule { }

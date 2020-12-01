@@ -26,6 +26,10 @@ const routes: Routes = [
         loadChildren: () => import('./modules/professionals/professionals.module').then(m => m.ProfessionalsModule)
       },
       {
+        path: 'gestores-publicos',
+        loadChildren: () => import('./modules/public-managers/public-managers.module').then(m => m.PublicManagersModule)
+      },
+      {
         path: 'usuarios',
         loadChildren: () => import('./modules/users/users.module').then(m => m.UsersModule)
       },

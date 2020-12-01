@@ -6,11 +6,11 @@ import { MegaleiosAlertService } from 'src/app/utils/modules/megaleios-alert/meg
 import { HttpService } from 'src/app/utils/services/http/http.service';
 
 @Component({
-  selector: 'app-professionals-add',
-  templateUrl: './professionals-add.component.html',
-  styleUrls: ['./professionals-add.component.sass']
+  selector: 'app-public-managers-add',
+  templateUrl: './public-managers-add.component.html',
+  styleUrls: ['./public-managers-add.component.sass']
 })
-export class ProfessionalsAddComponent extends OnDestroyClass {
+export class PublicManagersAddComponent extends OnDestroyClass {
 
   formLoading = false;
 
@@ -25,11 +25,11 @@ export class ProfessionalsAddComponent extends OnDestroyClass {
   handleFormSubmit(value: any): void {
     if (this.formLoading === false) {
       this.formLoading = true;
-      this.httpService.post('Professional/Register', value)
+      this.httpService.post('PublicManager/Register', value)
         .pipe(takeUntil(this.onDestroy))
         .subscribe((response: any) => {
           this.megaleiosAlertService.success(response.message);
-          this.router.navigate(['/administrador/app/profissionais-tts']);
+          this.router.navigate(['/administrador/app/gestores-publicos']);
         }, (response: any) => {
           this.megaleiosAlertService.error(response.message);
           this.formLoading = false;
