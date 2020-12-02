@@ -34,16 +34,12 @@ const routes: Routes = [
         loadChildren: () => import('./modules/properties/properties.module').then(m => m.PropertiesModule)
       },
       {
-        path: 'usuarios',
-        loadChildren: () => import('./modules/users/users.module').then(m => m.UsersModule)
+        path: 'questionarios',
+        loadChildren: () => import('./modules/questionnaires/questionnaires.module').then(m => m.QuestionnairesModule)
       },
       {
         path: 'administradores',
         loadChildren: () => import('./modules/administrators/administrators.module').then(m => m.AdministratorsModule)
-      },
-      {
-        path: 'notificacoes',
-        loadChildren: () => import('./modules/notifications/notifications.module').then(m => m.NotificationsModule)
       },
       {
         path: '**',

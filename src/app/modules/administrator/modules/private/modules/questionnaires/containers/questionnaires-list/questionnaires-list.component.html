@@ -1,16 +1,24 @@
-<h1 class="h4">Usuários</h1>
-<app-user-list-search
+<h1 class="h4">Questionários</h1>
+<div class="form-row my-3">
+  <div class="col-auto">
+    <button
+      type="button"
+      class="btn btn-dark"
+      routerLink="/administrador/app/questionarios/adicionar">
+      Adicionar
+    </button>
+  </div>
+</div>
+<app-questionnaire-list-search
   [listSearchData]="formDataModel.search"
   (listSearchChange)="handleListSearchChange($event)">
-</app-user-list-search>
-<app-user-list
-  [options]="{ select: false, blockUnblock: true }"
+</app-questionnaire-list-search>
+<app-questionnaire-list
   [list]="list"
   (listSearchChange)="handleListSearchChange($event)"
   (listOrderChange)="handleListOrderChange($event)"
-  (listItemSelected)="handleListItemSelected($event)"
-  (blockUnblock)="handleBlockUnblock($event)">
-</app-user-list>
+  (listItemSelected)="handleListItemSelected($event)">
+</app-questionnaire-list>
 <app-list-pagination
   [page]="formDataModel.page"
   [pageSize]="formDataModel.pageSize"

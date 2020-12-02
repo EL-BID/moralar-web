@@ -3,11 +3,11 @@ import { ListSearchComponentClass } from 'src/app/utils/classes/list-search-comp
 import { FormBuilder } from '@angular/forms';
 
 @Component({
-  selector: 'app-user-list-search',
-  templateUrl: './user-list-search.component.html',
-  styleUrls: ['./user-list-search.component.sass']
+  selector: 'app-questionnaire-list-search',
+  templateUrl: './questionnaire-list-search.component.html',
+  styleUrls: ['./questionnaire-list-search.component.sass']
 })
-export class UserListSearchComponent extends ListSearchComponentClass {
+export class QuestionnaireListSearchComponent extends ListSearchComponentClass {
 
   constructor(
     formBuilder: FormBuilder
