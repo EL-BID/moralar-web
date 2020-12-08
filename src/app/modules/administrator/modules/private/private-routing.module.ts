@@ -19,7 +19,7 @@ const routes: Routes = [
       },
       {
         path: 'familias',
-        loadChildren: () => import('./modules/families/families.module').then(m => m.FamiliesModule)
+        loadChildren: () => import('src/app/utils/modules/families/families.module').then(m => m.FamiliesModule)
       },
       {
         path: 'profissionais-tts',

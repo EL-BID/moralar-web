@@ -1,0 +1,41 @@
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th></th>
+        <th sortable="startDate" (sort)="handleSort($event)">Data e horário</th>
+        <th sortable="subject" (sort)="handleSort($event)">Assunto</th>
+        <th sortable="place" (sort)="handleSort($event)">Local</th>
+        <th sortable="number" (sort)="handleSort($event)">Número do cadastro</th>
+        <th sortable="holderName" (sort)="handleSort($event)">Nome do morador titular</th>
+        <th sortable="holderCpf" (sort)="handleSort($event)">CPF do morador titular</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of list">
+        <td>
+          <div class="custom-control custom-checkbox">
+            <input
+              type="checkbox"
+              class="custom-control-input"
+              [id]="'select-' + item.id"
+              [checked]="isChecked(item)"
+              (change)="listItemSelected.emit(item)">
+            <label
+              class="custom-control-label"
+              [for]="'select-' + item.id">
+            </label>
+          </div>
+        </td>
+        <td>{{ item.created }}</td>
+        <td>{{ item.subject }}</td>
+        <td>{{ item.place }}</td>
+        <td>{{ item.number }}</td>
+        <td>{{ item.holderName }}</td>
+        <td>{{ item.holderCpf }}</td>
+        <td>{{ item.status }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

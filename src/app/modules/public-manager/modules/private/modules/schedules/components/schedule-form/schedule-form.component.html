@@ -1,0 +1,56 @@
+<form [formGroup]="form" (ngSubmit)="handleSubmit()">
+  <div class="row">
+    <div class="col-lg-6">
+      <app-control-field>
+        <label for="date">Data</label>
+        <app-control-date-picker
+          [dayMin]="dayMin"
+          formControlName="date">
+        </app-control-date-picker>
+        <app-control-error [control]="form.controls.date"></app-control-error>
+      </app-control-field>
+      <app-control-field *ngIf="form.controls.startDate.enabled">
+        <label>Horário</label>
+        <select id="startDate" formControlName="startDate">
+          <option [ngValue]="null">Selecione uma opção</option>
+          <option *ngFor="let startDate of startDateList"
+            [ngValue]="startDate.id">
+            {{ startDate.name }}
+          </option>
+        </select>
+        <app-control-error [control]="form.controls.subject"></app-control-error>
+      </app-control-field>
+    </div>
+    <div class="col-lg-6">
+      <app-control-field>
+        <label>Assunto</label>
+        <select id="subject" formControlName="subject">
+          <option [ngValue]="null">Selecione uma opção</option>
+          <option *ngFor="let scheduleType of scheduleTypeList"
+            [ngValue]="scheduleType.id">
+            {{ scheduleType.name }}
+          </option>
+        </select>
+        <app-control-error [control]="form.controls.subject"></app-control-error>
+      </app-control-field>
+      <app-control-field>
+        <label for="place">Local</label>
+        <input type="text" id="place" formControlName="place">
+        <app-control-error [control]="form.controls.place"></app-control-error>
+      </app-control-field>
+      <app-control-field>
+        <label for="description">Descrição</label>
+        <textarea id="description" formControlName="description"></textarea>
+        <app-control-error [control]="form.controls.description"></app-control-error>
+      </app-control-field>
+    </div>
+  </div>
+  <app-button
+    buttonType="submit"
+    buttonClass="btn-dark"
+    [buttonDisabled]="form.valid === false || formLoading === true"
+    [buttonLoading]="formLoading">
+    Adicionar
+  </app-button>
+</form>
+<pre>{{ form.value | json }}</pre>

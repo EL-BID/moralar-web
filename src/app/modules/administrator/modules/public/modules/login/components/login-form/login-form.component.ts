@@ -19,8 +19,8 @@ export class LoginFormComponent extends FormComponentClass {
     const email = environment.showDefaultLogin ? 'megaleios@megaleios.com' : null;
     const password = environment.showDefaultLogin ? 'megaleios' : null;
     this.form = formBuilder.group({
-      email: ['megaleios@megaleios.com', Validators.compose([trimWhiteSpace, Validators.required, Validators.email])],
-      password: ['megaleios', Validators.compose([trimWhiteSpace, Validators.required])],
+      email: [email, Validators.compose([trimWhiteSpace, Validators.required, Validators.email])],
+      password: [password, Validators.compose([trimWhiteSpace, Validators.required])],
       rememberMe: [false]
     });
   }

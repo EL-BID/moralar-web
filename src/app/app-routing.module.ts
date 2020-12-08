@@ -7,6 +7,10 @@ const routes: Routes = [
     loadChildren: () => import('./modules/administrator/administrator.module').then(m => m.AdministratorModule)
   },
   {
+    path: 'gestor-publico',
+    loadChildren: () => import('./modules/public-manager/public-manager.module').then(m => m.PublicManagerModule)
+  },
+  {
     path: '**',
     redirectTo: 'administrador',
     pathMatch: 'full'
