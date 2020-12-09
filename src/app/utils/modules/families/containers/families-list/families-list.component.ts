@@ -18,7 +18,7 @@ export class FamiliesListComponent extends ListContainerClass {
 
   formDataModel: FormDataModel = {
     columns: [
-      { data: 'name', name: 'Name', searchable: true }
+      { data: 'holderName', name: 'HolderName', searchable: true }
     ],
     page: 1,
     pageSize: 10,

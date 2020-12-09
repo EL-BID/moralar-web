@@ -26,24 +26,12 @@ const routes: Routes = [
         loadChildren: () => import('./modules/schedules/schedules.module').then(m => m.SchedulesModule)
       },
       {
-        path: 'profissionais-tts',
-        loadChildren: () => import('./modules/professionals/professionals.module').then(m => m.ProfessionalsModule)
-      },
-      {
-        path: 'gestores-publicos',
-        loadChildren: () => import('./modules/public-managers/public-managers.module').then(m => m.PublicManagersModule)
-      },
-      {
         path: 'imoveis',
-        loadChildren: () => import('./modules/properties/properties.module').then(m => m.PropertiesModule)
+        loadChildren: () => import('src/app/utils/modules/properties/properties.module').then(m => m.PropertiesModule)
       },
       {
         path: 'questionarios',
-        loadChildren: () => import('./modules/questionnaires/questionnaires.module').then(m => m.QuestionnairesModule)
-      },
-      {
-        path: 'administradores',
-        loadChildren: () => import('./modules/administrators/administrators.module').then(m => m.AdministratorsModule)
+        loadChildren: () => import('src/app/utils/modules/questionnaires/questionnaires.module').then(m => m.QuestionnairesModule)
       },
       {
         path: '**',

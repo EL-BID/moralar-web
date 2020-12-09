@@ -1,4 +1,7 @@
 <form [formGroup]="form" (ngSubmit)="handleSubmit()">
+  <h2 class="h5">Morador</h2>
+  <p class="text-danger">[PENDENTE] Buscar família e selecionar</p>
+  <h2 class="h5">Agendamento</h2>
   <div class="row">
     <div class="col-lg-6">
       <app-control-field>
@@ -20,8 +23,6 @@
         </select>
         <app-control-error [control]="form.controls.subject"></app-control-error>
       </app-control-field>
-    </div>
-    <div class="col-lg-6">
       <app-control-field>
         <label>Assunto</label>
         <select id="subject" formControlName="subject">

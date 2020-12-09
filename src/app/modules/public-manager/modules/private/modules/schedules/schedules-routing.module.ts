@@ -5,6 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { SchedulesComponent } from './schedules.component';
 import { SchedulesListComponent } from './containers/schedules-list/schedules-list.component';
 import { SchedulesAddComponent } from './containers/schedules-add/schedules-add.component';
+import { SchedulesDetailsComponent } from './containers/schedules-details/schedules-details.component';
 
 const routes: Routes = [
   {
@@ -13,6 +14,7 @@ const routes: Routes = [
     children: [
       { path: '', component: SchedulesListComponent },
       { path: 'adicionar', component: SchedulesAddComponent },
+      { path: ':scheduleId', component: SchedulesDetailsComponent },
       { path: '**', redirectTo: '', pathMatch: 'full' }
     ]
   }

@@ -75,10 +75,41 @@
             routerLink="agendamentos">
             <fa-icon
               class="mr-2"
-              [icon]="faUserTie">
+              [icon]="faCalendarAlt">
             </fa-icon>
             Agendamentos
           </button>
+        </li>
+        <li>
+          <button
+            type="button"
+            routerLink="imoveis">
+            <fa-icon
+              class="mr-2"
+              [icon]="faHome">
+            </fa-icon>
+            Imóveis
+          </button>
+        </li>
+        <li>
+          <button
+            type="button"
+            routerLink="questionarios">
+            <fa-icon
+              class="mr-2"
+              [icon]="faQuestionCircle">
+            </fa-icon>
+            Questionários
+          </button>
+          <ul>
+            <li routerLinkActive="active">
+              <button
+                type="button"
+                routerLink="questionarios/disponiveis">
+                Disponíveis
+              </button>
+            </li>
+          </ul>
         </li>
         <!-- <li>
           <button

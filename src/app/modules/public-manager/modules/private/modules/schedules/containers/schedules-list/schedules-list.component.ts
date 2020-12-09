@@ -38,7 +38,7 @@ export class SchedulesListComponent extends ListContainerClass implements OnInit
 
   constructor(
     activatedRoute: ActivatedRoute,
-    router: Router,
+    private router: Router,
     httpService: HttpService,
   ) {
     super(activatedRoute, router, httpService);
@@ -65,6 +65,10 @@ export class SchedulesListComponent extends ListContainerClass implements OnInit
         this.formDataModel.pageSize = params.pageSize !== undefined ? parseFloat(params.pageSize) : this.formDataModel.pageSize;
         this.getList();
       });
+  }
+
+  handleDetails(): void {
+    this.router.navigate(['/administrador/app/administradores/', this.listSelected[0].id]);
   }
 
 }

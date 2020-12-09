@@ -1,0 +1,19 @@
+<form [formGroup]="form" (ngSubmit)="handleSubmit()">
+  <app-control-field>
+    <label for="date">Data</label>
+    <app-control-date-picker
+      [dayMin]="dayMin"
+      formControlName="date">
+    </app-control-date-picker>
+    <app-control-error [control]="form.controls.date"></app-control-error>
+  </app-control-field>
+  <app-button
+    buttonType="submit"
+    buttonClass="btn-dark"
+    [buttonDisabled]="form.valid === false || formLoading === true"
+    [buttonLoading]="formLoading">
+    Reagendar
+  </app-button>
+</form>
+<br>
+<pre>{{ form.value | json }}</pre>

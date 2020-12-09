@@ -10,9 +10,12 @@ import { SCHEDULE_TYPE_LIST } from 'src/app/utils/interfaces/schedules.interface
   templateUrl: './schedule-form.component.html',
   styleUrls: ['./schedule-form.component.sass']
 })
-export class ScheduleFormComponent extends FormComponentClass implements OnInit {
+export class ScheduleFormComponent extends FormComponentClass {
 
-  dayMin: number;
+  dayMin = DateTime.local()
+    .set({ hour: 0, minute: 0, second: 0, millisecond: 0 })
+    .toSeconds();
+
   startDateList: any[] = [];
   scheduleTypeList: any[] = SCHEDULE_TYPE_LIST;
 
@@ -27,12 +30,6 @@ export class ScheduleFormComponent extends FormComponentClass implements OnInit 
       place: [null, Validators.compose([trimWhiteSpace, Validators.required])],
       description: [null, Validators.required],
     });
-  }
-
-  ngOnInit(): void {
-    this.dayMin = DateTime.local()
-      .set({ hour: 0, minute: 0, second: 0, millisecond: 0 })
-      .toSeconds();
   }
 
 }

@@ -3,11 +3,11 @@ import { ListSearchComponentClass } from 'src/app/utils/classes/list-search-comp
 import { FormBuilder } from '@angular/forms';
 
 @Component({
-  selector: 'app-family-list-search',
-  templateUrl: './family-list-search.component.html',
-  styleUrls: ['./family-list-search.component.sass']
+  selector: 'app-available-list-search',
+  templateUrl: './available-list-search.component.html',
+  styleUrls: ['./available-list-search.component.sass']
 })
-export class FamilyListSearchComponent extends ListSearchComponentClass {
+export class AvailableListSearchComponent extends ListSearchComponentClass {
 
   constructor(
     formBuilder: FormBuilder
@@ -17,7 +17,8 @@ export class FamilyListSearchComponent extends ListSearchComponentClass {
       search: [''],
       number: [''],
       holderName: [''],
-      holderCpf: ['']
+      holderCpf: [''],
+      status: ['']
     });
   }
 

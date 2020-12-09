@@ -36,7 +36,7 @@ export class AdministratorsListComponent extends ListContainerClass {
   uri = 'UserAdministrator';
 
   constructor(
-    activatedRoute: ActivatedRoute,
+    private activatedRoute: ActivatedRoute,
     private router: Router,
     httpService: HttpService,
     private ngbModal: NgbModal,
@@ -46,7 +46,7 @@ export class AdministratorsListComponent extends ListContainerClass {
   }
 
   handleDetails(): void {
-    this.router.navigate(['/administrador/app/administradores/', this.listSelected[0].id]);
+    this.router.navigate([this.listSelected[0].id], { relativeTo: this.activatedRoute });
   }
 
   handleBlockUnblock(value: any): void {

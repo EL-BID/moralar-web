@@ -1,13 +1,5 @@
-<h1 class="h4">Agendamentos</h1>
+<h1 class="h4">Questionários disponíveis</h1>
 <div class="form-row my-3">
-  <div class="col-auto">
-    <button
-      type="button"
-      class="btn btn-dark"
-      routerLink="adicionar">
-      Adicionar
-    </button>
-  </div>
   <div class="col-auto">
     <button
       type="button"
@@ -18,16 +10,16 @@
     </button>
   </div>
 </div>
-<app-schedule-list-search
+<app-available-list-search
   [listSearchData]="formDataModel.search"
   (listSearchChange)="handleListSearchChange($event)">
-</app-schedule-list-search>
-<app-schedule-list
+</app-available-list-search>
+<app-available-list
   [list]="list"
   (listSearchChange)="handleListSearchChange($event)"
   (listOrderChange)="handleListOrderChange($event)"
   (listItemSelected)="handleListItemSelected($event)">
-</app-schedule-list>
+</app-available-list>
 <app-list-pagination
   [page]="formDataModel.page"
   [pageSize]="formDataModel.pageSize"

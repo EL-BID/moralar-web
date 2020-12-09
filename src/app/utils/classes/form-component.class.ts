@@ -2,6 +2,7 @@
 import { OnDestroyClass } from './on-destroy.class';
 import { OnChanges, Input, Output, EventEmitter, SimpleChanges, Directive } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { cloneDeep } from 'lodash';
 
 @Directive()
 export abstract class FormComponentClass extends OnDestroyClass implements OnChanges {
@@ -26,7 +27,7 @@ export abstract class FormComponentClass extends OnDestroyClass implements OnCha
   handleSubmit(): void {
     if (this.formLoading === false) {
       this.formLoading = true;
-      this.formSubmit.emit(this.form.value);
+      this.formSubmit.emit(cloneDeep(this.form.value));
     }
   }
 

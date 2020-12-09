@@ -6,6 +6,7 @@ import { FamiliesRoutingModule } from './families-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MegaleiosFormsModule } from 'src/app/utils/modules/megaleios-forms/megaleios-forms.module';
 import { SharedModule } from 'src/app/utils/modules/shared/shared.module';
+import { NgxMaskModule } from 'ngx-mask';
 import { CurrencyMaskModule, CURRENCY_MASK_CONFIG } from 'ng2-currency-mask';
 
 // containers
@@ -41,6 +42,7 @@ import { CustomCurrencyMaskConfig } from 'src/app/app.module';
     ReactiveFormsModule,
     MegaleiosFormsModule,
     SharedModule,
+    NgxMaskModule.forChild(),
     CurrencyMaskModule
   ],
   providers: [

@@ -1,4 +1,4 @@
-<h1 class="h4">Agendamentos</h1>
+<h1 class="h4">Questionários</h1>
 <div class="form-row my-3">
   <div class="col-auto">
     <button
@@ -18,16 +18,16 @@
     </button>
   </div>
 </div>
-<app-schedule-list-search
+<app-questionnaire-list-search
   [listSearchData]="formDataModel.search"
   (listSearchChange)="handleListSearchChange($event)">
-</app-schedule-list-search>
-<app-schedule-list
+</app-questionnaire-list-search>
+<app-questionnaire-list
   [list]="list"
   (listSearchChange)="handleListSearchChange($event)"
   (listOrderChange)="handleListOrderChange($event)"
   (listItemSelected)="handleListItemSelected($event)">
-</app-schedule-list>
+</app-questionnaire-list>
 <app-list-pagination
   [page]="formDataModel.page"
   [pageSize]="formDataModel.pageSize"

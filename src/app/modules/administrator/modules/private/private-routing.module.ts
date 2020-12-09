@@ -31,11 +31,11 @@ const routes: Routes = [
       },
       {
         path: 'imoveis',
-        loadChildren: () => import('./modules/properties/properties.module').then(m => m.PropertiesModule)
+        loadChildren: () => import('src/app/utils/modules/properties/properties.module').then(m => m.PropertiesModule)
       },
       {
         path: 'questionarios',
-        loadChildren: () => import('./modules/questionnaires/questionnaires.module').then(m => m.QuestionnairesModule)
+        loadChildren: () => import('src/app/utils/modules/questionnaires/questionnaires.module').then(m => m.QuestionnairesModule)
       },
       {
         path: 'administradores',
