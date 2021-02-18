@@ -23,7 +23,8 @@ export class ProfessionalsListComponent extends ListContainerClass {
     page: 1,
     pageSize: 10,
     search: {
-      search: ''
+      search: '',
+      typeProfile: '1'
     },
     order: {
       column: '0',
@@ -31,7 +32,7 @@ export class ProfessionalsListComponent extends ListContainerClass {
     }
   };
 
-  uri = 'Family';
+  uri = 'Profile';
 
   constructor(
     activatedRoute: ActivatedRoute,

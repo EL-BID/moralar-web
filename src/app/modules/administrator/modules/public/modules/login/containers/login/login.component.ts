@@ -27,7 +27,7 @@ export class LoginComponent extends OnDestroyClass {
   handleFormSubmit(value: any): void {
     if (this.formLoading === false) {
       this.formLoading = true;
-      this.httpService.post('UserAdministrator/Token', value)
+      this.httpService.post('Profile/Token', value)
         .pipe(takeUntil(this.onDestroy))
         .subscribe((response: any) => {
           this.authenticationService.setAuthentication(response.data, value.rememberMe);

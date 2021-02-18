@@ -25,7 +25,7 @@ export class ProfessionalsAddComponent extends OnDestroyClass {
   handleFormSubmit(value: any): void {
     if (this.formLoading === false) {
       this.formLoading = true;
-      this.httpService.post('Professional/Register', value)
+      this.httpService.post('Profile/Register', value)
         .pipe(takeUntil(this.onDestroy))
         .subscribe((response: any) => {
           this.megaleiosAlertService.success(response.message);
