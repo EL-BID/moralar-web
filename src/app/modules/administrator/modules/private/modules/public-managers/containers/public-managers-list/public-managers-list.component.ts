@@ -18,12 +18,17 @@ export class PublicManagersListComponent extends ListContainerClass {
 
   formDataModel: FormDataModel = {
     columns: [
-      { data: 'name', name: 'Name', searchable: true }
+      { data: 'name',    name: 'Name',    searchable: true },
+      { data: 'jobPost', name: 'JobPost', searchable: true },
+      { data: 'cpf',     name: 'Cpf',     searchable: true },
+      { data: 'email',   name: 'Email',   searchable: true },
+      { data: 'phone',   name: 'Phone',   searchable: true }
     ],
     page: 1,
     pageSize: 10,
     search: {
-      search: ''
+      search: '',
+      typeProfile: '0'
     },
     order: {
       column: '0',
@@ -31,7 +36,7 @@ export class PublicManagersListComponent extends ListContainerClass {
     }
   };
 
-  uri = 'PublicManager';
+  uri = 'Profile';
 
   constructor(
     activatedRoute: ActivatedRoute,

@@ -18,11 +18,12 @@ export class PublicManagerFormComponent extends FormComponentClass implements On
   ) {
     super();
     this.form = formBuilder.group({
-      name: [null, Validators.compose([trimWhiteSpace, Validators.required])],
-      role: [null, Validators.compose([trimWhiteSpace, Validators.required])],
-      cpf: [null, Validators.compose([Validators.required, isCpfValid])],
-      email: [null, Validators.compose([trimWhiteSpace, Validators.required, Validators.email])],
-      phone: [null]
+      name:        [null, Validators.compose([trimWhiteSpace, Validators.required])],
+      jobPost:     [null, Validators.compose([trimWhiteSpace, Validators.required])],
+      cpf:         [null, Validators.compose([Validators.required, isCpfValid])],
+      email:       [null, Validators.compose([trimWhiteSpace, Validators.required, Validators.email])],
+      phone:       [null],
+      typeProfile: ['Gestor']
     });
   }
 
