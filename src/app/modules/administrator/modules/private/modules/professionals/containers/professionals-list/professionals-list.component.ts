@@ -18,7 +18,11 @@ export class ProfessionalsListComponent extends ListContainerClass {
 
   formDataModel: FormDataModel = {
     columns: [
-      { data: 'name', name: 'Name', searchable: true }
+      { data: 'name',    name: 'Name',    searchable: true },
+      { data: 'jobPost', name: 'JobPost', searchable: true },
+      { data: 'cpf',     name: 'Cpf',     searchable: true },
+      { data: 'email',   name: 'Email',   searchable: true },
+      { data: 'phone',   name: 'Phone',   searchable: true }
     ],
     page: 1,
     pageSize: 10,
@@ -68,7 +72,7 @@ export class ProfessionalsListComponent extends ListContainerClass {
     modalRef.result
       .then((result: any) => {
         if (result) {
-          this._httpService.post('Professional/BlockUnblock', value)
+          this._httpService.post('Profile/BlockUnblock', value)
             .pipe(takeUntil(this.onDestroy))
             .subscribe((response: any) => {
               this.megaleiosAlertService.success(response.message);
