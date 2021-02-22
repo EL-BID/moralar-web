@@ -11,7 +11,6 @@ import { GENDER_LIST, SCHOOLING_LIST, DEGREE_OF_KINSHIP_LIST } from 'src/app/uti
   styleUrls: ['./family-form.component.sass']
 })
 export class FamilyFormComponent extends FormComponentClass {
-holderNumber: any;
 
   genderList: any[] = sortBy(GENDER_LIST, 'name');
   schoolingList: any[] = SCHOOLING_LIST;
@@ -26,37 +25,45 @@ holderNumber: any;
   ) {
     super();
     this.form = this.formBuilder.group({
-      holder: {
-        number: [this.holderNumber, Validators.compose([trimWhiteSpace, Validators.required])],
-        name: [null, Validators.compose([trimWhiteSpace, Validators.required])],
-        cpf: [null, Validators.compose([trimWhiteSpace, Validators.required])],
-        birthday: [null, Validators.compose([trimWhiteSpace, Validators.required])],
-        genre: [null, Validators.compose([trimWhiteSpace, Validators.required])],
-        email: [null, Validators.compose([trimWhiteSpace, Validators.email])],
-        phone: [null, trimWhiteSpace],
-        scholarity: [null, trimWhiteSpace],
-      },
-      spouse: {
-        name: [null, Validators.compose([trimWhiteSpace, Validators.required])],
-        birthday: [null, Validators.compose([trimWhiteSpace, Validators.required])],
-        genre: [null, Validators.compose([trimWhiteSpace, Validators.required])],
-        spouseScholarity: [null, Validators.compose([trimWhiteSpace, Validators.required])]
-      },
-
+      number: [null, Validators.compose([trimWhiteSpace, Validators.required])],
+      holderName: [null, Validators.compose([trimWhiteSpace, Validators.required])],
+      holderCpf: [null, Validators.compose([Validators.required, isCpfValid])],
+      birthdate: [null, Validators.required],
+      gender: [null],
+      email: [null, Validators.compose([trimWhiteSpace, Validators.email])],
+      phone: [null, trimWhiteSpace],
+      schooling: [null, Validators.required],
+      spouseName: [null, trimWhiteSpace],
+      spouseBirthdate: [null],
+      spouseGender: [null],
+      spouseSchooling: [null],
       members: this.formBuilder.array([]),
-      financial: {
-        familyIncome: [null, Validators.required],
-        propertyValueForDemolished: [null, Validators.required],
-        maximumPurchase: [null, Validators.required],
-        incrementValue: [null, Validators.required]
-      }
+      familyIncome: [null, Validators.required],
+      propertyCurrentValue: [null, Validators.required],
+      propertyBuyValue: [null, Validators.required],
+      propertyIncrementValue: [null, Validators.required],
+      workFront: 'false',
+      permanentDisabled: 'false',
+      elderlyOverEighty: 'false',
+      yearsInSextyAndSeventyNine: 'false',
+      womanServedByProtectiveMeasure: 'false',
+      femaleBreadWinner: 'false',
+      singleParent: 'false',
+      familyWithMoreThanFivePeople: 'false',
+      childUnderEighteen: 'false',
+      headOfHouseholdWithoutIncome: 'false',
+      benefitOfContinuedProvision: 'false',
+      familyPurse: 'false',
+      involuntaryCohabitation: 'false',
+      familyIncomeOfUpTwoMinimumWages: 'false'
+
     });
   }
 
   private createMemberForm(): FormGroup {
     return this.formBuilder.group({
       name: [null, Validators.compose([trimWhiteSpace, Validators.required])],
-      birthdate: [null, Validators.required],
+      birthday: [null, Validators.required],
       genre: [null, Validators.required],
       kinShip: [null, Validators.required],
       scholarity: [null, Validators.required]

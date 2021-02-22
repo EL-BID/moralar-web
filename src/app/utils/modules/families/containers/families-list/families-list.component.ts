@@ -18,12 +18,17 @@ export class FamiliesListComponent extends ListContainerClass {
 
   formDataModel: FormDataModel = {
     columns: [
-      { data: 'holderName', name: 'HolderName', searchable: true }
+      { data: 'number',    name: 'Number',    searchable: true },
+      { data: 'holderName', name: 'HolderName', searchable: true },
+      { data: 'holderCpf',     name: 'HolderCpf',     searchable: true },
+      { data: 'email',   name: 'Email',   searchable: true },
+      { data: 'phone',   name: 'Phone',   searchable: true }
     ],
     page: 1,
     pageSize: 10,
     search: {
-      search: ''
+      search: '',
+      typeProfile: '0'
     },
     order: {
       column: '0',

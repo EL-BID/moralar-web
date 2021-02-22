@@ -3,12 +3,12 @@
     <div class="col-lg-6">
       <app-control-field>
         <label for="number">Número do cadastro</label>
-        <input type="tel" id="number" formControlName="{{form.value.holder}}">
+        <input type="tel" id="number" formControlName="number">
         <app-control-error [control]="form.controls.number"></app-control-error>
       </app-control-field>
       <app-control-field>
         <label for="holderName">Nome do títular</label>
-        <input type="text" id="holderName" formControlName="{{form.value.holder.name}}">
+        <input type="text" id="holderName" formControlName="holderName">
         <app-control-error [control]="form.controls.holderName"></app-control-error>
       </app-control-field>
       <app-control-field>
@@ -17,9 +17,9 @@
         <app-control-error [control]="form.controls.holderCpf"></app-control-error>
       </app-control-field>
       <app-control-field>
-        <label for="birthday">Data de nascimento</label>
-        <input type="date" id="birthday" formControlName="birthday" >
-        <app-control-error [control]="form.controls.birthday"></app-control-error>
+        <label for="birthdate">Data de nascimento</label>
+        <input type="date" id="birthdate" formControlName="birthdate">
+        <app-control-error [control]="form.controls.birthdate"></app-control-error>
       </app-control-field>
     </div>
     <div class="col-lg-6">
@@ -28,7 +28,7 @@
         <select id="gender" formControlName="gender">
           <option [ngValue]="null">Selecione uma opção</option>
           <option *ngFor="let gender of genderList"
-            [ngValue]="gender.id">
+                  [ngValue]="gender.name">
             {{ gender.name }}
           </option>
         </select>
@@ -51,7 +51,7 @@
         <label for="schooling">Escolaridade</label>
         <select id="schooling" formControlName="schooling">
           <option [ngValue]="null">Selecione uma opção</option>
-          <option *ngFor="let schooling of schoolingList" [ngValue]="schooling.id">
+          <option *ngFor="let schooling of schoolingList" [ngValue]="schooling.name">
             {{ schooling.name }}
           </option>
         </select>
@@ -79,7 +79,7 @@
         <select id="spouseGender" formControlName="spouseGender">
           <option [ngValue]="null">Selecione uma opção</option>
           <option *ngFor="let gender of genderList"
-            [ngValue]="gender.id">
+                  [ngValue]="gender.name">
             {{ gender.name }}
           </option>
         </select>
@@ -89,7 +89,7 @@
         <label for="spouseSchooling">Escolaridade</label>
         <select id="spouseSchooling" formControlName="spouseSchooling">
           <option [ngValue]="null">Selecione uma opção</option>
-          <option *ngFor="let schooling of schoolingList" [ngValue]="schooling.id">
+          <option *ngFor="let schooling of schoolingList" [ngValue]="schooling.name">
             {{ schooling.name }}
           </option>
         </select>
@@ -104,8 +104,8 @@
     </app-card>
     <div *ngSwitchCase="false" class="row">
       <div *ngFor="let memberForm of membersForm.controls; let i = index"
-        formArrayName="members"
-        class="col-lg-6">
+           formArrayName="members"
+           class="col-lg-6">
         <app-card [formGroupName]="i" class="mb-3">
           <app-control-field>
             <label for="memberName-{{i}}">Nome</label>
@@ -114,8 +114,8 @@
           </app-control-field>
           <app-control-field>
             <label for="memberBirthdate-{{i}}">Data de nascimento</label>
-            <input type="date" id="memberBirthdate-{{i}}" formControlName="birthdate">
-            <app-control-error [control]="memberForm.get('birthdate')"></app-control-error>
+            <input type="date" id="memberBirthdate-{{i}}" formControlName="birthday">
+            <app-control-error [control]="memberForm.get('birthday')"></app-control-error>
           </app-control-field>
           <app-control-field>
             <label>Gênero</label>
@@ -124,8 +124,8 @@
                 <div class="form-row align-items-center">
                   <div class="col-auto">
                     <app-control-radio
-                      [value]="gender.id"
-                      formControlName="gender">
+                      [value]="gender.name"
+                      formControlName="genre">
                     </app-control-radio>
                   </div>
                   <div class="col-auto">
@@ -134,27 +134,27 @@
                 </div>
               </div>
             </div>
-            <app-control-error [control]="memberForm.get('gender')"></app-control-error>
+            <app-control-error [control]="memberForm.get('genre')"></app-control-error>
           </app-control-field>
           <app-control-field>
             <label for="memberDegreeOfKinship-{{i}}">Grau de parentesco</label>
-            <select id="memberDegreeOfKinship-{{i}}" formControlName="degreeOfKinship">
+            <select id="memberDegreeOfKinship-{{i}}" formControlName="kinShip">
               <option [ngValue]="null">Selecione uma opção</option>
               <option *ngFor="let degreeOfKinship of degreeOfKinshipList" [ngValue]="degreeOfKinship.id">
                 {{ degreeOfKinship.name }}
               </option>
             </select>
-            <app-control-error [control]="memberForm.get('schooling')"></app-control-error>
+            <app-control-error [control]="memberForm.get('kinShip')"></app-control-error>
           </app-control-field>
           <app-control-field>
             <label for="memberSchooling-{{i}}">Escolaridade</label>
-            <select id="memberSchooling-{{i}}" formControlName="schooling">
+            <select id="memberSchooling-{{i}}" formControlName="scholarity">
               <option [ngValue]="null">Selecione uma opção</option>
-              <option *ngFor="let schooling of schoolingList" [ngValue]="schooling.id">
+              <option *ngFor="let schooling of schoolingList" [ngValue]="schooling.name">
                 {{ schooling.name }}
               </option>
             </select>
-            <app-control-error [control]="memberForm.get('schooling')"></app-control-error>
+            <app-control-error [control]="memberForm.get('scholarity')"></app-control-error>
           </app-control-field>
           <button
             type="button"
@@ -206,7 +206,273 @@
     </p>
   </app-card>
   <h2 class="h5">Critérios de priorização</h2>
-  <p class="text-danger">[Aguardando a API para ver a melhor forma de construir]</p>
+
+  <div class="form-row align-items-center mb-12">
+    <div class="col-12">
+      <b>Frente de obras</b>
+    </div>
+    <div class="col-auto">
+      <app-control-radio formControlName="workFront" value="true" id="workFront-yes"></app-control-radio>
+    </div>
+    <div class="col-auto">
+      <label class="mb-0" for="workFront-yes">SIM</label>
+    </div>
+    <div class="col-auto">
+      <app-control-radio formControlName="workFront" value="false" id="workFront-no"></app-control-radio>
+    </div>
+    <div class="col-auto">
+      <label class="mb-0" for="workFront-no">NÃO</label>
+    </div>
+
+  </div>
+  <br>
+  <div class="form-row align-items-center mb-12">
+    <div class="col-12">
+      <b>Deficiência permanente que demande imóvel acessível</b>
+    </div>
+    <div class="col-auto">
+      <app-control-radio formControlName="permanentDisabled" value="true" id="permanentDisabled-yes"></app-control-radio>
+    </div>
+    <div class="col-auto">
+      <label class="mb-0" for="permanentDisabled-yes">SIM</label>
+    </div>
+    <div class="col-auto">
+      <app-control-radio formControlName="permanentDisabled" value="false" id="permanentDisabled-no"></app-control-radio>
+    </div>
+    <div class="col-auto">
+      <label class="mb-0" for="permanentDisabled-no">NÃO</label>
+    </div>
+
+  </div>
+  <br>
+  <div class="form-row align-items-center mb-12">
+    <div class="col-12">
+      <b>Idoso mais de 80 anos</b>
+    </div>
+    <div class="col-auto">
+      <app-control-radio formControlName="elderlyOverEighty" value="true" id="elderlyOverEighty-yes"></app-control-radio>
+    </div>
+    <div class="col-auto">
+      <label class="mb-0" for="elderlyOverEighty-yes">SIM</label>
+    </div>
+    <div class="col-auto">
+      <app-control-radio formControlName="elderlyOverEighty" value="false" id="elderlyOverEighty-no"></app-control-radio>
+    </div>
+    <div class="col-auto">
+      <label class="mb-0" for="elderlyOverEighty-no">NÃO</label>
+    </div>
+
+  </div>
+  <br>
+  <div class="form-row align-items-center mb-12">
+    <div class="col-12">
+      <b>Idoso 60 - 79 anos</b>
+    </div>
+    <div class="col-auto">
+      <app-control-radio formControlName="yearsInSextyAndSeventyNine" value="true" id="yearsInSextyAndSeventyNine-yes"></app-control-radio>
+    </div>
+    <div class="col-auto">
+      <label class="mb-0" for="yearsInSextyAndSeventyNine-yes">SIM</label>
+    </div>
+    <div class="col-auto">
+      <app-control-radio formControlName="yearsInSextyAndSeventyNine" value="false" id="yearsInSextyAndSeventyNine-no"></app-control-radio>
+    </div>
+    <div class="col-auto">
+      <label class="mb-0" for="yearsInSextyAndSeventyNine-no">NÃO</label>
+    </div>
+
+  </div>
+  <br>
+  <div class="form-row align-items-center mb-12">
+    <div class="col-12">
+      <b>Mulher atendida por medida protetiva</b>
+    </div>
+    <div class="col-auto">
+      <app-control-radio formControlName="womanServedByProtectiveMeasure" value="true" id="womanServedByProtectiveMeasure-yes"></app-control-radio>
+    </div>
+    <div class="col-auto">
+      <label class="mb-0" for="womanServedByProtectiveMeasure-yes">SIM</label>
+    </div>
+    <div class="col-auto">
+      <app-control-radio formControlName="womanServedByProtectiveMeasure" value="false" id="womanServedByProtectiveMeasure-no"></app-control-radio>
+    </div>
+    <div class="col-auto">
+      <label class="mb-0" for="womanServedByProtectiveMeasure-no">NÃO</label>
+    </div>
+
+  </div>
+  <br>
+  <div class="form-row align-items-center mb-12">
+    <div class="col-12">
+      <b>Mulher chefe de família</b>
+    </div>
+    <div class="col-auto">
+      <app-control-radio formControlName="femaleBreadWinner" value="true" id="femaleBreadWinner-yes"></app-control-radio>
+    </div>
+    <div class="col-auto">
+      <label class="mb-0" for="femaleBreadWinner-yes">SIM</label>
+    </div>
+    <div class="col-auto">
+      <app-control-radio formControlName="femaleBreadWinner" value="false" id="femaleBreadWinner-no"></app-control-radio>
+    </div>
+    <div class="col-auto">
+      <label class="mb-0" for="femaleBreadWinner-no">NÃO</label>
+    </div>
+
+  </div>
+  <br>
+  <div class="form-row align-items-center mb-12">
+    <div class="col-12">
+      <b>Monoparental (pai e mãe)</b>
+    </div>
+    <div class="col-auto">
+      <app-control-radio formControlName="singleParent" value="true" id="singleParent-yes"></app-control-radio>
+    </div>
+    <div class="col-auto">
+      <label class="mb-0" for="singleParent-yes">SIM</label>
+    </div>
+    <div class="col-auto">
+      <app-control-radio formControlName="singleParent" value="false" id="singleParent-no"></app-control-radio>
+    </div>
+    <div class="col-auto">
+      <label class="mb-0" for="singleParent-no">NÃO</label>
+    </div>
+
+  </div>
+  <br>
+  <div class="form-row align-items-center mb-12">
+    <div class="col-12">
+      <b>Família com mais de 5 pessoas</b>
+    </div>
+    <div class="col-auto">
+      <app-control-radio formControlName="familyWithMoreThanFivePeople" value="true" id="familyWithMoreThanFivePeople-yes"></app-control-radio>
+    </div>
+    <div class="col-auto">
+      <label class="mb-0" for="familyWithMoreThanFivePeople-yes">SIM</label>
+    </div>
+    <div class="col-auto">
+      <app-control-radio formControlName="familyWithMoreThanFivePeople" value="false" id="familyWithMoreThanFivePeople-no"></app-control-radio>
+    </div>
+    <div class="col-auto">
+      <label class="mb-0" for="familyWithMoreThanFivePeople-no">NÃO</label>
+    </div>
+
+  </div>
+  <br>
+  <div class="form-row align-items-center mb-12">
+    <div class="col-12">
+      <b>Filho(s) menor(es) de 18 anos na composição familiar</b>
+    </div>
+    <div class="col-auto">
+      <app-control-radio formControlName="childUnderEighteen" value="true" id="childUnderEighteen-yes"></app-control-radio>
+    </div>
+    <div class="col-auto">
+      <label class="mb-0" for="childUnderEighteen-yes">SIM</label>
+    </div>
+    <div class="col-auto">
+      <app-control-radio formControlName="childUnderEighteen" value="false" id="childUnderEighteen-no"></app-control-radio>
+    </div>
+    <div class="col-auto">
+      <label class="mb-0" for="childUnderEighteen-no">NÃO</label>
+    </div>
+
+  </div>
+  <br>
+  <div class="form-row align-items-center mb-12">
+    <div class="col-12">
+      <b>Chefe de família sem renda *</b>
+    </div>
+    <div class="col-auto">
+      <app-control-radio formControlName="headOfHouseholdWithoutIncome" value="true" id="headOfHouseholdWithoutIncome-yes"></app-control-radio>
+    </div>
+    <div class="col-auto">
+      <label class="mb-0" for="headOfHouseholdWithoutIncome-yes">SIM</label>
+    </div>
+    <div class="col-auto">
+      <app-control-radio formControlName="headOfHouseholdWithoutIncome" value="false" id="headOfHouseholdWithoutIncome-no"></app-control-radio>
+    </div>
+    <div class="col-auto">
+      <label class="mb-0" for="headOfHouseholdWithoutIncome-no">NÃO</label>
+    </div>
+
+  </div>
+  <br>
+  <div class="form-row align-items-center mb-12">
+    <div class="col-12">
+      <b>Benefício de prestação continuada - BPC **</b>
+    </div>
+    <div class="col-auto">
+      <app-control-radio formControlName="benefitOfContinuedProvision" value="true" id="benefitOfContinuedProvision-yes"></app-control-radio>
+    </div>
+    <div class="col-auto">
+      <label class="mb-0" for="benefitOfContinuedProvision-yes">SIM</label>
+    </div>
+    <div class="col-auto">
+      <app-control-radio formControlName="benefitOfContinuedProvision" value="false" id="benefitOfContinuedProvision-no"></app-control-radio>
+    </div>
+    <div class="col-auto">
+      <label class="mb-0" for="benefitOfContinuedProvision-no">NÃO</label>
+    </div>
+
+  </div>
+  <br>
+  <div class="form-row align-items-center mb-12">
+    <div class="col-12">
+      <b>Bolsa família</b>
+    </div>
+    <div class="col-auto">
+      <app-control-radio formControlName="familyPurse" value="true" id="familyPurse-yes"></app-control-radio>
+    </div>
+    <div class="col-auto">
+      <label class="mb-0" for="familyPurse-yes">SIM</label>
+    </div>
+    <div class="col-auto">
+      <app-control-radio formControlName="familyPurse" value="false" id="familyPurse-no"></app-control-radio>
+    </div>
+    <div class="col-auto">
+      <label class="mb-0" for="familyPurse-no">NÃO</label>
+    </div>
+
+  </div>
+  <br>
+  <div class="form-row align-items-center mb-12">
+    <div class="col-12">
+      <b>Coabitação involuntária</b>
+    </div>
+    <div class="col-auto">
+      <app-control-radio formControlName="involuntaryCohabitation" value="true" id="involuntaryCohabitation-yes"></app-control-radio>
+    </div>
+    <div class="col-auto">
+      <label class="mb-0" for="involuntaryCohabitation-yes">SIM</label>
+    </div>
+    <div class="col-auto">
+      <app-control-radio formControlName="involuntaryCohabitation" value="false" id="involuntaryCohabitation-no"></app-control-radio>
+    </div>
+    <div class="col-auto">
+      <label class="mb-0" for="involuntaryCohabitation-no">NÃO</label>
+    </div>
+
+  </div>
+  <br>
+  <div class="form-row align-items-center mb-12">
+    <div class="col-12">
+      <b>Renda familiar de até 2 salários mínimos</b>
+    </div>
+    <div class="col-auto">
+      <app-control-radio formControlName="familyIncomeOfUpTwoMinimumWages" value="true" id="familyIncomeOfUpTwoMinimumWages-yes"></app-control-radio>
+    </div>
+    <div class="col-auto">
+      <label class="mb-0" for="familyIncomeOfUpTwoMinimumWages-yes">SIM</label>
+    </div>
+    <div class="col-auto">
+      <app-control-radio formControlName="familyIncomeOfUpTwoMinimumWages" value="false" id="familyIncomeOfUpTwoMinimumWages-no"></app-control-radio>
+    </div>
+    <div class="col-auto">
+      <label class="mb-0" for="familyIncomeOfUpTwoMinimumWages-no">NÃO</label>
+    </div>
+
+  </div>
+  <br>
   <app-button
     buttonType="submit"
     buttonClass="btn-dark"
@@ -215,5 +481,4 @@
     Adicionar
   </app-button>
 </form>
-<br>
-<pre>{{ form.value | json }}</pre>
+
