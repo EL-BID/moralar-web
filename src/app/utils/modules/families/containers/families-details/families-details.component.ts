@@ -28,11 +28,12 @@ export class FamiliesDetailsComponent extends OnDestroyClass implements OnInit {
     this.httpService.get(`Family/Detail/${this.activatedRoute.snapshot.paramMap.get('familyId')}`)
       .pipe(takeUntil(this.onDestroy))
       .subscribe((response: any) => {
+       // console.log(response.data)
         this.family = response.data;
         this.family.holder.birthday = dateToString(response.data.holder.birthday);
         this.family.spouse.birthday = dateToString(response.data.spouse.birthday);
-        for (let i = 0; this.family.members.length >= i; i++) {
-          this.family.members[i].birthday =  dateToSeconds(this.family.members[i].birthday);
+        for (let i = 0; this.family.members.length > i; i++) {
+          this.family.members[i].birthday =  dateToString(this.family.members[i].birthday);
         }
       }) ;
   }
@@ -41,7 +42,12 @@ export class FamiliesDetailsComponent extends OnDestroyClass implements OnInit {
     if (this.formLoading === false) {
       this.formLoading = true;
       value.id = this.family.id;
-      this.httpService.post('Family/Save', value)
+      value.holder.birthday = dateToSeconds(value.holder.birthday);
+      value.spouse.birthday = dateToSeconds(value.spouse.birthday);
+      for (let i = 0; value.members.length > i; i++) {
+        value.members[i].birthday =  dateToSeconds(value.members[i].birthday);
+      }
+      this.httpService.post('Family/Edit', value)
         .pipe(takeUntil(this.onDestroy))
         .subscribe((response: any) => {
           this.megaleiosAlertService.success(response.success);

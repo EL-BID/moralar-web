@@ -6,7 +6,7 @@
     <div class="col-lg-6">
       <app-control-field>
         <label for="number">Número do cadastro</label>
-        <input type="tel" id="number" formControlName="number">
+        <input type="tel" id="number" formControlName="number" [readOnly]="formData.holder.number" >
         <app-control-error [control]="holderForm.controls.number"></app-control-error>
       </app-control-field>
       <app-control-field>
@@ -16,12 +16,12 @@
       </app-control-field>
       <app-control-field>
         <label for="holderCpf">CPF do titular</label>
-        <input type="tel" id="holderCpf" formControlName="cpf"  mask="000.000.000-00">
+        <input type="tel" id="holderCpf" formControlName="cpf"  mask="000.000.000-00" [readOnly]="formData.holder.cpf">
         <app-control-error [control]="holderForm.controls.cpf"></app-control-error>
       </app-control-field>
       <app-control-field>
         <label for="birthdate">Data de nascimento</label>
-        <input type="date" id="birthdate" formControlName="birthday">
+        <input type="date" id="birthdate" formControlName="birthday" [readOnly]="formData.holder.birthday">
         <app-control-error [control]="holderForm.controls.birthday"></app-control-error>
       </app-control-field>
     </div>
@@ -31,7 +31,7 @@
         <select id="gender" formControlName="genre">
           <option [ngValue]="null">Selecione uma opção</option>
           <option *ngFor="let gender of genderList"
-                  [ngValue]="gender.name">
+                  [ngValue]="gender.id">
             {{ gender.name }}
           </option>
         </select>
@@ -54,7 +54,7 @@
         <label for="schooling">Escolaridade</label>
         <select id="schooling" formControlName="scholarity">
           <option [ngValue]="null">Selecione uma opção</option>
-          <option *ngFor="let schooling of schoolingList" [ngValue]="schooling.name">
+          <option *ngFor="let schooling of schoolingList" [ngValue]="schooling.id">
             {{ schooling.name }}
           </option>
         </select>
@@ -85,7 +85,7 @@
           <select id="spouseGender" formControlName="genre">
             <option [ngValue]="null">Selecione uma opção</option>
             <option *ngFor="let gender of genderList"
-                    [ngValue]="gender.name">
+                    [ngValue]="gender.id">
               {{ gender.name }}
             </option>
           </select>
@@ -95,7 +95,7 @@
           <label for="spouseSchooling">Escolaridade</label>
           <select id="spouseSchooling" formControlName="scholarity">
             <option [ngValue]="null">Selecione uma opção</option>
-            <option *ngFor="let schooling of schoolingList" [ngValue]="schooling.name">
+            <option *ngFor="let schooling of schoolingList" [ngValue]="schooling.id">
               {{ schooling.name }}
             </option>
           </select>
@@ -132,7 +132,7 @@
                 <div class="form-row align-items-center">
                   <div class="col-auto">
                     <app-control-radio
-                      [value]="gender.name"
+                      [value]="gender.id"
                       formControlName="genre">
                     </app-control-radio>
                   </div>
@@ -158,7 +158,7 @@
             <label for="memberSchooling-{{i}}">Escolaridade</label>
             <select id="memberSchooling-{{i}}" formControlName="scholarity">
               <option [ngValue]="null">Selecione uma opção</option>
-              <option *ngFor="let schooling of schoolingList" [ngValue]="schooling.name">
+              <option *ngFor="let schooling of schoolingList" [ngValue]="schooling.id">
                 {{ schooling.name }}
               </option>
             </select>
@@ -192,19 +192,19 @@
       </app-control-field>
       <app-control-field>
         <label for="propertyCurrentValue">Valor da avaliação do imóvel a ser demolido</label>
-        <input currencyMask type="tel" id="propertyCurrentValue" formControlName="propertyValueForDemolished">
+        <input currencyMask type="tel" id="propertyCurrentValue" formControlName="propertyValueForDemolished" [readOnly]="formData.financial.propertyValueForDemolished">
         <app-control-error [control]="financialForm.controls.propertyValueForDemolished"></app-control-error>
       </app-control-field>
     </div>
     <div class="col-lg-6">
       <app-control-field>
         <label for="propertyBuyValue">Valor máximo para compra do imóvel</label>
-        <input currencyMask type="tel" id="propertyBuyValue" formControlName="maximumPurchase">
+        <input currencyMask type="tel" id="propertyBuyValue" formControlName="maximumPurchase" [readOnly]="formData.financial.maximumPurchase">
         <app-control-error [control]="financialForm.controls.maximumPurchase"></app-control-error>
       </app-control-field>
       <app-control-field>
         <label for="propertyIncrementValue">Valor de incremento</label>
-        <input currencyMask type="tel" id="propertyIncrementValue" formControlName="incrementValue">
+        <input currencyMask type="tel" id="propertyIncrementValue" formControlName="incrementValue" >
         <app-control-error [control]="financialForm.controls.incrementValue"></app-control-error>
       </app-control-field>
     </div>
@@ -231,7 +231,7 @@
       <label class="mb-0" for="workFront-yes">SIM</label>
     </div>
     <div class="col-auto">
-      <app-control-radio formControlName="workFront" value="false" id="workFront-no"></app-control-radio>
+      <app-control-radio formControlName="workFront" value="false"  id="workFront-no"></app-control-radio>
     </div>
     <div class="col-auto">
       <label class="mb-0" for="workFront-no">NÃO</label>

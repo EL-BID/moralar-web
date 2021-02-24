@@ -26,18 +26,12 @@ export class FamiliesAddComponent extends OnDestroyClass {
 
 
   handleFormSubmit(value: any): void {
-    console.log(value)
-
-
-   // console.log(this.form)
-
     if (this.formLoading === false) {
       this.formLoading = true;
       value.holder.birthday = dateToSeconds(value.holder.birthday);
-      value.spouse.birthday = dateToSeconds(value.holder.birthday);
+      value.spouse.birthday = dateToSeconds(value.spouse.birthday);
       for (let i = 0; value.members.length > i; i++) {
         value.members[i].birthday =  dateToSeconds(value.members[i].birthday);
-        value.members.push(value.members[i]);
       }
       this.httpService.post('Family/RegisterWeb', value)
         .pipe(takeUntil(this.onDestroy))

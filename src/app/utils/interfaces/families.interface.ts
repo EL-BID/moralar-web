@@ -1,8 +1,8 @@
 
 export const GENDER_LIST = [
-  { id: 'M', name: 'Masculino' },
-  { id: 'F', name: 'Feminino' },
-  { id: 'O', name: 'Outro' }
+  { id: 1, name: 'Masculino' },
+  { id: 2, name: 'Feminino' },
+  { id: 3, name: 'Outro' }
 ];
 
 export const SCHOOLING_LIST = [
