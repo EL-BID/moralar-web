@@ -15,7 +15,10 @@ export class FamilyFormComponent extends FormComponentClass {
   genderList: any[] = sortBy(GENDER_LIST, 'name');
   schoolingList: any[] = SCHOOLING_LIST;
   degreeOfKinshipList: any[] = DEGREE_OF_KINSHIP_LIST;
-
+  holderForm: FormGroup;
+  spouseForm: FormGroup;
+  financialForm: FormGroup;
+  priorizationForm: FormGroup;
   get membersForm(): FormArray {
     return this.form.controls.members as FormArray;
   }
@@ -24,24 +27,30 @@ export class FamilyFormComponent extends FormComponentClass {
     private formBuilder: FormBuilder
   ) {
     super();
-    this.form = this.formBuilder.group({
+    // form filhos
+    this.holderForm = this.formBuilder.group( {
       number: [null, Validators.compose([trimWhiteSpace, Validators.required])],
-      holderName: [null, Validators.compose([trimWhiteSpace, Validators.required])],
-      holderCpf: [null, Validators.compose([Validators.required, isCpfValid])],
-      birthdate: [null, Validators.required],
-      gender: [null],
+      name: [null, Validators.compose([trimWhiteSpace, Validators.required])],
+      cpf:  [null, Validators.compose([Validators.required, isCpfValid])],
+      birthday: [null, Validators.required],
+      genre:  [null],
       email: [null, Validators.compose([trimWhiteSpace, Validators.email])],
       phone: [null, trimWhiteSpace],
-      schooling: [null, Validators.required],
-      spouseName: [null, trimWhiteSpace],
-      spouseBirthdate: [null],
-      spouseGender: [null],
-      spouseSchooling: [null],
-      members: this.formBuilder.array([]),
+      scholarity: [null, Validators.required],
+    });
+    this.spouseForm = this.formBuilder.group( {
+      name: [null, trimWhiteSpace],
+      birthday: [null],
+      genre: [null],
+      scholarity: [null],
+    });
+    this.financialForm = this.formBuilder.group( {
       familyIncome: [null, Validators.required],
-      propertyCurrentValue: [null, Validators.required],
-      propertyBuyValue: [null, Validators.required],
-      propertyIncrementValue: [null, Validators.required],
+      propertyValueForDemolished: [null, Validators.required],
+      maximumPurchase: [null, Validators.required],
+      incrementValue: [null, Validators.required],
+    });
+    this.priorizationForm = this.formBuilder.group( {
       workFront: 'false',
       permanentDisabled: 'false',
       elderlyOverEighty: 'false',
@@ -56,6 +65,14 @@ export class FamilyFormComponent extends FormComponentClass {
       familyPurse: 'false',
       involuntaryCohabitation: 'false',
       familyIncomeOfUpTwoMinimumWages: 'false'
+    });
+    // form pai
+    this.form = this.formBuilder.group({
+      holder: this.holderForm,
+      spouse: this.spouseForm,
+      members: this.formBuilder.array([]),
+      financial: this.financialForm,
+      priorization: this.priorizationForm,
 
     });
   }

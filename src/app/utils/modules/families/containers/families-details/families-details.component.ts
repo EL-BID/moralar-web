@@ -29,10 +29,10 @@ export class FamiliesDetailsComponent extends OnDestroyClass implements OnInit {
       .pipe(takeUntil(this.onDestroy))
       .subscribe((response: any) => {
         this.family = response.data;
-        this.family.birthdate = dateToString(response.data.birthdate);
-        this.family.spouseBirthdate = dateToString(response.data.spouseBirthdate);
+        this.family.holder.birthday = dateToString(response.data.holder.birthday);
+        this.family.spouse.birthday = dateToString(response.data.spouse.birthday);
         for (let i = 0; this.family.members.length >= i; i++) {
-          this.family.members[i].birthdate =  dateToSeconds(this.family.members[i].birthdate);
+          this.family.members[i].birthday =  dateToSeconds(this.family.members[i].birthday);
         }
       }) ;
   }

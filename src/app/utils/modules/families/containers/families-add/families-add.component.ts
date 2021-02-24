@@ -24,64 +24,22 @@ export class FamiliesAddComponent extends OnDestroyClass {
     super();
   }
 
-  form: any;
 
   handleFormSubmit(value: any): void {
-   // console.log(value)
-    this.form = {
+    console.log(value)
 
-      holder: {
-        number: value.number,
-        name: value.holderName,
-        cpf: value.holderCpf,
-        birthday: dateToSeconds(value.birthdate),
-        genre: value.gender,
-        email: value.email,
-        phone: value.phone,
-        scholarity: value.schooling,
-      },
-      spouse: {
-        name: value.spouseName,
-        birthday: dateToSeconds(value.spouseBirthdate),
-        genre: value.spouseGender,
-        scholarity: value.spouseSchooling
-      },
-      members:  [],
-      financial: {
-        familyIncome: value.familyIncome,
-        propertyValueForDemolished: value.propertyCurrentValue,
-        maximumPurchase: value.propertyBuyValue,
-        incrementValue: value.propertyIncrementValue
-      },
-      priorization: {
-        workFront: value.workFront,
-        permanentDisabled: value.permanentDisabled,
-        elderlyOverEighty: value.elderlyOverEighty,
-        yearsInSextyAndSeventyNine: value.yearsInSextyAndSeventyNine,
-        womanServedByProtectiveMeasure: value.womanServedByProtectiveMeasure,
-        femaleBreadWinner: value.femaleBreadWinner,
-        singleParent: value.singleParent,
-        familyWithMoreThanFivePeople: value.familyWithMoreThanFivePeople,
-        childUnderEighteen: value.childUnderEighteen,
-        headOfHouseholdWithoutIncome: value.headOfHouseholdWithoutIncome,
-        benefitOfContinuedProvision: value.benefitOfContinuedProvision,
-        familyPurse: value.familyPurse,
-        involuntaryCohabitation: value.involuntaryCohabitation,
-        familyIncomeOfUpTwoMinimumWages: value.familyIncomeOfUpTwoMinimumWages
-      }
-
-    };
-    for (let i = 0; value.members.length > i; i++) {
-      value.members[i].birthday =  dateToSeconds(value.members[i].birthday);
-      this.form.members.push(value.members[i]);
-    }
 
    // console.log(this.form)
 
     if (this.formLoading === false) {
       this.formLoading = true;
-
-      this.httpService.post('Family/RegisterWeb', this.form)
+      value.holder.birthday = dateToSeconds(value.holder.birthday);
+      value.spouse.birthday = dateToSeconds(value.holder.birthday);
+      for (let i = 0; value.members.length > i; i++) {
+        value.members[i].birthday =  dateToSeconds(value.members[i].birthday);
+        value.members.push(value.members[i]);
+      }
+      this.httpService.post('Family/RegisterWeb', value)
         .pipe(takeUntil(this.onDestroy))
         .subscribe((response: any) => {
           this.megaleiosAlertService.success(response.message);
