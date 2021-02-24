@@ -27,7 +27,7 @@ export class FamilyFormComponent extends FormComponentClass {
     private formBuilder: FormBuilder
   ) {
     super();
-    // form filhos
+    // FORM FILHOS
     this.holderForm = this.formBuilder.group( {
       number: [null, Validators.compose([trimWhiteSpace, Validators.required])],
       name: [null, Validators.compose([trimWhiteSpace, Validators.required])],
@@ -66,7 +66,7 @@ export class FamilyFormComponent extends FormComponentClass {
       involuntaryCohabitation: 'false',
       familyIncomeOfUpTwoMinimumWages: 'false'
     });
-    // form pai
+    // FORM PAI
     this.form = this.formBuilder.group({
       holder: this.holderForm,
       spouse: this.spouseForm,
