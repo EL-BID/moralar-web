@@ -21,7 +21,7 @@
         </td>
         <td>{{ item.number || '-' }}</td>
         <td>{{ item.name || '-' }}</td>
-        <td>{{ item.cpf || '-' }}</td>
+        <td>{{ item.cpf || '-' | mask: '000.000.000-99'}}</td>
         <td>{{ item.email || '-' }}</td>
         <td>{{ item.phone || '-' }}</td>
         <td>

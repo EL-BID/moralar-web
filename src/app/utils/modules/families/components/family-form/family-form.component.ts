@@ -54,20 +54,20 @@ export class FamilyFormComponent extends FormComponentClass implements OnInit {
       incrementValue: [null, Validators.required],
     });
     this.priorizationForm = this.formBuilder.group({
-      workFront: false,
-      permanentDisabled: false,
-      elderlyOverEighty: false,
-      yearsInSextyAndSeventyNine: false,
-      womanServedByProtectiveMeasure: false,
-      femaleBreadWinner: false,
-      singleParent: false,
-      familyWithMoreThanFivePeople: false,
-      childUnderEighteen: false,
-      headOfHouseholdWithoutIncome: false,
-      benefitOfContinuedProvision: false,
-      familyPurse: false,
-      involuntaryCohabitation: false,
-      familyIncomeOfUpTwoMinimumWages: false
+      workFront: [false],
+      permanentDisabled:  [false],
+      elderlyOverEighty:  [false],
+      yearsInSextyAndSeventyNine:  [false],
+      womanServedByProtectiveMeasure:  [false],
+      femaleBreadWinner:  [false],
+      singleParent:  [false],
+      familyWithMoreThanFivePeople:  [false],
+      childUnderEighteen:  [false],
+      headOfHouseholdWithoutIncome:  [false],
+      benefitOfContinuedProvision:  [false],
+      familyPurse:  [false],
+      involuntaryCohabitation:  [false],
+      familyIncomeOfUpTwoMinimumWages:  [false]
     });
     // FORM PAI
     this.form = this.formBuilder.group({

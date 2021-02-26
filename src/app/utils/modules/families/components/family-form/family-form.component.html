@@ -6,7 +6,7 @@
     <div class="col-lg-6">
       <app-control-field>
         <label for="number">Número do cadastro</label>
-        <input type="tel" id="number" formControlName="number" [readOnly]="formData.holder.number" >
+        <input type="tel" id="number" formControlName="number" [readOnly]="formData?.holder.number" >
         <app-control-error [control]="holderForm.controls.number"></app-control-error>
       </app-control-field>
       <app-control-field>
@@ -16,12 +16,12 @@
       </app-control-field>
       <app-control-field>
         <label for="holderCpf">CPF do titular</label>
-        <input type="tel" id="holderCpf" formControlName="cpf"  mask="000.000.000-00" [readOnly]="formData.holder.cpf">
+        <input type="tel" id="holderCpf" formControlName="cpf"  mask="000.000.000-00" [readOnly]="formData?.holder.cpf">
         <app-control-error [control]="holderForm.controls.cpf"></app-control-error>
       </app-control-field>
       <app-control-field>
         <label for="birthdate">Data de nascimento</label>
-        <input type="date" id="birthdate" formControlName="birthday" [readOnly]="formData.holder.birthday">
+        <input type="date" id="birthdate" formControlName="birthday" [readOnly]="formData?.holder.birthday">
         <app-control-error [control]="holderForm.controls.birthday"></app-control-error>
       </app-control-field>
     </div>
@@ -192,14 +192,14 @@
       </app-control-field>
       <app-control-field>
         <label for="propertyCurrentValue">Valor da avaliação do imóvel a ser demolido</label>
-        <input currencyMask type="tel" id="propertyCurrentValue" formControlName="propertyValueForDemolished" [readOnly]="formData.financial.propertyValueForDemolished">
+        <input currencyMask type="tel" id="propertyCurrentValue" formControlName="propertyValueForDemolished" [readOnly]="formData?.financial.propertyValueForDemolished">
         <app-control-error [control]="financialForm.controls.propertyValueForDemolished"></app-control-error>
       </app-control-field>
     </div>
     <div class="col-lg-6">
       <app-control-field>
         <label for="propertyBuyValue">Valor máximo para compra do imóvel</label>
-        <input currencyMask type="tel" id="propertyBuyValue" formControlName="maximumPurchase" [readOnly]="formData.financial.maximumPurchase">
+        <input currencyMask type="tel" id="propertyBuyValue" formControlName="maximumPurchase" [readOnly]="formData?.financial.maximumPurchase">
         <app-control-error [control]="financialForm.controls.maximumPurchase"></app-control-error>
       </app-control-field>
       <app-control-field>
@@ -492,7 +492,7 @@
     buttonClass="btn-dark"
     [buttonDisabled]="form.valid === false || formLoading === true"
     [buttonLoading]="formLoading">
-    Adicionar
+    {{formData?.id.length > 0 ? 'Atualizar' : 'Adicionar'}}
   </app-button>
 </form>
-<pre>{{this.form.value | json}}</pre>
+
