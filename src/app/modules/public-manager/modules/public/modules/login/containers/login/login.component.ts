@@ -27,12 +27,12 @@ export class LoginComponent extends OnDestroyClass {
   handleFormSubmit(value: any): void {
     if (this.formLoading === false) {
       this.formLoading = true;
-      this.httpService.post('UserAdministrator/Token', value)
+      this.httpService.post('Profile/Token', value)
         .pipe(takeUntil(this.onDestroy))
         .subscribe((response: any) => {
           this.authenticationService.setAuthentication(response.data, value.rememberMe);
           this.megaleiosAlertService.success(response.message);
-          this.router.navigate(['/administrador/app']);
+          this.router.navigate(['/gestor-publico/app']);
         }, (response: any) => {
           this.megaleiosAlertService.error(response.message);
           this.formLoading = false;
