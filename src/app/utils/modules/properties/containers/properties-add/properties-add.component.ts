@@ -25,7 +25,7 @@ export class PropertiesAddComponent extends OnDestroyClass {
   handleFormSubmit(value: any): void {
     if (this.formLoading === false) {
       this.formLoading = true;
-      this.httpService.post('Property/Register', value)
+      this.httpService.post('ResidencialProperty/Register', value)
         .pipe(takeUntil(this.onDestroy))
         .subscribe((response: any) => {
           this.megaleiosAlertService.success(response.message);

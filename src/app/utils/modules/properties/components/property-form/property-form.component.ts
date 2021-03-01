@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { FormComponentClass } from 'src/app/utils/classes/form-component.class';
-import { FormArray, FormBuilder, FormControl, Validators } from '@angular/forms';
+import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import { trimWhiteSpace } from 'src/app/utils/functions/validators.function';
 import { sortBy } from 'lodash';
 import {
@@ -22,8 +22,11 @@ export class PropertyFormComponent extends FormComponentClass {
   propertyRegularizationList: any[] = sortBy(PROPERTY_REGULARIZATION_LIST, 'name');
   propertyGasInstallationList: any[] = sortBy(PROPERTY_TYPE_GAS_INSTALLATION, 'name');
 
+  residencialPropertyAdressForm: FormGroup;
+  residencialPropertyFeaturesForm: FormGroup;
+
   get photosForm(): FormArray {
-    return this.form.controls.photos as FormArray;
+    return this.form.controls.photo as FormArray;
   }
 
   constructor(
@@ -31,40 +34,48 @@ export class PropertyFormComponent extends FormComponentClass {
     public changeDetectorRef: ChangeDetectorRef
   ) {
     super();
-    this.form = this.formBuilder.group({
-      code: [null, Validators.compose([trimWhiteSpace, Validators.required])],
-      photos: this.formBuilder.array([]),
-      plan: [null, Validators.required],
-      zipCode: [null, Validators.required],
-      stateId: [null, Validators.required],
-      stateName: [null, Validators.required],
-      cityId: [null, Validators.required],
+    this.residencialPropertyAdressForm = this.formBuilder.group({
+      streetAddress: [null, Validators.required],
+      number: [null, Validators.required],
       cityName: [null, Validators.required],
-      neighborhood: [null, Validators.compose([trimWhiteSpace, Validators.required])],
-      streetAddress: [null, Validators.compose([trimWhiteSpace, Validators.required])],
-      number: [null, Validators.compose([trimWhiteSpace, Validators.required])],
-      complement: [null, trimWhiteSpace],
-      value: [null, Validators.required],
-      type: [null, Validators.required],
+      cityId: [null, Validators.required],
+      stateName: [null, Validators.required],
+      stateUf: [null, Validators.required],
+      stateId: [null, Validators.required],
+      neighborhood: [null, Validators.required],
+      complement: [null, Validators.required],
+      location: ['latitude e longitude', Validators.required],
+      zipCode: [null, Validators.required]
+    });
+    this.residencialPropertyFeaturesForm = this.formBuilder.group({
+      propertyValue: [null, Validators.required],
+      typeProperty: [null, Validators.required],
       squareFootage: [null, Validators.required],
-      condominiumValue: [null],
-      iptuValue: [null],
-      neighborhoodLocation: [null, Validators.required],
-      numberOfFloors: [null, Validators.required],
-      locationFloor: [null, Validators.required],
-      elevator: [null, Validators.required],
+      condominiumValue: null,
+      iptuValue: null,
+      neighborhood: [null, Validators.required],
+      numberFloors: [null, Validators.required],
+      floorLocation: [null, Validators.required],
+      hasElavator: [null, Validators.required],
       numberOfBedrooms: [null, Validators.required],
       numberOfBathrooms: [null, Validators.required],
-      serviceArea: [null, Validators.required],
-      garage: [null, Validators.required],
-      backyard: [null, Validators.required],
-      cistern: [null, Validators.required],
-      walled: [null, Validators.required],
-      escapesAccess: [null, Validators.required],
-      accessRamp: [null, Validators.required],
-      adaptedAllowsAdaptationPcd: [null, Validators.required],
+      hasServiceArea: [null, Validators.required],
+      hasGarage: [null, Validators.required],
+      hasYard: [null, Validators.required],
+      hasCistern: [null, Validators.required],
+      hasWall: [null, Validators.required],
+      hasAccessLadder: [null, Validators.required],
+      hasAccessRamp: [null, Validators.required],
+      hasAdaptedToPcd: [null, Validators.required],
       propertyRegularization: [null, Validators.required],
-      typeGasInstallation: [null, Validators.required]
+      typeGasInstallation: [null, Validators.required],
+    });
+    this.form = this.formBuilder.group({
+      code: [null, Validators.compose([trimWhiteSpace, Validators.required])],
+      photo: this.formBuilder.array([]),
+      project: [null, Validators.required],
+      residencialPropertyAdress: this.residencialPropertyAdressForm,
+      residencialPropertyFeatures: this.residencialPropertyFeaturesForm
     });
   }
 
