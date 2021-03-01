@@ -7,6 +7,7 @@
         <th sortable="type" (sort)="handleSort($event)">Tipo do imóvel</th>
         <th sortable="value" (sort)="handleSort($event)">Valor do imóvel</th>
         <th sortable="neighborhood" (sort)="handleSort($event)">Bairro de localização</th>
+        <th>Situação</th>
       </tr>
     </thead>
     <tbody>
@@ -18,9 +19,24 @@
           </app-control-checkbox>
         </td>
         <td>{{ item.code || '-' }}</td>
-        <td>{{ item.type || '-' }}</td>
-        <td>{{ item.value || '-' }}</td>
-        <td>{{ item.neighborhood || '-' }}</td>
+        <td>{{ item.residencialPropertyFeatures.typeProperty  }}</td>
+        <td>{{ item.residencialPropertyFeatures.propertyValue || '-' }}</td>
+        <td>{{ item.residencialPropertyAdress.neighborhood || '-' }}</td>
+        <td>
+          <div class="custom-control custom-switch">
+            <input
+              type="checkbox"
+              class="custom-control-input"
+              [id]="'blocked-' + item.id"
+              [value]="item.id"
+              [checked]="item.blocked === false"
+              (click)="handleBlockUnblock($event)">
+            <label
+              [for]="'blocked-' + item.id"
+              class="custom-control-label">
+            </label>
+          </div>
+        </td>
       </tr>
     </tbody>
   </table>

@@ -26,7 +26,8 @@
   [list]="list"
   (listSearchChange)="handleListSearchChange($event)"
   (listOrderChange)="handleListOrderChange($event)"
-  (listItemSelected)="handleListItemSelected($event)">
+  (listItemSelected)="handleListItemSelected($event)"
+  (blockUnblock)="handleBlockUnblock($event)">
 </app-property-list>
 <app-list-pagination
   [page]="formDataModel.page"
