@@ -44,7 +44,7 @@ export class PropertyFormComponent extends FormComponentClass {
       stateId: [null, Validators.required],
       neighborhood: [null, Validators.required],
       complement: [null, Validators.required],
-      location: ['latitude e longitude', Validators.required],
+      location: ['-', Validators.required],
       zipCode: [null, Validators.required]
     });
     this.residencialPropertyFeaturesForm = this.formBuilder.group({
