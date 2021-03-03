@@ -7,15 +7,15 @@
   </div>
 </div>
 <app-address-view
-  [address]="property">
+  [address]="property.residencialPropertyAdress">
 </app-address-view>
 <h2 class="h5">Fotos</h2>
-<ng-container [ngSwitch]="property.photos.length === 0">
+<ng-container [ngSwitch]="property.photo.length === 0">
   <app-card *ngSwitchCase="true" class="mb-3">
     Nenhuma foto adicionada.
   </app-card>
   <div *ngSwitchCase="false" class="row">
-    <div *ngFor="let photo of property.photos; let i = index;" class="col-lg-3 mb-3">
+    <div *ngFor="let photo of property.photo; let i = index;" class="col-lg-3 mb-3">
       <app-card>
         <img
           [src]="photo"
@@ -29,7 +29,7 @@
 <div class="row">
   <div class="col-lg-6">
     <img
-      [src]="property.plan"
+      [src]="property.project"
       alt="Planta"
       title="Planta">
   </div>
@@ -39,127 +39,127 @@
   <div class="col-lg-6">
     <p>
       <span class="view-label">Valor do imóvel</span>
-      {{ property.value }}
+      {{ property.residencialPropertyFeatures.propertyValue | currency:'BRL':'symbol':'1.2-2' }}
     </p>
   </div>
   <div class="col-lg-6">
     <p>
       <span class="view-label">Tipo do imóvel</span>
-      {{ propertyTypeToString(property.type) }}
+      {{ propertyTypeToString(property.residencialPropertyFeatures.typeProperty) }}
     </p>
   </div>
   <div class="col-lg-6">
     <p>
       <span class="view-label">Metragem quadrada</span>
-      {{ property.squareFootage }}
+      {{ property.residencialPropertyFeatures.squareFootage }}
     </p>
   </div>
   <div class="col-lg-6">
     <p>
       <span class="view-label">Valor do condomínio</span>
-      {{ property.condominiumValue }}
+      {{ property.residencialPropertyFeatures.condominiumValue | currency:'BRL':'symbol':'1.2-2' }}
     </p>
   </div>
   <div class="col-lg-6">
     <p>
       <span class="view-label">Valor do IPTU</span>
-      {{ property.iptuValue }}
+      {{ property.residencialPropertyFeatures.iptuValue | currency:'BRL':'symbol':'1.2-2' }}
     </p>
   </div>
   <div class="col-lg-6">
     <p>
       <span class="view-label">Bairro de localização</span>
-      {{ property.neighborhoodLocation }}
+      {{ property.residencialPropertyFeatures.neighborhood }}
     </p>
   </div>
   <div class="col-lg-6">
     <p>
       <span class="view-label">Número de pavimentos</span>
-      {{ property.numberOfFloor }}
+      {{ property.residencialPropertyFeatures.numberFloors }}
     </p>
   </div>
   <div class="col-lg-6">
     <p>
       <span class="view-label">Andar de localização</span>
-      {{ property.locationFloor }}
+      {{ property.residencialPropertyFeatures.floorLocation }}
     </p>
   </div>
   <div class="col-lg-6">
     <p>
       <span class="view-label">Elevador</span>
-      {{ property.elevator }}
+      {{ property.residencialPropertyFeatures.hasElavator == true ? 'Sim' : 'Não' }}
     </p>
   </div>
   <div class="col-lg-6">
     <p>
       <span class="view-label">Número de quartos</span>
-      {{ property.numberOfBedrooms }}
+      {{ property.residencialPropertyFeatures.numberOfBedrooms }}
     </p>
   </div>
   <div class="col-lg-6">
     <p>
       <span class="view-label">Número de banheiros</span>
-      {{ property.numberOfBathrooms }}
+      {{ property.residencialPropertyFeatures.numberOfBathrooms }}
     </p>
   </div>
   <div class="col-lg-6">
     <p>
       <span class="view-label">Área de serviço</span>
-      {{ property.serviceArea }}
+      {{ property.residencialPropertyFeatures.hasServiceArea == true ? 'Sim' : 'Não'}}
     </p>
   </div>
   <div class="col-lg-6">
     <p>
       <span class="view-label">Garagem</span>
-      {{ property.garage }}
+      {{ property.residencialPropertyFeatures.hasGarage == true ? 'Sim' : 'Não'}}
     </p>
   </div>
   <div class="col-lg-6">
     <p>
       <span class="view-label">Quintal</span>
-      {{ property.backyard }}
+      {{ property.residencialPropertyFeatures.hasYard == true ? 'Sim' : 'Não'}}
     </p>
   </div>
   <div class="col-lg-6">
     <p>
       <span class="view-label">Cisterna</span>
-      {{ property.cistern }}
+      {{ property.residencialPropertyFeatures.hasCistern == true ? 'Sim' : 'Não'}}
     </p>
   </div>
   <div class="col-lg-6">
     <p>
       <span class="view-label">Murada</span>
-      {{ property.walled }}
+      {{ property.residencialPropertyFeatures.hasWall == true ? 'Sim' : 'Não'}}
     </p>
   </div>
   <div class="col-lg-6">
     <p>
       <span class="view-label">Escapa de acesso</span>
-      {{ property.escapesAccess }}
+      {{ property.residencialPropertyFeatures.hasAccessLadder == true ? 'Sim' : 'Não'}}
     </p>
   </div>
   <div class="col-lg-6">
     <p>
       <span class="view-label">Rampa de acesso</span>
-      {{ property.accessRamp }}
+      {{ property.residencialPropertyFeatures.hasAccessRamp == true ? 'Sim' : 'Não'}}
     </p>
   </div>
   <div class="col-lg-6">
     <p>
       <span class="view-label">Adaptada ou permite adaptação para PCD</span>
-      {{ property.adaptedAllowsAdaptationPcd }}
+      {{ property.residencialPropertyFeatures.hasAdaptedToPcd == true ? 'Sim' : 'Não'}}
     </p>
   </div>
   <div class="col-lg-6">
     <p>
       <span class="view-label">Regularização do imóvel</span>
-      {{ propertyRegularizationToString(property.propertyRegularization) }}
+      {{ propertyRegularizationToString(property.residencialPropertyFeatures.propertyRegularization) }}
     </p>
   </div>
   <div class="col-lg-6">
     <p>
       <span class="view-label">Tipo de instalação de gás</span>
-      {{ propertyGasInstallationToString(property.typeGasInstallation) }}
+      {{ propertyGasInstallationToString(property.residencialPropertyFeatures.typeGasInstallation) }}
     </p>
   </div>
 </div>
