@@ -19,8 +19,8 @@
           </app-control-checkbox>
         </td>
         <td>{{ item.code || '-' }}</td>
-        <td>{{ item.residencialPropertyFeatures.typeProperty  }}</td>
-        <td>{{ item.residencialPropertyFeatures.propertyValue || '-' }}</td>
+        <td>{{ propertyTypeList[item.residencialPropertyFeatures.typeProperty].name  }}</td>
+        <td>{{ item.residencialPropertyFeatures.propertyValue || '-' | currency:'BRL':'symbol':'1.2-2' }}</td>
         <td>{{ item.residencialPropertyAdress.neighborhood || '-' }}</td>
         <td>
           <div class="custom-control custom-switch">

@@ -47,7 +47,7 @@ export class PropertiesListComponent extends ListContainerClass {
   }
 
   handleDetails(): void {
-    this._router.navigate(['/administrador/app/imoveis', this.listSelected[0].id]);
+    this._router.navigate([this.listSelected[0].id], { relativeTo: this._activatedRoute.parent });
   }
 
   handleBlockUnblock(value: any): void {
