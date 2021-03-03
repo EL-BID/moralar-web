@@ -26,7 +26,7 @@ export class QuestionnairesListComponent extends ListContainerClass {
     }
   };
 
-  uri = 'Questionnaire';
+  uri = 'Quiz';
 
   constructor(
     private activatedRoute: ActivatedRoute,
