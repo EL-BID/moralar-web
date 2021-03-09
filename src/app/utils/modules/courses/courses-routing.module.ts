@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 // containers
 import {CoursesComponent} from './courses.component';
 import {CoursesListComponent} from './containers/courses-list/courses-list.component';
-// import { PropertiesAddComponent } from './containers/properties-add/properties-add.component';
+import {CoursesAddComponent} from './containers/courses-add/courses-add.component';
 // import { PropertiesDetailsComponent } from './containers/properties-details/properties-details.component';
 
 const routes: Routes = [
@@ -13,7 +13,7 @@ const routes: Routes = [
     component: CoursesComponent,
     children: [
       { path: '', component: CoursesListComponent },
-   //   { path: 'adicionar', component: PropertiesAddComponent },
+      { path: 'adicionar', component: CoursesAddComponent },
    //    { path: ':courseId', component: PropertiesDetailsComponent },
       { path: '**', redirectTo: '', pathMatch: 'full' }
     ]
