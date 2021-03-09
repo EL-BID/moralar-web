@@ -49,13 +49,13 @@ export class QuestionnaireFormComponent extends FormComponentClass implements On
           })
         );
         for (let j = 0; this.formData.questionViewModel[i].description.length > j; j++) {
-          console.log(this.questionsForm.value[i].description[j]);
+         // console.log(this.questionsForm.value[i].description[j]);
          // this.questionsForm.value[i].description.push({description: this.formData.questionViewModel[i].description[j].description}) ;
           // this.questionsForm.value[i].description.push(this.formData.questionViewModel[i].description[j]);
         }
       }
       // this.form.controls.questionRegister.value.question = this.formData.questionViewModel;
-      console.log(this.form);
+      // console.log(this.form);
     }
   }
 
