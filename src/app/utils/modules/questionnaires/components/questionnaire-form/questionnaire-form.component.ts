@@ -10,7 +10,7 @@ import {QUESTIONANSWER_TYPES_LIST} from 'src/app/utils/interfaces/questionnaires
   templateUrl: './questionnaire-form.component.html',
   styleUrls: ['./questionnaire-form.component.sass']
 })
-export class QuestionnaireFormComponent extends FormComponentClass {
+export class QuestionnaireFormComponent extends FormComponentClass implements OnInit{
   questionAnswerTypesList: any[] = QUESTIONANSWER_TYPES_LIST;
   questReg: FormGroup;
   desc: FormGroup;
@@ -19,9 +19,7 @@ export class QuestionnaireFormComponent extends FormComponentClass {
   get questionsForm(): FormArray {
     return this.questReg.controls.question as FormArray;
   }
-  get descriptionForm(): FormArray {
-    return this.desc.controls.description as FormArray;
-  }
+
   constructor(
     private formBuilder: FormBuilder
   ) {
@@ -35,6 +33,30 @@ export class QuestionnaireFormComponent extends FormComponentClass {
       }),
 
     });
+  }
+
+
+  ngOnInit(): void {
+    if (this.formData) {
+
+      for (let i = 0; this.formData.questionViewModel.length > i; i++) {
+
+        this.questionsForm.push(
+          this.formBuilder.group({
+            nameQuestion: [this.formData.questionViewModel[i].nameQuestion, Validators.compose([trimWhiteSpace, Validators.required])],
+            typeResponse: [this.formData.questionViewModel[i].typeResponse, Validators.required],
+            description:  [this.formData.questionViewModel[i].description]
+          })
+        );
+        for (let j = 0; this.formData.questionViewModel[i].description.length > j; j++) {
+          console.log(this.questionsForm.value[i].description[j]);
+         // this.questionsForm.value[i].description.push({description: this.formData.questionViewModel[i].description[j].description}) ;
+          // this.questionsForm.value[i].description.push(this.formData.questionViewModel[i].description[j]);
+        }
+      }
+      // this.form.controls.questionRegister.value.question = this.formData.questionViewModel;
+      console.log(this.form);
+    }
   }
 
   private createQuestionForm(): FormGroup {
@@ -74,8 +96,8 @@ export class QuestionnaireFormComponent extends FormComponentClass {
   }
 
   removeDescForm(i, j): void {
-    console.log(this.questionsForm.value[i].description[j]);
-    document.getElementById(`description-${j}`).value = '';
+    // console.log(this.questionsForm.value[i].description[j]);
+    // document.getElementById(`description-${j}`).value = '';
   }
 
 }

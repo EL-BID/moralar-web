@@ -54,7 +54,7 @@
                       <div class="row">
                         <div class="col-lg-10">
                           <app-control-field>
-                            <input id="description-{{j}}" type="text" (keyup)=" questionForm.value.description[j].description = $event.target.value">
+                            <input id="description-{{j}}" type="text" [value]="questionForm.value.description[j].description" (keyup)=" questionForm.value.description[j].description = $event.target.value">
                           </app-control-field>
                         </div>
                         <div class="col-lg-2">
@@ -94,7 +94,7 @@
     buttonClass="btn-dark"
     [buttonDisabled]="form.valid === false || formLoading === true"
     [buttonLoading]="formLoading">
-    Adicionar
+    {{formData?.id.length > 0 ? 'Atualizar' : 'Adicionar'}}
   </app-button>
 </form>
 <br>

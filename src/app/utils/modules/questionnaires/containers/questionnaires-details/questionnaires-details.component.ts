@@ -35,7 +35,7 @@ export class QuestionnairesDetailsComponent extends OnDestroyClass implements On
     if (this.formLoading === false) {
       this.formLoading = true;
       value.id = this.questionnaire.id;
-    this.httpService.post('Quiz/Register', value)
+    this.httpService.post('Question/Update', value)
         .pipe(takeUntil(this.onDestroy))
         .subscribe((response: any) => {
           this.megaleiosAlertService.success(response.message);
