@@ -26,7 +26,7 @@ export class QuestionnairesDetailsComponent extends OnDestroyClass implements On
   }
 
   ngOnInit(): void {
-    this.httpService.get(`Questionnaire/Detail/${this.activatedRoute.snapshot.paramMap.get('id')}`)
+    this.httpService.get(`Quiz/Detail/${this.activatedRoute.snapshot.paramMap.get('questionnaireId')}`)
       .pipe(takeUntil(this.onDestroy))
       .subscribe((response: any) => this.questionnaire = response.data);
   }
@@ -35,11 +35,11 @@ export class QuestionnairesDetailsComponent extends OnDestroyClass implements On
     if (this.formLoading === false) {
       this.formLoading = true;
       value.id = this.questionnaire.id;
-      this.httpService.post('Questionnaire/Register', value)
+    this.httpService.post('Quiz/Register', value)
         .pipe(takeUntil(this.onDestroy))
         .subscribe((response: any) => {
           this.megaleiosAlertService.success(response.message);
-          this.router.navigate(['../'], { relativeTo: this.activatedRoute });
+          this.router.navigate(['Quiz/LoadData'], { relativeTo: this.activatedRoute });
         }, (response: any) => {
           this.megaleiosAlertService.error(response.message);
           this.formLoading = false;

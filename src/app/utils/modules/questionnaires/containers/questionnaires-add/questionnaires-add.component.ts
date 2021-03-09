@@ -26,11 +26,11 @@ export class QuestionnairesAddComponent extends OnDestroyClass {
   handleFormSubmit(value: any): void {
     if (this.formLoading === false) {
       this.formLoading = true;
-      this.httpService.post('Questionnaire/Register', value)
+      this.httpService.post('Quiz/Register', value)
         .pipe(takeUntil(this.onDestroy))
         .subscribe((response: any) => {
           this.megaleiosAlertService.success(response.message);
-          this.router.navigate(['../'], { relativeTo: this.activatedRoute });
+          this.router.navigate(['Quiz/LoadData'], { relativeTo: this.activatedRoute });
         }, (response: any) => {
           this.megaleiosAlertService.error(response.message);
           this.formLoading = false;
