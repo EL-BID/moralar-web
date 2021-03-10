@@ -1,38 +1,57 @@
 <form [formGroup]="form" (ngSubmit)="handleSubmit()">
-  <h2 class="h5">Morador</h2>
-  <p class="text-danger">[PENDENTE] Buscar família e selecionar</p>
+  <app-family-list-search
+    [listSearchData]="formDataModel.search"
+    (listSearchChange)="getFamily($event)">
+  </app-family-list-search>
+
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th></th>
+        <th sortable="number" >Número do cadastro</th>
+        <th sortable="holderName" >Nome do titular</th>
+        <th sortable="holderCpf">CPF do titular</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngIf="list.length === 0">
+        <td colspan="4">Nenhum registro encontrado</td>
+      </tr>
+      <tr *ngFor="let item of list">
+        <td>
+          <app-control-checkbox (click)="addFamily(item)">
+          </app-control-checkbox>
+        </td>
+        <td>{{ item.number || '-' }}</td>
+        <td>{{ item.name || '-' }}</td>
+        <td>{{ item.cpf || '-' | mask: '000.000.000-99'}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
   <h2 class="h5">Agendamento</h2>
   <div class="row">
     <div class="col-lg-6">
       <app-control-field>
         <label for="date">Data</label>
-        <app-control-date-picker
+        <app-control-date-picker id="date"
           [dayMin]="dayMin"
           formControlName="date">
         </app-control-date-picker>
         <app-control-error [control]="form.controls.date"></app-control-error>
       </app-control-field>
-      <app-control-field *ngIf="form.controls.startDate.enabled">
-        <label>Horário</label>
-        <select id="startDate" formControlName="startDate">
-          <option [ngValue]="null">Selecione uma opção</option>
-          <option *ngFor="let startDate of startDateList"
-            [ngValue]="startDate.id">
-            {{ startDate.name }}
-          </option>
-        </select>
-        <app-control-error [control]="form.controls.subject"></app-control-error>
-      </app-control-field>
       <app-control-field>
-        <label>Assunto</label>
-        <select id="subject" formControlName="subject">
+        <label for="typeSubject">Assunto</label>
+        <select id="typeSubject" formControlName="typeSubject">
           <option [ngValue]="null">Selecione uma opção</option>
           <option *ngFor="let scheduleType of scheduleTypeList"
             [ngValue]="scheduleType.id">
             {{ scheduleType.name }}
           </option>
         </select>
-        <app-control-error [control]="form.controls.subject"></app-control-error>
+        <app-control-error [control]="form.controls.typeSubject"></app-control-error>
       </app-control-field>
       <app-control-field>
         <label for="place">Local</label>

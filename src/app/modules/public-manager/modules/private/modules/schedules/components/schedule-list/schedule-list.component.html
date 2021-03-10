@@ -3,7 +3,7 @@
     <thead>
       <tr>
         <th></th>
-        <th sortable="startDate" (sort)="handleSort($event)">Data e horário</th>
+        <th sortable="startDate" (sort)="handleSort($event)">Data</th>
         <th sortable="subject" (sort)="handleSort($event)">Assunto</th>
         <th sortable="place" (sort)="handleSort($event)">Local</th>
         <th sortable="number" (sort)="handleSort($event)">Número do cadastro</th>
@@ -28,13 +28,13 @@
             </label>
           </div>
         </td>
-        <td>{{ item.created }}</td>
-        <td>{{ item.subject }}</td>
-        <td>{{ item.place }}</td>
-        <td>{{ item.number }}</td>
-        <td>{{ item.holderName }}</td>
-        <td>{{ item.holderCpf }}</td>
-        <td>{{ item.status }}</td>
+        <td>{{ item.date || '-' }}</td>
+        <td>{{ item.typeSubject || '-' }}</td>
+        <td>{{ item.place || '-' }}</td>
+        <td>{{ item.holderNumber || '-' }}</td>
+        <td>{{ item.holderName || '-' }}</td>
+        <td>{{ item.holderCpf || '-' }}</td>
+        <td>{{ scheduleStatusList[item.typeScheduleStatus].name || '-' }}</td>
       </tr>
     </tbody>
   </table>

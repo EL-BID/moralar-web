@@ -1,11 +1,32 @@
 <form [formGroup]="form" (ngSubmit)="handleSubmit()">
   <app-control-field>
     <label for="date">Data</label>
-    <app-control-date-picker
+    <app-control-date-picker id="date"
       [dayMin]="dayMin"
       formControlName="date">
     </app-control-date-picker>
     <app-control-error [control]="form.controls.date"></app-control-error>
+  </app-control-field>
+  <app-control-field>
+    <label for="typeSubject">Assunto</label>
+    <select id="typeSubject" formControlName="typeSubject">
+      <option [ngValue]="null">Selecione uma opção</option>
+      <option *ngFor="let scheduleType of scheduleTypeList"
+              [ngValue]="scheduleType.id">
+        {{ scheduleType.name }}
+      </option>
+    </select>
+    <app-control-error [control]="form.controls.typeSubject"></app-control-error>
+  </app-control-field>
+  <app-control-field>
+    <label for="place">Local</label>
+    <input type="text" id="place" formControlName="place">
+    <app-control-error [control]="form.controls.place"></app-control-error>
+  </app-control-field>
+  <app-control-field>
+    <label for="description">Descrição</label>
+    <textarea id="description" formControlName="description"></textarea>
+    <app-control-error [control]="form.controls.description"></app-control-error>
   </app-control-field>
   <app-button
     buttonType="submit"

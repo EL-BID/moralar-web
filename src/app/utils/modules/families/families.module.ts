@@ -45,6 +45,10 @@ import { CustomCurrencyMaskConfig } from 'src/app/app.module';
     NgxMaskModule.forChild(),
     CurrencyMaskModule
   ],
+  exports: [
+    FamilyListSearchComponent,
+    FamilyListComponent
+  ],
   providers: [
     {
       provide: CURRENCY_MASK_CONFIG,

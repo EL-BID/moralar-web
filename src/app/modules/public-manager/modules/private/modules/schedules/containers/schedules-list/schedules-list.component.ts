@@ -14,7 +14,13 @@ export class SchedulesListComponent extends ListContainerClass implements OnInit
 
   formDataModel: FormDataModel = {
     columns: [
-      { data: 'startDate', name: 'StartDate', searchable: true }
+      { data: 'date', name: 'Date', searchable: true },
+      { data: 'typeSubject', name: 'TypeSubject', searchable: true },
+      { data: 'place', name: 'Place', searchable: true },
+      { data: 'holderNumber', name: 'HolderNumber', searchable: true },
+      { data: 'holderName', name: 'HolderName', searchable: true },
+      { data: 'holderCpf', name: 'HolderCpf', searchable: true },
+      { data: 'typeScheduleStatus', name: 'TypeScheduleStatus', searchable: true },
     ],
     page: 1,
     pageSize: 10,
@@ -68,7 +74,7 @@ export class SchedulesListComponent extends ListContainerClass implements OnInit
   }
 
   handleDetails(): void {
-    this.router.navigate(['/administrador/app/administradores/', this.listSelected[0].id]);
+    this._router.navigate([this.listSelected[0].id], { relativeTo: this._activatedRoute.parent });
   }
 
 }

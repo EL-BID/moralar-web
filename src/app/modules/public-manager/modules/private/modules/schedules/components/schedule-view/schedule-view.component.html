@@ -3,19 +3,19 @@
   <div class="col-lg-6">
     <p>
       <span class="view-label">Número do cadastro</span>
-      <span class="d-block text-danger">[PENDENTE] API</span>
+      <span class="d-block ">{{schedule.holderNumber || '-'}}</span>
     </p>
     <div class="row">
       <div class="col-lg-6">
         <p>
           <span class="view-label">Nome do morador titular</span>
-          <span class="d-block text-danger">[PENDENTE] API</span>
+          <span class="d-block ">{{schedule.holderName || '-'}}</span>
         </p>
       </div>
       <div class="col-lg-6">
         <p>
           <span class="view-label">CPF do morador titular</span>
-          <span class="d-block text-danger">[PENDENTE] API</span>
+          <span class="d-block ">{{schedule.holderCpf || '-'}}</span>
         </p>
       </div>
     </div>
@@ -24,23 +24,23 @@
 <h2 class="h5">Agendamento</h2>
 <p>
   <span class="view-label">Data e horário</span>
-  <span class="d-block text-danger">[PENDENTE] API</span>
+  <span class="d-block ">{{schedule.date || '-'}}</span>
 </p>
 <p>
   <span class="view-label">Assunto</span>
-  <span class="d-block text-danger">[PENDENTE] API</span>
+  <span class="d-block ">{{scheduleTypeList[schedule.typeSubject].name || '-'}}</span>
 </p>
 <p>
   <span class="view-label">Local</span>
-  <span class="d-block text-danger">[PENDENTE] API</span>
+  <span class="d-block ">{{schedule.place || '-'}}</span>
 </p>
 <p>
   <span class="view-label">Descrição</span>
-  <span class="d-block text-danger">[PENDENTE] API</span>
+  <span class="d-block ">{{schedule.description || '-'}}</span>
 </p>
 <p>
   <span class="view-label">Status</span>
-  <span class="d-block text-danger">[PENDENTE] API</span>
+  <span class="d-block text-info">{{scheduleStatusList[schedule.typeScheduleStatus].name || '-'}}</span>
 </p>
 <button
   type="button"

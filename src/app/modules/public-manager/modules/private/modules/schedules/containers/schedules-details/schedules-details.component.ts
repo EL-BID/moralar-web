@@ -31,7 +31,7 @@ export class SchedulesDetailsComponent extends OnDestroyClass implements OnInit 
   }
 
   ngOnInit(): void {
-    this.httpService.get(`Schedule/Detail/${this.activatedRoute.snapshot.paramMap.get('id')}`)
+    this.httpService.get(`Schedule/Detail/${this.activatedRoute.snapshot.paramMap.get('scheduleId')}`)
       .pipe(takeUntil(this.onDestroy))
       .subscribe((response: any) => this.schedule = response.data);
   }

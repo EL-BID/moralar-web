@@ -20,6 +20,7 @@ import { ScheduleListSearchComponent } from './components/schedule-list-search/s
 import { ScheduleFormComponent } from './components/schedule-form/schedule-form.component';
 import { ScheduleViewComponent } from './components/schedule-view/schedule-view.component';
 import { RescheduleFormComponent } from './components/reschedule-form/reschedule-form.component';
+import {FamiliesModule} from "../../../../../../utils/modules/families/families.module";
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { RescheduleFormComponent } from './components/reschedule-form/reschedule
     ReactiveFormsModule,
     MegaleiosFormsModule,
     SharedModule,
-    NgxMaskModule.forChild()
+    NgxMaskModule.forChild(),
+    FamiliesModule
   ]
 })
 export class SchedulesModule { }
