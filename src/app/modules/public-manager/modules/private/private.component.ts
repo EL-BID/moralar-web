@@ -6,6 +6,8 @@ import {
   faCalendarAlt,
   faIdCard,
   faHome,
+  faStar,
+  faMap,
   faQuestionCircle,
   faBook
 } from '@fortawesome/free-solid-svg-icons';
@@ -28,6 +30,8 @@ export class PrivateComponent extends OnDestroyClass implements OnInit, OnDestro
   faCalendarAlt = faCalendarAlt;
   faIdCard = faIdCard;
   faHome = faHome;
+  faStar = faStar;
+  faMap = faMap;
   faQuestionCircle = faQuestionCircle;
   faBook = faBook;
 
