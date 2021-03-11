@@ -1,0 +1,74 @@
+<div class="row">
+  <div class="col-lg-12">
+    <span class="view-label">Título</span>
+    {{course.title}}
+  </div>
+</div>
+<h2 class="h5">Imagem do Curso </h2>
+<div class="row">
+  <div class="col-lg-6 text-center">
+    <img
+      [src]="course.img"
+      alt="Imagem do Curso"
+      title="Imagem do Curso">
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-6">
+    <span class="view-label">Data de Início</span>
+    {{course.startDate}}
+  </div>
+  <div class="col-lg-6">
+    <span class="view-label">Data de Término</span>
+    {{course.endDate}} 
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-12">
+    <span class="view-label">Hora de Início</span>
+    {{course.schedules}}
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-12">
+    <span class="view-label">Carga Horária</span>
+    {{course.workLoad}}
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-12">
+    <span class="view-label">Local</span>
+    {{course.place}}
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-12">
+    <span class="view-label">Descrição</span>
+    {{course.description}}
+  </div>
+</div>
+<h2 class="h5">Público Alvo (faixa de valores)</h2>
+<div class="row">
+  <div class="col-lg-6">
+    <span class="view-label">De</span>
+    {{course.targetAudienceAge}}
+  </div>
+  <!-- <div class="col-lg-6">
+    <app-control-field>
+      <label for="targetAudienceAge2">Até</label>
+      <input currencyMask type="tel" id="targetAudienceAge2" formControlName="targetAudienceAge">
+      <app-control-error [control]="form.controls.endDate"></app-control-error>
+    </app-control-field>
+  </div> -->
+</div>
+<div class="row">
+  <div class="col-lg-6">
+    <span class="view-label">Gênero</span>
+    {{genderList[course.typeGenre].name}}
+  </div>
+  <div class="col-lg-6">
+    <span class="view-label">Quantidade de</span>
+    {{course.numberOfVacancies}}
+  </div>
+</div>

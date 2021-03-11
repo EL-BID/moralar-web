@@ -11,7 +11,8 @@ import {CourseListSearchComponent} from './components/course-list-search/course-
 import {CourseListComponent} from './components/course-list/course-list.component';
 import {CoursesAddComponent} from './containers/courses-add/courses-add.component';
 import {CourseFormComponent} from './components/course-form/course-form.component';
-
+import {CoursesDetailsComponent} from './containers/courses-details/courses-details.component';
+import {CourseViewComponent} from './components/course-view/course-view.component';
 // consts
 import { CustomCurrencyMaskConfig } from 'src/app/app.module';
 @NgModule({
@@ -20,10 +21,12 @@ import { CustomCurrencyMaskConfig } from 'src/app/app.module';
     // containers
     CoursesListComponent,
     CoursesAddComponent,
+    CoursesDetailsComponent,
     // components
     CourseListComponent,
     CourseListSearchComponent,
-    CourseFormComponent
+    CourseFormComponent,
+    CourseViewComponent
   ],
   imports: [
     CommonModule,
