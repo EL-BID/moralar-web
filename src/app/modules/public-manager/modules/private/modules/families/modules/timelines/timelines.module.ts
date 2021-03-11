@@ -13,15 +13,20 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MegaleiosFormsModule } from 'src/app/utils/modules/megaleios-forms/megaleios-forms.module';
 import { SharedModule } from 'src/app/utils/modules/shared/shared.module';
 import { NgxMaskModule } from 'ngx-mask';
+import Timeline = gsap.core.Timeline;
+import {TimelinesDetailsComponent} from './containers/timelines-details/timelines-details.component';
+import {TimelineViewComponent} from './components/timeline-view/timeline-view.component';
 
 @NgModule({
   declarations: [
     // containers
     TimelinesComponent,
     TimelinesListComponent,
+    TimelinesDetailsComponent,
     // components
     TimelineListComponent,
-    TimelineListSearchComponent
+    TimelineListSearchComponent,
+    TimelineViewComponent
   ],
   imports: [
     CommonModule,
