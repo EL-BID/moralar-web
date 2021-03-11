@@ -30,6 +30,10 @@ const routes: Routes = [
         loadChildren: () => import('src/app/utils/modules/properties/properties.module').then(m => m.PropertiesModule)
       },
       {
+        path: 'matchs',
+        loadChildren: () => import('src/app/modules/public-manager/modules/private/modules/properties/modules/matchs/matchs.module').then(m => m.MatchsModule)
+      },
+      {
         path: 'questionarios',
         loadChildren: () => import('src/app/utils/modules/questionnaires/questionnaires.module').then(m => m.QuestionnairesModule)
       },
