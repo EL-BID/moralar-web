@@ -14,6 +14,9 @@ export class TimelinesListComponent extends ListContainerClass {
   formDataModel: FormDataModel = {
     columns: [
       { data: 'number', name: 'Number', searchable: false },
+      { data: 'holderName', name: 'HolderName', searchable: false },
+      { data: 'holderCpf', name: 'HolderCpf', searchable: false },
+      { data: 'status', name: 'Status', searchable: false },
     ],
     page: 1,
     pageSize: 10,
@@ -30,7 +33,7 @@ export class TimelinesListComponent extends ListContainerClass {
     }
   };
 
-  uri = 'Timeline';
+  uri = 'Family';
 
   constructor(
     activatedRoute: ActivatedRoute,
