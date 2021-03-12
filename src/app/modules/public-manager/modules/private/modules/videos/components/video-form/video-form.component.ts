@@ -17,17 +17,9 @@ export class VideoFormComponent extends FormComponentClass {
   ) {
     super();
     this.form = this.formBuilder.group({
-      title: [null, Validators.compose([trimWhiteSpace, Validators.required])],
-      img: [null, Validators.required],
-      startDate: [null, Validators.required],
-      endDate: [null, Validators.required],
-      place: [null, Validators.required],
-      schedule: [null, Validators.required],
-      workLoad: [null, Validators.required],
-      description: [null, Validators.required],
-      targetAudienceAge: [null, Validators.required],
-      typeGenre: [null, Validators.required],
-      numberOfVacancies: [null, Validators.required],
+      Title: [null, Validators.compose([trimWhiteSpace, Validators.required])],
+      Thumbnail: [null, Validators.required],
+      url: [null, Validators.required]
     });
   }
 
