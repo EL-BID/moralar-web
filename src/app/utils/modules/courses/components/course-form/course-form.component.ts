@@ -26,7 +26,8 @@ export class CourseFormComponent extends FormComponentClass {
       schedule: [null, Validators.required],
       workLoad: [null, Validators.required],
       description: [null, Validators.required],
-      targetAudienceAge: [null, Validators.required],
+      startTargetAudienceAge: [null, Validators.required],
+      endTargetAudienceAge: [null, Validators.required],
       typeGenre: [null, Validators.required],
       numberOfVacancies: [null, Validators.required],
     });

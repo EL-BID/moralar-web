@@ -9,7 +9,7 @@
         <th sortable="numberOfVacancies" (sort)="handleSort($event)">Vagas</th>
         <th sortable="place" (sort)="handleSort($event)">Inscritos</th>
         <th sortable="workLoad" (sort)="handleSort($event)">Espera</th>
-        <th>Situação</th>
+        <!-- <th>Situação</th> -->
       </tr>
     </thead>
     <tbody>
@@ -26,7 +26,7 @@
         <td>{{ item.numberOfVacancies || '-' }}</td>
         <td>{{ item.place || '-' }}</td>
         <td>{{ item.workLoad || '-' }}</td>
-        <td>
+        <!-- <td>
           <div class="custom-control custom-switch">
             <input
               type="checkbox"
@@ -40,7 +40,7 @@
               class="custom-control-label">
             </label>
           </div>
-        </td>
+        </td> -->
       </tr>
     </tbody>
   </table>
