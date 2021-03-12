@@ -1,0 +1,12 @@
+<form [formGroup]="form" (ngSubmit)="handleSubmit()">
+
+  <app-button
+    buttonType="submit"
+    buttonClass="btn-dark"
+    [buttonDisabled]="form.valid === false || formLoading === true"
+    [buttonLoading]="formLoading">
+    Adicionar
+  </app-button>
+</form>
+<br>
+<pre>{{ form.value | json }}</pre>

@@ -38,6 +38,10 @@ const routes: Routes = [
         loadChildren: () => import('src/app/modules/public-manager/modules/private/modules/properties/modules/displacement-maps/displacement-maps.module').then(m => m.DisplacementMapsModule)
       },
       {
+        path: 'videos',
+        loadChildren: () => import('src/app/modules/public-manager/modules/private/modules/videos/videos.module').then(m => m.VideosModule)
+      },
+      {
         path: 'questionarios',
         loadChildren: () => import('src/app/utils/modules/questionnaires/questionnaires.module').then(m => m.QuestionnairesModule)
       },
