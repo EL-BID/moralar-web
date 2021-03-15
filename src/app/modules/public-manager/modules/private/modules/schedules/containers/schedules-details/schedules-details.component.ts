@@ -45,10 +45,12 @@ export class SchedulesDetailsComponent extends OnDestroyClass implements OnInit 
     if (this.rescheduleFormLoading === false) {
       this.rescheduleFormLoading = true;
       value.id = this.schedule.id;
-      this.httpService.post('Schedule/Reschedule', value)
+      this.httpService.post('Schedule/ChangeStatus', value)
         .pipe(takeUntil(this.onDestroy))
         .subscribe((response: any) => {
           this.megaleiosAlertService.success(response.message);
+          this.rescheduleNgbModalRef.close();
+          this.ngOnInit();
           this.rescheduleFormLoading = false;
         }, (response: any) => {
           this.megaleiosAlertService.error(response.message);

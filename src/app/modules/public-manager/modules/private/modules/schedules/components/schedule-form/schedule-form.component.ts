@@ -50,7 +50,7 @@ export class ScheduleFormComponent extends FormComponentClass implements OnInit{
     super();
     this.form = formBuilder.group({
       date: [null, Validators.required],
-      familyId: [null],
+      familyId: [null, Validators.required],
       typeSubject: [null, Validators.required],
       place: [null, Validators.compose([trimWhiteSpace, Validators.required])],
       description: [null, Validators.required],
@@ -83,10 +83,6 @@ ngOnInit(): void {
       .subscribe((response: any) => {
         this.list = response.data;
       });
-  }
-
-  addFamily(item: any): void {
-    this.form.value.familyId = item.id;
   }
 
 }

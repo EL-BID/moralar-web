@@ -41,7 +41,7 @@
       <app-control-field>
         <label for="status">Status</label>
         <select id="status" formControlName="status">
-          <option value="">Todos</option>
+          <option value="" >Todos</option>
           <option *ngFor="let scheduleStatus of scheduleStatusList"
             [ngValue]="scheduleStatus.id">
             {{ scheduleStatus.name }}
@@ -54,7 +54,7 @@
       <app-control-field>
         <label for="type">Tipo</label>
         <select id="type" formControlName="type">
-          <option value="">Todos</option>
+          <option value="" >Todos</option>
           <option *ngFor="let scheduleType of scheduleTypeList"
             [ngValue]="scheduleType.id">
             {{ scheduleType.name }}

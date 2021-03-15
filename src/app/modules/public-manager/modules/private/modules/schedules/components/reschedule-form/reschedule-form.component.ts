@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { DateTime } from 'luxon';
 import { FormComponentClass } from 'src/app/utils/classes/form-component.class';
 import { SCHEDULE_TYPE_LIST } from 'src/app/utils/interfaces/schedules.interface';
 import {trimWhiteSpace} from '../../../../../../../../utils/functions/validators.function';
+import {dateToSeconds, dateToString} from "../../../../../../../../utils/functions/date.function";
 @Component({
   selector: 'app-reschedule-form',
   templateUrl: './reschedule-form.component.html',

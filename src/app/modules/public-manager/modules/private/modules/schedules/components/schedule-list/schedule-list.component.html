@@ -29,12 +29,12 @@
           </div>
         </td>
         <td>{{ item.date || '-' }}</td>
-        <td>{{ item.typeSubject || '-' }}</td>
+        <td>{{ scheduleTypeList[item.typeSubject].name|| '-' }}</td>
         <td>{{ item.place || '-' }}</td>
         <td>{{ item.holderNumber || '-' }}</td>
         <td>{{ item.holderName || '-' }}</td>
-        <td>{{ item.holderCpf || '-' }}</td>
-        <td>{{ scheduleStatusList[item.typeScheduleStatus].name || '-' }}</td>
+        <td>{{ item.holderCpf || '-' | mask: '000.000.000-99'}}</td>
+        <td>{{scheduleStatusList[item.typeScheduleStatus].name || '-'}}</td>
       </tr>
     </tbody>
   </table>

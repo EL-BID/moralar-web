@@ -2,7 +2,7 @@
 export const SCHEDULE_STATUS_LIST = [
   { id: 0, name: 'Aguardando confirmação' },
   { id: 1, name: 'Confirmado' },
-  { id: 2, name: 'Reagendamento solicitado' },
+  { id: 2, name: 'Aguardando reagendamento' },
   { id: 3, name: 'Finalizado' }
 ];
 
