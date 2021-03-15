@@ -22,6 +22,7 @@ import { ModalImageCropperComponent } from './components/modal-image-cropper/mod
 
 // directives
 import { NgbdSortableHeaderDirective } from './directives/ngbd-sortable-header/ngbd-sortable-header.directive';
+import {ImportFileComponent} from "./components/import-file/import-file.component";
 
 const DECLARATIONS: any[] = [
   // components
@@ -39,7 +40,10 @@ const DECLARATIONS: any[] = [
 ];
 
 @NgModule({
-  declarations: DECLARATIONS,
+  declarations: [
+    DECLARATIONS,
+    ImportFileComponent
+  ],
   imports: [
     CommonModule,
     // modules
@@ -51,6 +55,9 @@ const DECLARATIONS: any[] = [
     NgbPaginationModule,
     ImageCropperModule
   ],
-  exports: DECLARATIONS
+  exports: [
+    DECLARATIONS,
+    ImportFileComponent
+  ]
 })
 export class SharedModule { }
