@@ -3,6 +3,14 @@
   <div class="col-auto">
     <button
       type="button"
+      class="btn btn-dark"
+      routerLink="disponibilizar">
+      Disponibilizar
+    </button>
+  </div>
+  <div class="col-auto">
+    <button
+      type="button"
       class="btn btn-outline-dark"
       [disabled]="listSelected.length !== 1"
       (click)="handleDetails()">

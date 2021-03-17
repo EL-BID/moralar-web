@@ -26,7 +26,7 @@
     {
       "label": "deploy-hml",
       "type": "shell",
-      "command": "ng build --prod --baseHref /WebMoralarHml/; msdeploy -verb:sync -source:contentPath='${workspaceFolder}/dist/web-moralar' -dest:auto,ComputerName='https:\/\/apihom.megaleios.com:8172/msdeploy.axd?site=Apis',UserName='Bruno',Password='mega@123',AuthType='Basic' -setParam:value='Apis/WebMoralarHml',kind=ProviderPath,scope=contentPath -disableLink:AppPoolExtension -disableLink:ContentExtension -disableLink:CertificateExtension -allowUntrusted",
+      "command": "ng build --prod --baseHref /WebMoralarHml/; msdeploy -verb:sync -source:contentPath='${workspaceFolder}/dist/web-moralar' -dest:auto,ComputerName='https:\/\/apihom.megaleios.com:8172/msdeploy.axd?site=Apis',UserName='Glailson',Password='j7mmW&LCuhRA',AuthType='Basic' -setParam:value='Apis/WebMoralarHml',kind=ProviderPath,scope=contentPath -disableLink:AppPoolExtension -disableLink:ContentExtension -disableLink:CertificateExtension -allowUntrusted",
       "group": "build",
       "presentation": {
         "reveal": "always",

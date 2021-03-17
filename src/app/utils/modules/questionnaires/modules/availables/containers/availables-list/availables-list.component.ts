@@ -30,7 +30,7 @@ export class AvailablesListComponent extends ListContainerClass {
     }
   };
 
-  uri = 'QuestionnaireAvailable';
+  uri = 'Quiz';
 
   constructor(
     private activatedRoute: ActivatedRoute,
