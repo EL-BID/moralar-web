@@ -35,11 +35,11 @@ export class AdministratorDetailsComponent extends OnDestroyClass implements OnI
     if (this.formLoading === false) {
       this.formLoading = true;
       value.id = this.user.id;
-      this.httpService.post('UserAdministrator/Save', value)
+      this.httpService.post('Profile/UpdateProfile', value)
         .pipe(takeUntil(this.onDestroy))
         .subscribe((response: any) => {
           this.megaleiosAlertService.success(response.success);
-          this.router.navigate(['/administrador/app']);
+          this.router.navigate(['/gestor-public/app']);
         }, (response: any) => {
           this.megaleiosAlertService.error(response.message);
           this.formLoading = false;

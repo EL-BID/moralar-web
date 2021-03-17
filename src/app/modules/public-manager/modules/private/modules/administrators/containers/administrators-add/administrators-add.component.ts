@@ -22,10 +22,10 @@ export class AdministratorsAddComponent extends OnDestroyClass {
     super();
   }
 
-  handleFormSubmit(value: any): void {
+/*  handleFormSubmit(value: any): void {
     if (this.formLoading === false) {
       this.formLoading = true;
-      this.httpService.post('UserAdministrator/Register', value)
+      this.httpService.post('Profile/UpdateProfile', value)
         .pipe(takeUntil(this.onDestroy))
         .subscribe((response: any) => {
           this.megaleiosAlertService.success(response.message);
@@ -36,5 +36,5 @@ export class AdministratorsAddComponent extends OnDestroyClass {
         });
     }
   }
-
+*/
 }
