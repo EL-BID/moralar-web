@@ -46,6 +46,10 @@ const routes: Routes = [
         loadChildren: () => import('src/app/utils/modules/questionnaires/questionnaires.module').then(m => m.QuestionnairesModule)
       },
       {
+        path: 'enquetes',
+        loadChildren: () => import('src/app/utils/modules/polls/polls.module').then(m => m.PollsModule)
+      },
+      {
         path: 'cursos',
         loadChildren: () => import('src/app/utils/modules/courses/courses.module').then(m => m.CoursesModule)
       },

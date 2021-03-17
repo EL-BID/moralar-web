@@ -1,0 +1,37 @@
+<h1 class="h4">Enquentes</h1>
+<div class="form-row my-3">
+  <div class="col-auto">
+    <button
+      type="button"
+      class="btn btn-dark"
+      routerLink="adicionar">
+      Adicionar
+    </button>
+  </div>
+  <div class="col-auto">
+    <button
+      type="button"
+      class="btn btn-outline-dark"
+      [disabled]="listSelected.length !== 1"
+      (click)="handleDetails()">
+      Detalhes
+    </button>
+  </div>
+</div>
+<app-poll-list-search
+  [listSearchData]="formDataModel.search"
+  (listSearchChange)="handleListSearchChange($event)">
+</app-poll-list-search>
+<app-poll-list
+  [list]="list"
+  (listSearchChange)="handleListSearchChange($event)"
+  (listOrderChange)="handleListOrderChange($event)"
+  (listItemSelected)="handleListItemSelected($event)">
+</app-poll-list>
+<app-list-pagination
+  [page]="formDataModel.page"
+  [pageSize]="formDataModel.pageSize"
+  [listSize]="listSize"
+  [listSizeFiltered]="listSizeFiltered"
+  (pageChange)="handleListPageChange($event)">
+</app-list-pagination>

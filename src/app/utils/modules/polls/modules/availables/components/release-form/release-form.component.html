@@ -1,0 +1,47 @@
+<form [formGroup]="form" (ngSubmit)="handleSubmit()">
+  <app-releases-families-list (listFamiliesSelected)="addFamiliesSelected($event)" ></app-releases-families-list>
+
+    <div class="form-row align-items-center mb-12">
+      <div class="col-12">
+        Enviar para todas as famílias
+      </div>
+      <div class="col-auto">
+        <app-control-radio formControlName="allFamily" value="true" id="allFamily-yes"></app-control-radio>
+      </div>
+      <div class="col-auto">
+        <label class="mb-0" for="allFamily-yes">SIM</label>
+      </div>
+      <div class="col-auto">
+        <app-control-radio formControlName="allFamily" value="false" id="allFamily-no"></app-control-radio>
+      </div>
+      <div class="col-auto">
+        <label class="mb-0" for="allFamily-no">NÃO</label>
+      </div>
+
+    </div>
+  <br>
+  <div class="row">
+    <div class="col-lg-12">
+      <app-control-field>
+        <label for="quizId">Questionários</label>
+        <select id="quizId" formControlName="quizId">
+          <option [ngValue]="null">Selecione uma opção</option>
+          <option *ngFor="let item of listQuiz"
+                  [ngValue]="item.id">
+            {{ item.title }}
+          </option>
+        </select>
+        <app-control-error [control]="form.controls.quizId"></app-control-error>
+      </app-control-field>
+    </div>
+  </div>
+
+  <app-button
+    buttonType="submit"
+    buttonClass="btn-dark"
+    [buttonDisabled]="form.valid === false || formLoading === true"
+    [buttonLoading]="formLoading">
+    {{formData?.id.length > 0 ? 'Atualizar' : 'Adicionar'}}
+  </app-button>
+
+</form>
