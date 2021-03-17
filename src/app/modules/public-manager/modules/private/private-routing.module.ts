@@ -50,6 +50,10 @@ const routes: Routes = [
         loadChildren: () => import('src/app/utils/modules/polls/polls.module').then(m => m.PollsModule)
       },
       {
+        path: 'informativos',
+        loadChildren: () => import('src/app/utils/modules/informatives/informatives.module').then(m => m.InformativesModule)
+      },
+      {
         path: 'cursos',
         loadChildren: () => import('src/app/utils/modules/courses/courses.module').then(m => m.CoursesModule)
       },
