@@ -9,24 +9,62 @@
     </div>
     <div class="col-auto">
       <div ngbDropdown class="d-inline-block">
+        <fa-icon ngbDropdownToggle class="mr-2 text-light" [icon]="faBell"></fa-icon>
+        <div ngbDropdownMenu id="notification">
+          <div class="row">
+            <div class="col-auto">
+              <h2 class="h5">Notificações</h2>
+            </div>
+          </div>
+
+            <div class="row">
+              <div class="col-lg-12">
+               <app-card>
+                 <p>
+                   <span class="view-label">Cadastro</span>
+                   <span class="d-block ">Dalksdajsadjlsaljsaljsladjkljksljksadlkjsdalsdaljksadlkjsdajklsdaljkljksdaljksdalkasjdklalskdjalksjdlajsdkjasdlkajlskdta</span>
+
+                 </p>
+                 Não lida - Data
+               </app-card>
+
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-12">
+                <app-card style="color: lightgray ">
+                  <p >
+                    <span class="view-label">Teste</span>
+                    <span class="d-block ">alksdajsadjlsaljsaljsladjkljksljksadlkjsdalsdaljksadlkjsdajklsdaljkljksdaljksdalkasjdklalskdjalksjdlajsdkjasdlkajlskdta</span>
+                  </p>
+                  Lida - Data
+                </app-card>
+              </div>
+            </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="col-auto">
+      <div ngbDropdown class="d-inline-block">
         <button ngbDropdownToggle
-          type="button"
-          class="btn btn-sm btn-outline-light">
+                type="button"
+                class="btn btn-sm btn-outline-light">
           Menu
         </button>
         <div ngbDropdownMenu id="administrator-menu">
           <button ngbDropdownItem
-            type="button"
-            class="btn btn-link"
-            routerLink="administrador">
+                  type="button"
+                  class="btn btn-link"
+                  routerLink="administrador">
             <span class="administrator">Gestor</span>
             <span class="name">{{ user?.name }}</span>
           </button>
           <div class="dropdown-divider"></div>
           <button ngbDropdownItem
-            type="button"
-            class="btn btn-link"
-            (click)="logOut()">
+                  type="button"
+                  class="btn btn-link"
+                  (click)="logOut()">
             Sair
           </button>
         </div>
@@ -121,7 +159,7 @@
               class="mr-2"
               [icon]="faVideo">
             </fa-icon>
-           Vídeos
+            Vídeos
           </button>
         </li>
         <li>
@@ -132,7 +170,7 @@
               class="mr-2"
               [icon]="faBell">
             </fa-icon>
-           Informativos
+            Informativos
           </button>
         </li>
         <li>
