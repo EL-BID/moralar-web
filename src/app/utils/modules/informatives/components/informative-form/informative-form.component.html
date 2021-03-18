@@ -6,9 +6,9 @@
       <app-control-field>
         <app-image-upload
           [changeDetectorRef]="changeDetectorRef"
-          [imageUploadAbstractControl]="form.controls.img">
+          [imageUploadAbstractControl]="form.controls.image">
         </app-image-upload>
-        <app-control-error [control]="form.controls.img"></app-control-error>
+        <app-control-error [control]="form.controls.image"></app-control-error>
       </app-control-field>
     </div>
   </div>
@@ -24,9 +24,12 @@
   <div class="row">
     <div class="col-lg-6">
       <app-control-field>
-        <label for="startDate">Data</label>
-        <input type="date" id="startDate" formControlName="startDate">
-        <app-control-error [control]="form.controls.startDate"></app-control-error>
+        <label for="datePublish">Data da Publicação</label>
+        <app-control-date-picker id="datePublish"
+                                 [dayMin]="dayMin"
+                                 formControlName="datePublish">
+        </app-control-date-picker>
+        <app-control-error [control]="form.controls.datePublish"></app-control-error>
       </app-control-field>
     </div>
   </div>

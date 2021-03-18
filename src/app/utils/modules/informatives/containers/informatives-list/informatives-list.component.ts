@@ -18,12 +18,10 @@ export class InformativesListComponent extends ListContainerClass {
 
   formDataModel: FormDataModel = {
     columns: [
-      { data: 'title', name: 'Title', searchable: true },
-      { data: 'startDate', name: 'StartDate', searchable: true },
-      { data: 'endDate', name: 'EndDate', searchable: true },
-      { data: 'numberOfVacancies', name: 'NumberOfVacancies', searchable: true },
-      { data: 'place', name: 'Place', searchable: true },
-      { data: 'workLoad', name: 'WorkLoad', searchable: true },
+      { data: 'datePublish', name: 'DatePublish', searchable: true },
+      { data: 'image', name: 'Image', searchable: true },
+      { data: 'description', name: 'Description', searchable: true },
+      { data: 'date', name: 'Date', searchable: true }
     ],
     page: 1,
     pageSize: 10,
@@ -36,7 +34,7 @@ export class InformativesListComponent extends ListContainerClass {
     }
   };
 
-  uri = 'Course';
+  uri = 'Informative';
 
   constructor(
     activatedRoute: ActivatedRoute,

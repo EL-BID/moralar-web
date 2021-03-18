@@ -2,41 +2,18 @@
   <table class="table table-striped">
     <thead>
       <tr>
-        <th></th>
-        <th sortable="startDate" (sort)="handleSort($event)">Data da Publicação</th>
-        <th sortable="endDate" (sort)="handleSort($event)">Imagem</th>
-        <th sortable="numberOfVacancies" (sort)="handleSort($event)">Descrição</th>
-        <th sortable="workLoad" (sort)="handleSort($event)">Data</th>
-        <!-- <th>Situação</th> -->
+        <th sortable="createdDate" (sort)="handleSort($event)">Data da Publicação</th>
+        <th sortable="image" (sort)="handleSort($event)">Imagem</th>
+        <th sortable="description" (sort)="handleSort($event)">Descrição</th>
+        <th sortable="date" (sort)="handleSort($event)">Data</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let item of list">
-        <td>
-          <app-control-checkbox
-            [value]="isChecked(item)"
-            (changed)="listItemSelected.emit(item)">
-          </app-control-checkbox>
-        </td>
-        <td>{{ item.startDate || '-' | date:'dd/MM/yyyy'}}</td>
-        <td>{{ item.numberOfVacancies || '-' }}</td>
-        <td>{{ item.place || '-' }}</td>
-        <td>{{ item.endDate || '-' | date:'dd/MM/yyyy'}}</td>
-        <!-- <td>
-          <div class="custom-control custom-switch">
-            <input
-              type="checkbox"
-              class="custom-control-input"
-              [id]="'blocked-' + item.id"
-              [value]="item.id"
-              [checked]="item.blocked === false"
-              (click)="handleBlockUnblock($event)">
-            <label
-              [for]="'blocked-' + item.id"
-              class="custom-control-label">
-            </label>
-          </div>
-        </td> -->
+        <td>{{ item.datePublish || '-' }}</td>
+        <td>{{ item.image || '-' }}</td>
+        <td>{{ item.description || '-' }}</td>
+        <td>{{ item.date || '-' }}</td>
       </tr>
     </tbody>
   </table>

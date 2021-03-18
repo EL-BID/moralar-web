@@ -4,6 +4,7 @@ import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angul
 import { trimWhiteSpace } from 'src/app/utils/functions/validators.function';
 import {GENDER_LIST} from '../../../../interfaces/courses.interface';
 import {sortBy} from 'lodash';
+import {DateTime} from 'luxon';
 @Component({
   selector: 'app-informative-form',
   templateUrl: './informative-form.component.html',
@@ -12,24 +13,18 @@ import {sortBy} from 'lodash';
 export class InformativeFormComponent extends FormComponentClass {
   genderList: any[] = sortBy(GENDER_LIST, 'name');
   numberOfVacanciesList: any[] = new Array(21);
+  dayMin = DateTime.local()
+    .set({ hour: 0, minute: 0, second: 0, millisecond: 0 })
+    .toSeconds();
   constructor(
     private formBuilder: FormBuilder,
     public changeDetectorRef: ChangeDetectorRef
   ) {
     super();
     this.form = this.formBuilder.group({
-      title: [null, Validators.compose([trimWhiteSpace, Validators.required])],
-      img: [null, Validators.required],
-      startDate: [null, Validators.required],
-      endDate: [null, Validators.required],
-      place: [null, Validators.required],
-      schedule: [null, Validators.required],
-      workLoad: [null, Validators.required],
+      image: [null, Validators.required],
+      datePublish: [null, Validators.required],
       description: [null, Validators.required],
-      startTargetAudienceAge: [null, Validators.required],
-      endTargetAudienceAge: [null, Validators.required],
-      typeGenre: [null, Validators.required],
-      numberOfVacancies: [null, Validators.required],
     });
   }
 

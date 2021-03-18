@@ -28,7 +28,11 @@ export class FamiliesListComponent extends ListContainerClass {
     pageSize: 10,
     search: {
       search: '',
-      typeProfile: '0'
+      typeProfile: '0',
+      number: '',
+      holderName: '',
+      holderCpf: '',
+      status: ''
     },
     order: {
       column: '0',

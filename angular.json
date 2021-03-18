@@ -37,11 +37,19 @@
             ]
           },
           "configurations": {
-            "stage": {
+            "dev": {
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.stage.ts"
+                  "with": "src/environments/environment.dev.ts"
+                }
+              ]
+            },
+            "hml": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.hml.ts"
                 }
               ]
             },
@@ -138,6 +146,7 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "web-moralar"
 }

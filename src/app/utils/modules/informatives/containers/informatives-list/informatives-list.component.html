@@ -8,26 +8,13 @@
       Adicionar
     </button>
   </div>
-  <div class="col-auto">
-    <button
-      type="button"
-      class="btn btn-outline-dark"
-      [disabled]="listSelected.length !== 1"
-      (click)="handleDetails()">
-      Detalhes
-    </button>
-  </div>
 </div>
-<app-informative-list-search
-  [listSearchData]="formDataModel.search"
-  (listSearchChange)="handleListSearchChange($event)">
-</app-informative-list-search>
 <app-informative-list
   [list]="list"
   (listSearchChange)="handleListSearchChange($event)"
   (listOrderChange)="handleListOrderChange($event)"
   (listItemSelected)="handleListItemSelected($event)"
-  (blockUnblock)="handleBlockUnblock($event)">
+>
 </app-informative-list>
 <app-list-pagination
   [page]="formDataModel.page"

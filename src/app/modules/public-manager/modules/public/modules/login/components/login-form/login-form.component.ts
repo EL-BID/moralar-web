@@ -17,7 +17,7 @@ export class LoginFormComponent extends FormComponentClass {
   ) {
     super();
     const cpf = environment.showDefaultLogin ? '30634164015' : null;
-    const password = environment.showDefaultLogin ? 'megaleios' : null;
+    const password = environment.showDefaultLogin ? '123456' : null;
     this.form = formBuilder.group({
       cpf: [cpf, Validators.compose([trimWhiteSpace, Validators.required, isCpfValid])],
       password: [password, Validators.compose([trimWhiteSpace, Validators.required])],

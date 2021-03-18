@@ -16,8 +16,8 @@ export class LoginFormComponent extends FormComponentClass {
     public changeDetectorRef: ChangeDetectorRef
   ) {
     super();
-    const email = environment.showDefaultLogin ? 'megaleios@megaleios.com' : null;
-    const password = environment.showDefaultLogin ? 'megaleios' : null;
+    const email = environment.showDefaultLogin ? 'glailson@megaleios.com' : null;
+    const password = environment.showDefaultLogin ? 'lJk5Pqo3' : null;
     this.form = formBuilder.group({
       email: [email, Validators.compose([trimWhiteSpace, Validators.required, Validators.email])],
       password: [password, Validators.compose([trimWhiteSpace, Validators.required])],
