@@ -22,7 +22,7 @@ export class AdministratorsAddComponent extends OnDestroyClass {
     super();
   }
 
-/*  handleFormSubmit(value: any): void {
+ handleFormSubmit(value: any): void {
     if (this.formLoading === false) {
       this.formLoading = true;
       this.httpService.post('Profile/UpdateProfile', value)
@@ -36,5 +36,5 @@ export class AdministratorsAddComponent extends OnDestroyClass {
         });
     }
   }
-*/
+
 }
