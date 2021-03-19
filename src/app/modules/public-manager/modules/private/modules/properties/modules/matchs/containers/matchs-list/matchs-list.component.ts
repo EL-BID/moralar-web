@@ -13,19 +13,19 @@ export class MatchsListComponent extends ListContainerClass {
 
   formDataModel: FormDataModel = {
     columns: [
-      { data: 'number', name: 'Number', searchable: false },
+      { data: 'holderNumber', name: 'HolderNumber', searchable: false },
       { data: 'holderName', name: 'HolderName', searchable: false },
       { data: 'holderCpf', name: 'HolderCpf', searchable: false },
-      { data: 'status', name: 'Status', searchable: false },
+      { data: 'residencialCode', name: 'ResidencialCode', searchable: false },
     ],
     page: 1,
     pageSize: 10,
     search: {
       search: '',
-      number: '',
+      holderNumber: '',
       holderName: '',
       holderCpf: '',
-      status: ''
+      residencialCode: '',
     },
     order: {
       column: '0',
@@ -33,7 +33,7 @@ export class MatchsListComponent extends ListContainerClass {
     }
   };
 
-  uri = 'ResidencialProperty';
+  uri = 'PropertiesInterest';
 
   constructor(
     activatedRoute: ActivatedRoute,
@@ -44,7 +44,7 @@ export class MatchsListComponent extends ListContainerClass {
   }
 
   handleDetails(): void {
-    this.router.navigate([this.listSelected[0].id], { relativeTo: this._activatedRoute });
+    this.router.navigate([this.listSelected[0].residencialPropertyId], { relativeTo: this._activatedRoute });
   }
 
 }

@@ -16,6 +16,10 @@ import { NgxMaskModule } from 'ngx-mask';
 import Timeline = gsap.core.Timeline;
 import {MatchsDetailsComponent} from './containers/matchs-details/matchs-details.component';
 import {MatchViewComponent} from './components/match-view/match-view.component';
+import {NgbAccordionModule, NgbDropdownModule} from "@ng-bootstrap/ng-bootstrap";
+import {FontAwesomeTestingModule} from "@fortawesome/angular-fontawesome/testing";
+import {FamiliesModule} from "../../../../../../../../utils/modules/families/families.module";
+import {PropertiesModule} from "../../../../../../../../utils/modules/properties/properties.module";
 
 @NgModule({
   declarations: [
@@ -32,10 +36,15 @@ import {MatchViewComponent} from './components/match-view/match-view.component';
     CommonModule,
     MatchsRoutingModule,
     // modules
+    NgbDropdownModule,
     ReactiveFormsModule,
     MegaleiosFormsModule,
     SharedModule,
-    NgxMaskModule.forChild()
+    NgxMaskModule.forChild(),
+    NgbAccordionModule,
+    FontAwesomeTestingModule,
+    FamiliesModule,
+    PropertiesModule
   ]
 })
 export class MatchsModule { }

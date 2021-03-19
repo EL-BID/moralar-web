@@ -19,9 +19,13 @@ import { FamiliesDetailsComponent } from './containers/families-details/families
 import { FamilyListComponent } from './components/family-list/family-list.component';
 import { FamilyListSearchComponent } from './components/family-list-search/family-list-search.component';
 import { FamilyFormComponent } from './components/family-form/family-form.component';
+import {FamilyViewComponent} from './components/family-view/family-view.component';
 
 // consts
 import { CustomCurrencyMaskConfig } from 'src/app/app.module';
+import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
+import {PropertiesModule} from "../properties/properties.module";
+
 
 @NgModule({
   declarations: [
@@ -33,7 +37,8 @@ import { CustomCurrencyMaskConfig } from 'src/app/app.module';
     // components
     FamilyListComponent,
     FamilyListSearchComponent,
-    FamilyFormComponent
+    FamilyFormComponent,
+    FamilyViewComponent
   ],
   imports: [
     CommonModule,
@@ -43,11 +48,15 @@ import { CustomCurrencyMaskConfig } from 'src/app/app.module';
     MegaleiosFormsModule,
     SharedModule,
     NgxMaskModule.forChild(),
-    CurrencyMaskModule
+    CurrencyMaskModule,
+    FontAwesomeModule,
+    PropertiesModule
   ],
   exports: [
     FamilyListSearchComponent,
-    FamilyListComponent
+    FamilyListComponent,
+    FamilyFormComponent,
+    FamilyViewComponent
   ],
   providers: [
     {

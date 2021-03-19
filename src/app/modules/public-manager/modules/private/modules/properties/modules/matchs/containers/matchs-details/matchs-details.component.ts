@@ -13,17 +13,11 @@ export class MatchsDetailsComponent extends OnDestroyClass implements OnInit {
 
   property: any = { };
 
-  constructor(
-    private activatedRoute: ActivatedRoute,
-    private httpService: HttpService
-  ) {
+  constructor(  ) {
     super();
   }
 
   ngOnInit(): void {
-    this.httpService.get(`ResidencialProperty/Detail/${this.activatedRoute.snapshot.paramMap.get('propertyId')}`)
-      .pipe(takeUntil(this.onDestroy))
-      .subscribe((response: any) => this.property = response.data);
   }
 
 }

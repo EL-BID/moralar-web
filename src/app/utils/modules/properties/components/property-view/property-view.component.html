@@ -10,7 +10,7 @@
   [address]="property.residencialPropertyAdress">
 </app-address-view>
 <h2 class="h5">Fotos</h2>
-<ng-container [ngSwitch]="property.photo.length === 0">
+<ng-container [ngSwitch]="property.photo?.length === 0">
   <app-card *ngSwitchCase="true" class="mb-3">
     Nenhuma foto adicionada.
   </app-card>
@@ -39,127 +39,127 @@
   <div class="col-lg-6">
     <p>
       <span class="view-label">Valor do imóvel</span>
-      {{ property.residencialPropertyFeatures.propertyValue | currency:'BRL':'symbol':'1.2-2' }}
+      {{ property.residencialPropertyFeatures?.propertyValue | currency:'BRL':'symbol':'1.2-2' }}
     </p>
   </div>
   <div class="col-lg-6">
     <p>
       <span class="view-label">Tipo do imóvel</span>
-      {{ propertyTypeToString(property.residencialPropertyFeatures.typeProperty) }}
+      {{ propertyTypeToString(property.residencialPropertyFeatures?.typeProperty) }}
     </p>
   </div>
   <div class="col-lg-6">
     <p>
       <span class="view-label">Metragem quadrada</span>
-      {{ property.residencialPropertyFeatures.squareFootage }}
+      {{ property.residencialPropertyFeatures?.squareFootage }}
     </p>
   </div>
   <div class="col-lg-6">
     <p>
       <span class="view-label">Valor do condomínio</span>
-      {{ property.residencialPropertyFeatures.condominiumValue | currency:'BRL':'symbol':'1.2-2' }}
+      {{ property.residencialPropertyFeatures?.condominiumValue | currency:'BRL':'symbol':'1.2-2' }}
     </p>
   </div>
   <div class="col-lg-6">
     <p>
       <span class="view-label">Valor do IPTU</span>
-      {{ property.residencialPropertyFeatures.iptuValue | currency:'BRL':'symbol':'1.2-2' }}
+      {{ property.residencialPropertyFeatures?.iptuValue | currency:'BRL':'symbol':'1.2-2' }}
     </p>
   </div>
   <div class="col-lg-6">
     <p>
       <span class="view-label">Bairro de localização</span>
-      {{ property.residencialPropertyFeatures.neighborhood }}
+      {{ property.residencialPropertyFeatures?.neighborhood }}
     </p>
   </div>
   <div class="col-lg-6">
     <p>
       <span class="view-label">Número de pavimentos</span>
-      {{ property.residencialPropertyFeatures.numberFloors }}
+      {{ property.residencialPropertyFeatures?.numberFloors }}
     </p>
   </div>
   <div class="col-lg-6">
     <p>
       <span class="view-label">Andar de localização</span>
-      {{ property.residencialPropertyFeatures.floorLocation }}
+      {{ property.residencialPropertyFeatures?.floorLocation }}
     </p>
   </div>
   <div class="col-lg-6">
     <p>
       <span class="view-label">Elevador</span>
-      {{ property.residencialPropertyFeatures.hasElavator == true ? 'Sim' : 'Não' }}
+      {{ property.residencialPropertyFeatures?.hasElavator == true ? 'Sim' : 'Não' }}
     </p>
   </div>
   <div class="col-lg-6">
     <p>
       <span class="view-label">Número de quartos</span>
-      {{ property.residencialPropertyFeatures.numberOfBedrooms }}
+      {{ property.residencialPropertyFeatures?.numberOfBedrooms }}
     </p>
   </div>
   <div class="col-lg-6">
     <p>
       <span class="view-label">Número de banheiros</span>
-      {{ property.residencialPropertyFeatures.numberOfBathrooms }}
+      {{ property.residencialPropertyFeatures?.numberOfBathrooms }}
     </p>
   </div>
   <div class="col-lg-6">
     <p>
       <span class="view-label">Área de serviço</span>
-      {{ property.residencialPropertyFeatures.hasServiceArea == true ? 'Sim' : 'Não'}}
+      {{ property.residencialPropertyFeatures?.hasServiceArea == true ? 'Sim' : 'Não'}}
     </p>
   </div>
   <div class="col-lg-6">
     <p>
       <span class="view-label">Garagem</span>
-      {{ property.residencialPropertyFeatures.hasGarage == true ? 'Sim' : 'Não'}}
+      {{ property.residencialPropertyFeatures?.hasGarage == true ? 'Sim' : 'Não'}}
     </p>
   </div>
   <div class="col-lg-6">
     <p>
       <span class="view-label">Quintal</span>
-      {{ property.residencialPropertyFeatures.hasYard == true ? 'Sim' : 'Não'}}
+      {{ property.residencialPropertyFeatures?.hasYard == true ? 'Sim' : 'Não'}}
     </p>
   </div>
   <div class="col-lg-6">
     <p>
       <span class="view-label">Cisterna</span>
-      {{ property.residencialPropertyFeatures.hasCistern == true ? 'Sim' : 'Não'}}
+      {{ property.residencialPropertyFeatures?.hasCistern == true ? 'Sim' : 'Não'}}
     </p>
   </div>
   <div class="col-lg-6">
     <p>
       <span class="view-label">Murada</span>
-      {{ property.residencialPropertyFeatures.hasWall == true ? 'Sim' : 'Não'}}
+      {{ property.residencialPropertyFeatures?.hasWall == true ? 'Sim' : 'Não'}}
     </p>
   </div>
   <div class="col-lg-6">
     <p>
       <span class="view-label">Escapa de acesso</span>
-      {{ property.residencialPropertyFeatures.hasAccessLadder == true ? 'Sim' : 'Não'}}
+      {{ property.residencialPropertyFeatures?.hasAccessLadder == true ? 'Sim' : 'Não'}}
     </p>
   </div>
   <div class="col-lg-6">
     <p>
       <span class="view-label">Rampa de acesso</span>
-      {{ property.residencialPropertyFeatures.hasAccessRamp == true ? 'Sim' : 'Não'}}
+      {{ property.residencialPropertyFeatures?.hasAccessRamp == true ? 'Sim' : 'Não'}}
     </p>
   </div>
   <div class="col-lg-6">
     <p>
       <span class="view-label">Adaptada ou permite adaptação para PCD</span>
-      {{ property.residencialPropertyFeatures.hasAdaptedToPcd == true ? 'Sim' : 'Não'}}
+      {{ property.residencialPropertyFeatures?.hasAdaptedToPcd == true ? 'Sim' : 'Não'}}
     </p>
   </div>
   <div class="col-lg-6">
     <p>
       <span class="view-label">Regularização do imóvel</span>
-      {{ propertyRegularizationToString(property.residencialPropertyFeatures.propertyRegularization) }}
+      {{ propertyRegularizationToString(property.residencialPropertyFeatures?.propertyRegularization) }}
     </p>
   </div>
   <div class="col-lg-6">
     <p>
       <span class="view-label">Tipo de instalação de gás</span>
-      {{ propertyGasInstallationToString(property.residencialPropertyFeatures.typeGasInstallation) }}
+      {{ propertyGasInstallationToString(property.residencialPropertyFeatures?.typeGasInstallation) }}
     </p>
   </div>
 </div>

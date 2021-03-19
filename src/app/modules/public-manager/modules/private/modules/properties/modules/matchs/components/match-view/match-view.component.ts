@@ -1,5 +1,11 @@
-import { Component, Input } from '@angular/core';
-import { propertyTypeToString, propertyRegularizationToString, propertyGasInstallationToString } from 'src/app/utils/functions/properties.function';
+import {Component, Input, OnInit, TemplateRef, ViewChild} from '@angular/core';
+import {HttpService} from '../../../../../../../../../../utils/services/http/http.service';
+import {NgbModal, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
+import {MegaleiosAlertService} from '../../../../../../../../../../utils/modules/megaleios-alert/megaleios-alert.service';
+import {ActivatedRoute, Router} from '@angular/router';
+import {ModalComponent} from '../../../../../../../../../../utils/modules/shared/components/modal/modal.component';
+import {ModalConfirmData} from '../../../../../../../../../../utils/modules/shared/components/modal-confirm/modal-confirm.interface';
+import {ModalConfirmComponent} from '../../../../../../../../../../utils/modules/shared/components/modal-confirm/modal-confirm.component';
 
 
 @Component({
@@ -7,14 +13,60 @@ import { propertyTypeToString, propertyRegularizationToString, propertyGasInstal
   templateUrl: './match-view.component.html',
   styleUrls: ['./match-view.component.sass']
 })
-export class MatchViewComponent {
-
+export class MatchViewComponent implements OnInit{
+  @ViewChild('detailsFamily')
+  detailsFamilyTemplateRef: TemplateRef<any>;
+  detailsFamilyNgbModalRef: NgbModalRef;
   genderList: any[]; // = GENDER_LIST;
-  @Input()
-  property: any;
 
-  propertyTypeToString = propertyTypeToString;
-  propertyRegularizationToString = propertyRegularizationToString;
-  propertyGasInstallationToString = propertyGasInstallationToString;
+  family: any;
+  lista: any[];
 
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private router: Router,
+    private httpService: HttpService,
+    private ngbModal: NgbModal,
+    private megaleiosAlertService: MegaleiosAlertService
+  ) {
+  }
+
+  ngOnInit(): void {
+    this.httpService.get(`PropertiesInterest/DetailFamiliesMatch/${this.activatedRoute.snapshot.paramMap.get('residencialPropertyId')}`)
+      .subscribe((response: any) => {
+        this.lista = response.data;
+      });
+  }
+
+  handleDatailsFamily(value): void {
+    this.family = value;
+    this.detailsFamilyNgbModalRef = this.ngbModal.open(ModalComponent, { size: 'xl', centered: true });
+    this.detailsFamilyNgbModalRef.componentInstance.templateRef = this.detailsFamilyTemplateRef;
+  }
+
+  sellProperty(value: any): void {
+    let modalConfirmData: ModalConfirmData;
+
+      modalConfirmData = {
+        title: 'Vender imóvel',
+        content: 'Deseja realmente vender?',
+        action: 'vender',
+      };
+
+    const modalRef = this.ngbModal.open(ModalConfirmComponent, { centered: true });
+    modalRef.componentInstance.modalConfirmData = modalConfirmData;
+    modalRef.result
+      .then((result: any) => {
+        if (result) {
+          this.httpService.post('vender imovel', value)
+            .subscribe((response: any) => {
+              this.megaleiosAlertService.success(response.message);
+              const index = this.lista.findIndex((item) => item.id === value.targetId);
+            }, (response: any) => {
+              this.megaleiosAlertService.error(response.message);
+            });
+        }
+      })
+      .catch(() => { });
+  }
 }

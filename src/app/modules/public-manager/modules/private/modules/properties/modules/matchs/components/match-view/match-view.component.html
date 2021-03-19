@@ -1,287 +1,50 @@
 <app-card class="mb-3">
-<app-matchs-list></app-matchs-list>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Priorização</th>
+        <th>Número do cadastro</th>
+        <th>Titular</th>
+        <th>CPF</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+       <tr *ngFor="let item of lista; let i = index">
+        <td>{{i+1}}</td>
+        <td>{{ item.holder.number || '-' }}</td>
+        <td>{{ item.holder.name || '-' }}</td>
+        <td>{{ item.holder.cpf || '-'  | mask: '000.000.000-99'}}</td>
+        <td>
+          <div class="form-row">
+            <div class="col-auto">
+              <button
+                type="button"
+                class="btn btn-dark"
+                (click)="handleDatailsFamily(item)">
+                Detalhes
+              </button>
+            </div>
+            <div class="col-auto">
+              <button
+                type="button"
+                class="btn btn-outline-success"
+                (click)="sellProperty(item)"
+              > Vender
+              </button>
+            </div>
+          </div>
+
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
 </app-card>
-<!--
-property.workFront
-permanentDisabled
-elderlyOverEighty
-yearsInSextyAndSeventyNine
-womanServedByProtectiveMeasure
-femaleBreadWinner
-singleParent
-familyWithMoreThanFivePeople
-childUnderEighteen
-headOfHouseholdWithoutIncome
-benefitOfContinuedProvision
-familyPurse
-involuntaryCohabitation
-familyIncomeOfUpTwoMinimumWages -->
 
-  <h2 class="h5">Critérios de priorização</h2>
-
-  <div class="form-row align-items-center mb-12">
-    <div class="col-12">
-      <b>Frente de obras</b>
-    </div>
-    <div class="col-auto">
-      <app-control-radio formControlName="workFront" value="true" id="workFront-yes"></app-control-radio>
-    </div>
-    <div class="col-auto">
-      <label class="mb-0" for="workFront-yes">SIM</label>
-    </div>
-    <div class="col-auto">
-      <app-control-radio formControlName="workFront" value="false"  id="workFront-no"></app-control-radio>
-    </div>
-    <div class="col-auto">
-      <label class="mb-0" for="workFront-no">NÃO</label>
-    </div>
-
-  </div>
-  <br>
-  <div class="form-row align-items-center mb-12">
-    <div class="col-12">
-      <b>Deficiência permanente que demande imóvel acessível</b>
-    </div>
-    <div class="col-auto">
-      <app-control-radio formControlName="permanentDisabled" value="true" id="permanentDisabled-yes"></app-control-radio>
-    </div>
-    <div class="col-auto">
-      <label class="mb-0" for="permanentDisabled-yes">SIM</label>
-    </div>
-    <div class="col-auto">
-      <app-control-radio formControlName="permanentDisabled" value="false" id="permanentDisabled-no"></app-control-radio>
-    </div>
-    <div class="col-auto">
-      <label class="mb-0" for="permanentDisabled-no">NÃO</label>
-    </div>
-
-  </div>
-  <br>
-  <div class="form-row align-items-center mb-12">
-    <div class="col-12">
-      <b>Idoso mais de 80 anos</b>
-    </div>
-    <div class="col-auto">
-      <app-control-radio formControlName="elderlyOverEighty" value="true" id="elderlyOverEighty-yes"></app-control-radio>
-    </div>
-    <div class="col-auto">
-      <label class="mb-0" for="elderlyOverEighty-yes">SIM</label>
-    </div>
-    <div class="col-auto">
-      <app-control-radio formControlName="elderlyOverEighty" value="false" id="elderlyOverEighty-no"></app-control-radio>
-    </div>
-    <div class="col-auto">
-      <label class="mb-0" for="elderlyOverEighty-no">NÃO</label>
-    </div>
-
-  </div>
-  <br>
-  <div class="form-row align-items-center mb-12">
-    <div class="col-12">
-      <b>Idoso 60 - 79 anos</b>
-    </div>
-    <div class="col-auto">
-      <app-control-radio formControlName="yearsInSextyAndSeventyNine" value="true" id="yearsInSextyAndSeventyNine-yes"></app-control-radio>
-    </div>
-    <div class="col-auto">
-      <label class="mb-0" for="yearsInSextyAndSeventyNine-yes">SIM</label>
-    </div>
-    <div class="col-auto">
-      <app-control-radio formControlName="yearsInSextyAndSeventyNine" value="false" id="yearsInSextyAndSeventyNine-no"></app-control-radio>
-    </div>
-    <div class="col-auto">
-      <label class="mb-0" for="yearsInSextyAndSeventyNine-no">NÃO</label>
-    </div>
-
-  </div>
-  <br>
-  <div class="form-row align-items-center mb-12">
-    <div class="col-12">
-      <b>Mulher atendida por medida protetiva</b>
-    </div>
-    <div class="col-auto">
-      <app-control-radio formControlName="womanServedByProtectiveMeasure" value="true" id="womanServedByProtectiveMeasure-yes"></app-control-radio>
-    </div>
-    <div class="col-auto">
-      <label class="mb-0" for="womanServedByProtectiveMeasure-yes">SIM</label>
-    </div>
-    <div class="col-auto">
-      <app-control-radio formControlName="womanServedByProtectiveMeasure" value="false" id="womanServedByProtectiveMeasure-no"></app-control-radio>
-    </div>
-    <div class="col-auto">
-      <label class="mb-0" for="womanServedByProtectiveMeasure-no">NÃO</label>
-    </div>
-
-  </div>
-  <br>
-  <div class="form-row align-items-center mb-12">
-    <div class="col-12">
-      <b>Mulher chefe de família</b>
-    </div>
-    <div class="col-auto">
-      <app-control-radio formControlName="femaleBreadWinner" value="true" id="femaleBreadWinner-yes"></app-control-radio>
-    </div>
-    <div class="col-auto">
-      <label class="mb-0" for="femaleBreadWinner-yes">SIM</label>
-    </div>
-    <div class="col-auto">
-      <app-control-radio formControlName="femaleBreadWinner" value="false" id="femaleBreadWinner-no"></app-control-radio>
-    </div>
-    <div class="col-auto">
-      <label class="mb-0" for="femaleBreadWinner-no">NÃO</label>
-    </div>
-
-  </div>
-  <br>
-  <div class="form-row align-items-center mb-12">
-    <div class="col-12">
-      <b>Monoparental (pai e mãe)</b>
-    </div>
-    <div class="col-auto">
-      <app-control-radio formControlName="singleParent" value="true" id="singleParent-yes"></app-control-radio>
-    </div>
-    <div class="col-auto">
-      <label class="mb-0" for="singleParent-yes">SIM</label>
-    </div>
-    <div class="col-auto">
-      <app-control-radio formControlName="singleParent" value="false" id="singleParent-no"></app-control-radio>
-    </div>
-    <div class="col-auto">
-      <label class="mb-0" for="singleParent-no">NÃO</label>
-    </div>
-
-  </div>
-  <br>
-  <div class="form-row align-items-center mb-12">
-    <div class="col-12">
-      <b>Família com mais de 5 pessoas</b>
-    </div>
-    <div class="col-auto">
-      <app-control-radio formControlName="familyWithMoreThanFivePeople" value="true" id="familyWithMoreThanFivePeople-yes"></app-control-radio>
-    </div>
-    <div class="col-auto">
-      <label class="mb-0" for="familyWithMoreThanFivePeople-yes">SIM</label>
-    </div>
-    <div class="col-auto">
-      <app-control-radio formControlName="familyWithMoreThanFivePeople" value="false" id="familyWithMoreThanFivePeople-no"></app-control-radio>
-    </div>
-    <div class="col-auto">
-      <label class="mb-0" for="familyWithMoreThanFivePeople-no">NÃO</label>
-    </div>
-
-  </div>
-  <br>
-  <div class="form-row align-items-center mb-12">
-    <div class="col-12">
-      <b>Filho(s) menor(es) de 18 anos na composição familiar</b>
-    </div>
-    <div class="col-auto">
-      <app-control-radio formControlName="childUnderEighteen" value="true" id="childUnderEighteen-yes"></app-control-radio>
-    </div>
-    <div class="col-auto">
-      <label class="mb-0" for="childUnderEighteen-yes">SIM</label>
-    </div>
-    <div class="col-auto">
-      <app-control-radio formControlName="childUnderEighteen" value="false" id="childUnderEighteen-no"></app-control-radio>
-    </div>
-    <div class="col-auto">
-      <label class="mb-0" for="childUnderEighteen-no">NÃO</label>
-    </div>
-
-  </div>
-  <br>
-  <div class="form-row align-items-center mb-12">
-    <div class="col-12">
-      <b>Chefe de família sem renda *</b>
-    </div>
-    <div class="col-auto">
-      <app-control-radio formControlName="headOfHouseholdWithoutIncome" value="true" id="headOfHouseholdWithoutIncome-yes"></app-control-radio>
-    </div>
-    <div class="col-auto">
-      <label class="mb-0" for="headOfHouseholdWithoutIncome-yes">SIM</label>
-    </div>
-    <div class="col-auto">
-      <app-control-radio formControlName="headOfHouseholdWithoutIncome" value="false" id="headOfHouseholdWithoutIncome-no"></app-control-radio>
-    </div>
-    <div class="col-auto">
-      <label class="mb-0" for="headOfHouseholdWithoutIncome-no">NÃO</label>
-    </div>
-
-  </div>
-  <br>
-  <div class="form-row align-items-center mb-12">
-    <div class="col-12">
-      <b>Benefício de prestação continuada - BPC **</b>
-    </div>
-    <div class="col-auto">
-      <app-control-radio formControlName="benefitOfContinuedProvision" value="true" id="benefitOfContinuedProvision-yes"></app-control-radio>
-    </div>
-    <div class="col-auto">
-      <label class="mb-0" for="benefitOfContinuedProvision-yes">SIM</label>
-    </div>
-    <div class="col-auto">
-      <app-control-radio formControlName="benefitOfContinuedProvision" value="false" id="benefitOfContinuedProvision-no"></app-control-radio>
-    </div>
-    <div class="col-auto">
-      <label class="mb-0" for="benefitOfContinuedProvision-no">NÃO</label>
-    </div>
-
-  </div>
-  <br>
-  <div class="form-row align-items-center mb-12">
-    <div class="col-12">
-      <b>Bolsa família</b>
-    </div>
-    <div class="col-auto">
-      <app-control-radio formControlName="familyPurse" value="true" id="familyPurse-yes"></app-control-radio>
-    </div>
-    <div class="col-auto">
-      <label class="mb-0" for="familyPurse-yes">SIM</label>
-    </div>
-    <div class="col-auto">
-      <app-control-radio formControlName="familyPurse" value="false" id="familyPurse-no"></app-control-radio>
-    </div>
-    <div class="col-auto">
-      <label class="mb-0" for="familyPurse-no">NÃO</label>
-    </div>
-
-  </div>
-  <br>
-  <div class="form-row align-items-center mb-12">
-    <div class="col-12">
-      <b>Coabitação involuntária</b>
-    </div>
-    <div class="col-auto">
-      <app-control-radio formControlName="involuntaryCohabitation" value="true" id="involuntaryCohabitation-yes"></app-control-radio>
-    </div>
-    <div class="col-auto">
-      <label class="mb-0" for="involuntaryCohabitation-yes">SIM</label>
-    </div>
-    <div class="col-auto">
-      <app-control-radio formControlName="involuntaryCohabitation" value="false" id="involuntaryCohabitation-no"></app-control-radio>
-    </div>
-    <div class="col-auto">
-      <label class="mb-0" for="involuntaryCohabitation-no">NÃO</label>
-    </div>
-
-  </div>
-  <br>
-  <div class="form-row align-items-center mb-12">
-    <div class="col-12">
-      <b>Renda familiar de até 2 salários mínimos</b>
-    </div>
-    <div class="col-auto">
-      <app-control-radio formControlName="familyIncomeOfUpTwoMinimumWages" value="true" id="familyIncomeOfUpTwoMinimumWages-yes"></app-control-radio>
-    </div>
-    <div class="col-auto">
-      <label class="mb-0" for="familyIncomeOfUpTwoMinimumWages-yes">SIM</label>
-    </div>
-    <div class="col-auto">
-      <app-control-radio formControlName="familyIncomeOfUpTwoMinimumWages" value="false" id="familyIncomeOfUpTwoMinimumWages-no"></app-control-radio>
-    </div>
-    <div class="col-auto">
-      <label class="mb-0" for="familyIncomeOfUpTwoMinimumWages-no">NÃO</label>
-    </div>
-
-  </div>
-
+<ng-template #detailsFamily>
+<app-family-view
+[family]="family"
+></app-family-view>
+</ng-template>

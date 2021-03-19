@@ -45,6 +45,9 @@ import { CustomCurrencyMaskConfig } from 'src/app/app.module';
     SharedModule,
     CurrencyMaskModule
   ],
+  exports: [
+    PropertyViewComponent
+  ],
   providers: [
     {
       provide: CURRENCY_MASK_CONFIG,
