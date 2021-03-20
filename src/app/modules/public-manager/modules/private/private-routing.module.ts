@@ -58,6 +58,10 @@ const routes: Routes = [
         loadChildren: () => import('src/app/utils/modules/courses/courses.module').then(m => m.CoursesModule)
       },
       {
+        path: 'notificacoes',
+        loadChildren: () => import('src/app/modules/public-manager/modules/private/modules/notifications/notifications.module').then(m => m.NotificationsModule)
+      },
+      {
         path: '**',
         redirectTo: 'dashboard',
         pathMatch: 'full'
