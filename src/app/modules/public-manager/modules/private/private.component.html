@@ -10,38 +10,8 @@
     <div class="col-auto">
       <div ngbDropdown class="d-inline-block">
         <fa-icon ngbDropdownToggle class="mr-2 text-light" [icon]="faBell"></fa-icon>
-        <div ngbDropdownMenu id="notification">
-          <div class="row">
-            <div class="col-auto">
-              <h2 class="h5">Notificações</h2>
-            </div>
-          </div>
-
-            <div class="row">
-              <div class="col-lg-12">
-               <app-card>
-                 <p>
-                   <span class="view-label">Cadastro</span>
-                   <span class="d-block ">Dalksdajsadjlsaljsaljsladjkljksljksadlkjsdalsdaljksadlkjsdajklsdaljkljksdaljksdalkasjdklalskdjalksjdlajsdkjasdlkajlskdta</span>
-
-                 </p>
-                 Não lida - Data
-               </app-card>
-
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-lg-12">
-                <app-card style="color: lightgray ">
-                  <p >
-                    <span class="view-label">Teste</span>
-                    <span class="d-block ">alksdajsadjlsaljsaljsladjkljksljksadlkjsdalsdaljksadlkjsdajklsdaljkljksdaljksdalkasjdklalskdjalksjdlajsdkjasdlkajlskdta</span>
-                  </p>
-                  Lida - Data
-                </app-card>
-              </div>
-            </div>
-
+        <div ngbDropdownMenu id="notification" style="width: 100%">
+            <app-notifications-list ></app-notifications-list>
         </div>
       </div>
     </div>
