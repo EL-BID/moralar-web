@@ -21,7 +21,7 @@ export class TimelineListSearchComponent extends ListSearchComponentClass {
       number: [''],
       holderName: [''],
       holderCpf: [''],
-      status: ['']
+      typeSubject: [2]
     });
   }
 

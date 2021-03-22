@@ -46,7 +46,7 @@
     <span class="d-block ">{{schedule.description || '-'}}</span>
   </p>
 
-  <div [ngSwitch]="schedule.typeScheduleStatus < 3">
+  <div [ngSwitch]="schedule.typeScheduleStatus < 4">
     <div *ngSwitchCase="true">
       <button
         type="button"

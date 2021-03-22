@@ -23,15 +23,14 @@
     </div>
     <div class="col-lg-3">
       <app-control-field>
-        <label for="status">Status da linha do tempo</label>
-        <select id="status" formControlName="status">
-          <option value="">Todos</option>
+        <label for="typeSubject">Status da linha do tempo</label>
+        <select id="typeSubject" formControlName="typeSubject">
           <option *ngFor="let timelineStatus of timelineStatusList"
             [ngValue]="timelineStatus.id">
             {{ timelineStatus.name }}
           </option>
         </select>
-        <app-control-error [control]="listSearchForm.controls.status"></app-control-error>
+        <app-control-error [control]="listSearchForm.controls.typeSubject"></app-control-error>
       </app-control-field>
     </div>
   </div>

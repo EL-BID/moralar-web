@@ -16,7 +16,7 @@ export class TimelinesListComponent extends ListContainerClass {
       { data: 'number', name: 'Number', searchable: false },
       { data: 'holderName', name: 'HolderName', searchable: false },
       { data: 'holderCpf', name: 'HolderCpf', searchable: false },
-      { data: 'status', name: 'Status', searchable: false },
+      { data: 'typeSubject', name: 'TypeSubject', searchable: false }
     ],
     page: 1,
     pageSize: 10,
@@ -25,7 +25,8 @@ export class TimelinesListComponent extends ListContainerClass {
       number: '',
       holderName: '',
       holderCpf: '',
-      status: ''
+      status: '',
+      typeSubject:  2
     },
     order: {
       column: '0',
@@ -33,7 +34,7 @@ export class TimelinesListComponent extends ListContainerClass {
     }
   };
 
-  uri = 'Family';
+  uriCustom = 'Family/TimeLineLoadData';
 
   constructor(
     activatedRoute: ActivatedRoute,

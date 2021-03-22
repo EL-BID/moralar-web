@@ -10,6 +10,7 @@ export abstract class ListContainerClass extends OnDestroyClass implements OnIni
 
   formDataModel: FormDataModel;
   uri: string;
+  uriCustom: string;
 
   list: any[] = [];
   listSize: number;
@@ -32,6 +33,7 @@ export abstract class ListContainerClass extends OnDestroyClass implements OnIni
         this.formDataModel.search.holderName = params.holderName !== undefined ? params.holderName : this.formDataModel.search.holderName;
         this.formDataModel.search.holderCpf = params.holderCpf !== undefined ? params.holderCpf : this.formDataModel.search.holderCpf;
         this.formDataModel.search.status = params.status !== undefined ? params.status : this.formDataModel.search.status;
+        this.formDataModel.search.typeSubject = params.typeSubject !== undefined ? params.typeSubject : this.formDataModel.search.typeSubject;
         this.formDataModel.order.column = params.column !== undefined ? params.column : this.formDataModel.order.column;
         this.formDataModel.order.direction = params.direction !== undefined ? params.direction : this.formDataModel.order.direction;
         this.formDataModel.page = params.page !== undefined ? parseFloat(params.page) : this.formDataModel.page;
@@ -70,7 +72,9 @@ export abstract class ListContainerClass extends OnDestroyClass implements OnIni
   }
 
   getList(): void {
-    this._httpService.post(`${this.uri}/LoadData`, generateFormData(this.formDataModel))
+    let uri;
+    uri = !this.uriCustom ? `${this.uri}/LoadData` : this.uriCustom;
+    this._httpService.post(uri, generateFormData(this.formDataModel))
       .pipe(takeUntil(this.onDestroy))
       .subscribe((response: any) => {
         this.list = response.data;
