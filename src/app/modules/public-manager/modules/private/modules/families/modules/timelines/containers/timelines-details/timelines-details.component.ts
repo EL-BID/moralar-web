@@ -21,7 +21,7 @@ export class TimelinesDetailsComponent extends OnDestroyClass implements OnInit 
   }
 
   ngOnInit(): void {
-    this.httpService.get(`Profile/Detail/${this.activatedRoute.snapshot.paramMap.get('familyId')}`)
+    this.httpService.get(`Family/Detail/${this.activatedRoute.snapshot.paramMap.get('familyId')}`)
       .pipe(takeUntil(this.onDestroy))
       .subscribe((response: any) => this.family = response.data);
   }

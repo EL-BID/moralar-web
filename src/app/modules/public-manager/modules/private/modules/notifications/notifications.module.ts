@@ -18,6 +18,7 @@ import {MegaleiosFormsModule} from '../../../../../../utils/modules/megaleios-fo
 import {NotificationsRoutingModule} from './notifications-routing.module';
 import {SharedModule} from "../../../../../../utils/modules/shared/shared.module";
 import {FamiliesModule} from "../../../../../../utils/modules/families/families.module";
+import {NotificationFormComponent} from "./components/notification-form/notification-form.component";
 @NgModule({
   declarations: [
     NotificationsComponent,
@@ -29,7 +30,8 @@ import {FamiliesModule} from "../../../../../../utils/modules/families/families.
     NotificationListComponent,
     NotificationListSearchComponent,
     NotificationListSearchComponent,
-    NotificationViewComponent
+    NotificationViewComponent,
+    NotificationFormComponent
   ],
   imports: [
     CommonModule,

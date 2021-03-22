@@ -13,7 +13,6 @@ const routes: Routes = [
     children: [
       { path: '', component: TimelinesListComponent },
       { path: ':familyId', component: TimelinesDetailsComponent },
-      { path: 'contact', component: TimelinesDetailsComponent },
       { path: '**', redirectTo: '', pathMatch: 'full' }
     ]
   }

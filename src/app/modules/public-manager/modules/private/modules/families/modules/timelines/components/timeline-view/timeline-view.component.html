@@ -3,32 +3,155 @@
     <div class="col-lg-3">
       <p class="mb-lg-0">
         <span class="view-label">Cadastro</span>
-        <span class="d-block text-danger">[Pendente API]</span>
+        <span class="d-block ">{{family.holder?.number || '-'}}</span>
       </p>
     </div>
     <div class="col-lg-3">
       <p class="mb-lg-0">
         <span class="view-label">Titular</span>
-        <span class="d-block text-danger">[Pendente API]</span>
+        <span class="d-block">{{family.holder?.name || '-'}}</span>
       </p>
     </div>
     <div class="col-lg-3">
       <p class="mb-lg-0">
         <span class="view-label">Cpf</span>
-        <span class="d-block text-danger">[Pendente API]</span>
+        <span class="d-block ">{{family.holder?.cpf || '-'  | mask: '000.000.000-99'}}</span>
       </p>
     </div>
     <div class="col-lg-3">
-      <p class="mb-0">
+      <p class="mb-lg-0">
         <span class="view-label">Situação</span>
-        <span class="d-block text-danger">[Pendente API]</span>
+        <span class="d-block ">{{family.holder?.status || '-' }}</span>
+      </p>
+    </div>
+  </div>
+</app-card>
+
+<h2 class="h5">Situação</h2>
+<ul class="nav nav-tabs justify-content-center">
+  <li class="nav-item" *ngFor="let item of stage; let i = index" >
+    <a class="nav-link {{i == 0 ? 'active' : ''}}"  (click)="tabSelected = item; activateClass($event)">{{item.description}}</a>
+  </li>
+</ul>
+<div class="progress" style="height: 20px;">
+  <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+<app-card class="mb-3">
+  <div class="row">
+    <div class="col-lg-auto">
+      <p class="mb-lg-0">
+        <span class="view-label">Data</span>
+        <span class="d-block ">{{tabSelected?.date | date:'dd/MM/yyyy'}}</span>
+      </p>
+    </div>
+    <div class="col-lg-auto">
+      <p class="mb-lg-0">
+        <span class="view-label">Hora</span>
+        <span class="d-block ">10Hs</span>
+      </p>
+    </div>
+    <div class="col-lg-auto">
+      <p class="mb-lg-0">
+        <span class="view-label">Assunto</span>
+        <span class="d-block ">{{scheduleTypeList[tabSelected?.typeSubject]?.name}}</span>
+      </p>
+    </div>
+    <div class="col-lg-auto">
+      <p class="mb-0">
+        <span class="view-label">Status</span>
+        <span class="d-block ">{{scheduleStatusList[tabSelected?.typeScheduleStatus]?.name}}</span>
       </p>
     </div>
   </div>
 </app-card>
 
 
-  <h2 class="h5">Situação</h2>
+<app-card class="mb-3">
+  <h2 class="h5">Questionários    <span class="d-block text-danger">[Pendente API]</span></h2>
+  <div class="table-responsive">
+    <table class="table table-striped ">
+      <thead>
+      <tr>
+        <th></th>
+        <th >Questionário</th>
+        <th >Disponibilizado</th>
+        <th >Assunto</th>
+        <th >Situação</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of listQuizByFamily">
+        <td>
+          <app-control-checkbox>
+          </app-control-checkbox>
+        </td>
+        <td>{{ item.number || '-' }}</td>
+        <td>{{ item.name || '-' }}</td>
+        <td>{{ item.cpf || '-' }}</td>
+        <td>{{ item.email || '-' }}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</app-card>
+
+<app-card class="mb-3">
+  <h2 class="h5">Curso    <span class="d-block text-danger">[Pendente API]</span></h2>
+  <div class="table-responsive">
+    <table class="table table-striped ">
+      <thead>
+      <tr>
+        <th></th>
+        <th >Curso</th>
+        <th >Início e Término</th>
+        <th >Horário</th>
+        <th >Status</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of listCourseByFamily">
+        <td>
+          <app-control-checkbox>
+          </app-control-checkbox>
+        </td>
+        <td>{{ item.number || '-' }}</td>
+        <td>{{ item.name || '-' }}</td>
+        <td>{{ item.cpf || '-' }}</td>
+        <td>{{ item.email || '-' }}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</app-card>
+
+<app-card class="mb-3">
+  <h2 class="h5">Enquete    <span class="d-block text-danger">[Pendente API]</span></h2>
+  <div class="table-responsive">
+    <table class="table table-striped ">
+      <thead>
+      <tr>
+        <th></th>
+        <th >Enquete</th>
+        <th >Disponibilizado</th>
+        <th >Status</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of listSurveyByFamily">
+        <td>
+          <app-control-checkbox>
+          </app-control-checkbox>
+        </td>
+        <td>{{ item.number || '-' }}</td>
+        <td>{{ item.name || '-' }}</td>
+        <td>{{ item.cpf || '-' }}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</app-card>
+
+<!--
 
   <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item" style="width: 25%;">
@@ -53,90 +176,4 @@
     <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
 
   </div>
-
-<div class="progress" style="height: 20px;">
-  <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-</div>
-<app-card class="mb-3">
-  <div class="row">
-    <div class="col-lg-3">
-      <p class="mb-lg-0">
-        <span class="view-label">Data</span>
-        <span class="d-block text-danger">[Pendente API]</span>
-      </p>
-    </div>
-    <div class="col-lg-3">
-      <p class="mb-lg-0">
-        <span class="view-label">Hora</span>
-        <span class="d-block text-danger">[Pendente API]</span>
-      </p>
-    </div>
-    <div class="col-lg-3">
-      <p class="mb-lg-0">
-        <span class="view-label">Assunto</span>
-        <span class="d-block text-danger">[Pendente API]</span>
-      </p>
-    </div>
-    <div class="col-lg-3">
-      <p class="mb-0">
-        <span class="view-label">Status</span>
-        <span class="d-block text-danger">[Pendente API]</span>
-      </p>
-    </div>
-  </div>
-</app-card>
-
-
-<app-card class="mb-3">
-  <h2 class="h5">Curso</h2>
-  <div class="row">
-    <div class="col-lg-3">
-      <p class="mb-lg-0">
-        <span class="view-label">Curso</span>
-        <span class="d-block text-danger">[Pendente API]</span>
-      </p>
-    </div>
-    <div class="col-lg-3">
-      <p class="mb-lg-0">
-        <span class="view-label">Início e Término</span>
-        <span class="d-block text-danger">[Pendente API]</span>
-      </p>
-    </div>
-    <div class="col-lg-3">
-      <p class="mb-lg-0">
-        <span class="view-label">Horário</span>
-        <span class="d-block text-danger">[Pendente API]</span>
-      </p>
-    </div>
-    <div class="col-lg-3">
-      <p class="mb-0">
-        <span class="view-label">Status</span>
-        <span class="d-block text-danger">[Pendente API]</span>
-      </p>
-    </div>
-  </div>
-</app-card>
-
-<app-card class="mb-3">
-  <h2 class="h5">Enquete</h2>
-  <div class="row">
-    <div class="col-lg-3">
-      <p class="mb-lg-0">
-        <span class="view-label">Enquete</span>
-        <span class="d-block text-danger">[Pendente API]</span>
-      </p>
-    </div>
-    <div class="col-lg-3">
-      <p class="mb-lg-0">
-        <span class="view-label">Disponibilizado</span>
-        <span class="d-block text-danger">[Pendente API]</span>
-      </p>
-    </div>
-    <div class="col-lg-3">
-      <p class="mb-0">
-        <span class="view-label">Status</span>
-        <span class="d-block text-danger">[Pendente API]</span>
-      </p>
-    </div>
-  </div>
-</app-card>
+-->
