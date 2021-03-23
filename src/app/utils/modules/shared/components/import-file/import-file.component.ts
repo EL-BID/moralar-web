@@ -43,13 +43,10 @@ export class ImportFileComponent extends OnDestroyClass {
       .subscribe((response: any) => {
         this.megaleiosAlertService.success(`${response.message}. Upload realizado!`);
         this.importFile();
-        setTimeout(() => {
-          this.uploadIsUploading = false;
-        //  location.reload();
-        }, 2000);
+        setTimeout(() => { this.uploadIsUploading = false; location.reload(); }, 2000);
       }, (response: any) => {
         this.megaleiosAlertService.error(`${response.message}. Falha no upload!`);
-        this.uploadIsUploading = false;
+        setTimeout(() => { this.uploadIsUploading = false; location.reload(); }, 2000);
       });
 
   }
