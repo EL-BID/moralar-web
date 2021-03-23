@@ -55,7 +55,7 @@ export class ImportFileComponent extends OnDestroyClass {
   }
 
   importFile() {
-    this.httpService.get(`${this.linkImport}/Import`)
+    this.httpService.get(`${this.linkImport}`)
       .subscribe((response: any) => {
         this.megaleiosAlertService.success(`${response.message}. Importação realizada!`);
       }, (response: any) => {
