@@ -37,6 +37,10 @@ import { CustomCurrencyMaskConfig } from 'src/app/app.module';
     SharedModule,
     CurrencyMaskModule
   ],
+  exports: [
+    CoursesDetailsComponent,
+    CourseListComponent
+  ],
   providers: [
     {
       provide: CURRENCY_MASK_CONFIG,
