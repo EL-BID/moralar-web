@@ -18,7 +18,12 @@ export class PollsListComponent extends ListContainerClass {
     page: 1,
     pageSize: 10,
     search: {
-      search: ''
+      search: '',
+      number: '',
+      holderName: '',
+      holderCpf: '',
+      status: '',
+      typeQuiz: 1
     },
     order: {
       column: '0',
