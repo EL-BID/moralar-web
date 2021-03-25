@@ -32,6 +32,9 @@ import { QuestionnaireViewComponent } from './components/questionnaire-view/ques
     QuestionnaireFormComponent,
     QuestionnaireViewComponent
   ],
+  exports: [
+    QuestionnaireListComponent
+  ],
   imports: [
     CommonModule,
     QuestionnairesRoutingModule,

@@ -18,7 +18,12 @@ export class QuestionnairesListComponent extends ListContainerClass {
     page: 1,
     pageSize: 10,
     search: {
-      search: ''
+      search: '',
+      number: '',
+      holderName: '',
+      holderCpf: '',
+      status: '',
+      typeQuiz: 0
     },
     order: {
       column: '0',

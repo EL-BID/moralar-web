@@ -36,6 +36,9 @@ import {ReleaseViewComponent} from "./components/release-view/release-view.compo
     ReleaseFamilyListSearchComponent,
     ReleaseViewComponent
   ],
+  exports: [
+    AvailableListComponent
+  ],
   imports: [
     CommonModule,
     AvailablesRoutingModule,
