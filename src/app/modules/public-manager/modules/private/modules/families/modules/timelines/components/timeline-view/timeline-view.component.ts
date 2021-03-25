@@ -1,8 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {HttpService} from '../../../../../../../../../../utils/services/http/http.service';
 import {takeUntil} from 'rxjs/operators';
-import {dateToString} from '../../../../../../../../../../utils/functions/date.function';
+import {dateAndTimeToString, dateToString} from '../../../../../../../../../../utils/functions/date.function';
 import {SCHEDULE_TYPE_LIST} from '../../../../../../../../../../utils/interfaces/schedules.interface';
 import {TIMELINE_STATUS_LIST} from '../../../../../../../../../../utils/interfaces/timelines.interface';
 import {ListContainerClass} from '../../../../../../../../../../utils/classes/list-container.class';
@@ -34,7 +34,8 @@ export class TimelineViewComponent extends ListContainerClass implements OnInit 
     private activatedRoute: ActivatedRoute,
     private httpService: HttpService,
     private ngbModal: NgbModal,
-    private megaleiosAlertService: MegaleiosAlertService
+    private megaleiosAlertService: MegaleiosAlertService,
+    private router: Router
   ) {
     // @ts-ignore
     super();
@@ -44,7 +45,7 @@ export class TimelineViewComponent extends ListContainerClass implements OnInit 
         this.typeSubjectCurrent = response.data.schedule.typeSubject;
         this.stage = response.data.data;
         for (let i = 0; this.stage.length > i; i++) {
-          this.stage[i].date = dateToString(this.stage[i].date);
+          this.stage[i].date = dateAndTimeToString(this.stage[i].date);
           // checking stages
           switch (this.stage[i].typeScheduleStatus) {
             case 0:
@@ -80,10 +81,9 @@ export class TimelineViewComponent extends ListContainerClass implements OnInit 
         this.listPropertiesInterest = response.data.interestResidencialProperty;
         this.listCourseByFamily = response.data.courses;
         for (let i = 0; response.data.courses.length > i; i++) {
-          this.listCourseByFamily[i].startDate = dateToString(this.listCourseByFamily[i].startDate);
-          this.listCourseByFamily[i].endDate = dateToString(this.listCourseByFamily[i].endDate);
+          this.listCourseByFamily[i].startDate = dateAndTimeToString(this.listCourseByFamily[i].startDate);
+          this.listCourseByFamily[i].endDate = dateAndTimeToString(this.listCourseByFamily[i].endDate);
         }
-        this.listSchedulesByFamily = response.data.schedules;
       });
   }
 
@@ -124,5 +124,8 @@ export class TimelineViewComponent extends ListContainerClass implements OnInit 
       .catch(() => { });
   }
 
+  handleDetails(): void {
+    this.router.navigate(['/gestor-publico/app/familias/', this.family.id]);
+  }
 }
 

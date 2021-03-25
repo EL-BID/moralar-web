@@ -1,6 +1,8 @@
 import {Component, Input} from '@angular/core';
 import { ListContainerClass } from 'src/app/utils/classes/list-container.class';
 import { FormDataModel } from 'src/app/utils/functions/generate-form-data.function';
+import {ActivatedRoute, Router} from '@angular/router';
+import {HttpService} from '../../../../../../../../../../utils/services/http/http.service';
 
 @Component({
   selector: 'app-polls-list',
@@ -33,8 +35,10 @@ export class PollsListComponent extends ListContainerClass {
   };
 
   constructor(
+    activatedRoute: ActivatedRoute,
+    private router: Router,
+    httpService: HttpService
   ) {
-    // @ts-ignore
-    super();
+    super(activatedRoute, router, httpService);
   }
 }

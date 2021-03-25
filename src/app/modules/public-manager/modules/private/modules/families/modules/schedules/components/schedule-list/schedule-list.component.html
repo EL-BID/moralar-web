@@ -15,7 +15,7 @@
             (changed)="listItemSelected.emit(item)">
           </app-control-checkbox>
         </td>
-        <td>{{ item.date || '-' }}</td>
+        <td>{{ item.date | date: 'dd/MM/yyy HH:mm' || '-' }}</td>
         <td>{{ scheduleStatusList[item.typeScheduleStatus]?.name || '-' }}</td>
         <td>{{ scheduleTypeList[item.typeSubject]?.name || '-' }}</td>
       </tr>
