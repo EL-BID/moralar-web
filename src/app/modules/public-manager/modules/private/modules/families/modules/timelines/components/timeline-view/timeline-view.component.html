@@ -59,12 +59,6 @@
     </div>
     <div class="col-lg-auto">
       <p class="mb-lg-0">
-        <span class="view-label">Hora</span>
-        <span class="d-block ">10Hs</span>
-      </p>
-    </div>
-    <div class="col-lg-auto">
-      <p class="mb-lg-0">
         <span class="view-label">Assunto</span>
         <span class="d-block ">{{scheduleTypeList[tabSelected?.typeSubject]?.name}}</span>
       </p>
@@ -82,8 +76,7 @@
     </div>
   </div>
 </app-card>
-<!-- *ngIf="tabSelected?.typeSubject == 7 && tabSelected?.typeSubject == 8 " -->
-<app-card class="mb-3" >
+<app-card class="mb-3"  *ngIf="tabSelected?.typeSubject == 7 && tabSelected?.typeSubject == 8 ">
   <app-schedules-list [list]="stage"></app-schedules-list>
 </app-card>
 
