@@ -12,7 +12,7 @@
         <td>{{ item.title || '-' }}</td>
         <td>{{ item.startDate || '-' | date: 'dd/MM/yyyy' }}</td>
         <td>{{ item.endDate || '-' | date: 'dd/MM/yyyy' }}</td>
-        <td>{{ item.typeStatusCourse == 1 ? 'Inscrito' : 'Aguardando na lista de espera' || '-' }}</td>
+        <td>{{ item.typeStatusCourse == 0 ? 'Inscrito' : 'Aguardando na lista de espera' || '-' }}</td>
       </tr>
     </tbody>
   </table>
