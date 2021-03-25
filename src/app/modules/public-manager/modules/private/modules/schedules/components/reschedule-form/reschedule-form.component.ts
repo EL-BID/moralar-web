@@ -4,7 +4,7 @@ import { DateTime } from 'luxon';
 import { FormComponentClass } from 'src/app/utils/classes/form-component.class';
 import { SCHEDULE_TYPE_LIST } from 'src/app/utils/interfaces/schedules.interface';
 import {trimWhiteSpace} from '../../../../../../../../utils/functions/validators.function';
-import {dateAndTimeToString, dateToSeconds, dateToString} from "../../../../../../../../utils/functions/date.function";
+import {dateAndTimeToString, dateToSeconds, dateToString} from '../../../../../../../../utils/functions/date.function';
 @Component({
   selector: 'app-reschedule-form',
   templateUrl: './reschedule-form.component.html',
@@ -31,8 +31,8 @@ export class RescheduleFormComponent extends FormComponentClass implements OnIni
   }
 
   ngOnInit(): void {
-    this.form.controls.time.setValue(dateAndTimeToString(this.form.controls.date.value).substr(-5, 5));
-    this.form.controls.date.setValue(dateToSeconds(dateToString(this.form.controls.date.value)));
+    this.form.controls.time.setValue(dateAndTimeToString(+this.form.controls.date.value).substr(-5, 5));
+    this.form.controls.date.setValue(dateToSeconds(dateToString(+this.form.controls.date.value)));
   }
 
 }

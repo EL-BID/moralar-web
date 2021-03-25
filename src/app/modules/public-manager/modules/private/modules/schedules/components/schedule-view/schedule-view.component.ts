@@ -23,7 +23,7 @@ export class ScheduleViewComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.data = dateAndTimeToString(this.schedule.date);
+    this.data = dateAndTimeToString(+this.schedule.date);
   }
 
 }
