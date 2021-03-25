@@ -25,9 +25,9 @@
       <app-control-field>
         <label for="typeSubject">Status da linha do tempo</label>
         <select id="typeSubject" formControlName="typeSubject">
-          <option *ngFor="let timelineStatus of timelineStatusList"
-            [ngValue]="timelineStatus.id">
-            {{ timelineStatus.name }}
+          <option *ngFor="let timelineType of timelineTypeList"
+            [ngValue]="timelineType.id">
+            {{ timelineType.name }}
           </option>
         </select>
         <app-control-error [control]="listSearchForm.controls.typeSubject"></app-control-error>

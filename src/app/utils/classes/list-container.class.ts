@@ -1,9 +1,9 @@
-import { OnInit, Directive } from '@angular/core';
-import { ActivatedRoute, Params, Router } from '@angular/router';
-import { takeUntil } from 'rxjs/operators';
-import { HttpService } from 'src/app/utils/services/http/http.service';
-import { FormDataModel, generateFormData } from '../functions/generate-form-data.function';
-import { OnDestroyClass } from './on-destroy.class';
+import {OnInit, Directive} from '@angular/core';
+import {ActivatedRoute, Params, Router} from '@angular/router';
+import {takeUntil} from 'rxjs/operators';
+import {HttpService} from 'src/app/utils/services/http/http.service';
+import {FormDataModel, generateFormData} from '../functions/generate-form-data.function';
+import {OnDestroyClass} from './on-destroy.class';
 
 @Directive()
 export abstract class ListContainerClass extends OnDestroyClass implements OnInit {
@@ -11,6 +11,7 @@ export abstract class ListContainerClass extends OnDestroyClass implements OnIni
   formDataModel: FormDataModel;
   uri: string;
   uriCustom: string;
+  method: string;
 
   list: any[] = [];
   listSize: number;
@@ -43,7 +44,7 @@ export abstract class ListContainerClass extends OnDestroyClass implements OnIni
   }
 
   protected updateQueryParams(params: Params): void {
-    this._router.navigate([], { relativeTo: this._activatedRoute, queryParams: params, queryParamsHandling: 'merge' });
+    this._router.navigate([], {relativeTo: this._activatedRoute, queryParams: params, queryParamsHandling: 'merge'});
   }
 
   handleListSearchChange(value: Params): void {
@@ -72,15 +73,28 @@ export abstract class ListContainerClass extends OnDestroyClass implements OnIni
   }
 
   getList(): void {
-    let uri;
-    uri = !this.uriCustom ? `${this.uri}/LoadData` : this.uriCustom;
-    this._httpService.post(uri, generateFormData(this.formDataModel))
-      .pipe(takeUntil(this.onDestroy))
-      .subscribe((response: any) => {
-        this.list = response.data;
-        this.listSize = response.recordsTotal;
-        this.listSizeFiltered = response.recordsFiltered;
-      });
+    if (this.uriCustom?.length > 0 || this.uri?.length > 0) {
+      let uri;
+      uri = !this.uriCustom ? `${this.uri}/LoadData` : this.uriCustom;
+
+      if (!this.method) {
+        this._httpService.post(uri, generateFormData(this.formDataModel))
+          .pipe(takeUntil(this.onDestroy))
+          .subscribe((response: any) => {
+            this.list = response.data;
+            this.listSize = response.recordsTotal;
+            this.listSizeFiltered = response.recordsFiltered;
+          });
+      } else {
+        this._httpService.get(uri, generateFormData(this.formDataModel))
+          .pipe(takeUntil(this.onDestroy))
+          .subscribe((response: any) => {
+            this.list = response.data;
+            this.listSize = response.recordsTotal;
+            this.listSizeFiltered = response.recordsFiltered;
+          });
+      }
+    }
   }
 
 }

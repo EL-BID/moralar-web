@@ -26,7 +26,7 @@ export class ScheduleFormComponent extends FormComponentClass implements OnInit{
     columns: [
       { data: 'number',    name: 'Number',    searchable: true },
       { data: 'holderName', name: 'HolderName', searchable: true },
-      { data: 'holderCpf',     name: 'HolderCpf',     searchable: true }
+      { data: 'holderCpf',     name: 'SchedulesComponentCpf',     searchable: true }
     ],
     page: 1,
     pageSize: 10,

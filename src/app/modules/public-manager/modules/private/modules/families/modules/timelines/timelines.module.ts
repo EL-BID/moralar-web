@@ -16,6 +16,13 @@ import { NgxMaskModule } from 'ngx-mask';
 import Timeline = gsap.core.Timeline;
 import {TimelinesDetailsComponent} from './containers/timelines-details/timelines-details.component';
 import {TimelineViewComponent} from './components/timeline-view/timeline-view.component';
+import {AvailablesModule} from "../../../../../../../../utils/modules/questionnaires/modules/availables/availables.module";
+import {MatchsModule} from "../matchs/matchs.module";
+import {QuestionnairesModule} from "../../../../../../../../utils/modules/questionnaires/questionnaires.module";
+import {QuestionnariesAvaliableModule} from "../questionnaries-avaliable/questionnaries-avaliable.module";
+import {CoursesModule} from "../courses/courses.module";
+import {PollsModule} from "../polls/polls.module";
+import {SchedulesModule} from "../schedules/schedules.module";
 
 @NgModule({
   declarations: [
@@ -35,7 +42,14 @@ import {TimelineViewComponent} from './components/timeline-view/timeline-view.co
     ReactiveFormsModule,
     MegaleiosFormsModule,
     SharedModule,
-    NgxMaskModule.forChild()
+    NgxMaskModule.forChild(),
+    AvailablesModule,
+    MatchsModule,
+    QuestionnairesModule,
+    QuestionnariesAvaliableModule,
+    CoursesModule,
+    PollsModule,
+    SchedulesModule
   ]
 })
 export class TimelinesModule { }

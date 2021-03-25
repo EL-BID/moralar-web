@@ -21,7 +21,7 @@
     <div class="col-lg-3">
       <p class="mb-lg-0">
         <span class="view-label">Situação</span>
-        <span class="d-block ">{{situation || '-'}}</span>
+        <span class="d-block ">{{scheduleTypeList[typeSubjectCurrent]?.name || '-'}}</span>
       </p>
     </div>
   </div>
@@ -29,8 +29,11 @@
 
 <h2 class="h5">Situação</h2>
 <ul class="nav nav-tabs justify-content-center">
-  <li class="nav-item" *ngFor="let item of stage; let i = index" >
-    <a class="nav-link {{i == 0 ? 'active' : ''}}"  (click)="tabSelected = item; activateClass($event)">{{scheduleTypeList[item?.typeSubject]?.name | uppercase}}</a>
+  <li class="nav-item " *ngFor="let item of stage; let i = index" >
+    <a  class="nav-link stage{{i}} {{item.stageSituation}} "
+        (click)="tabSelected = item; activateClass($event)">
+      {{scheduleTypeList[item?.typeSubject]?.name | uppercase}}
+    </a>
   </li>
 </ul>
 <div class="progress" style="height: 20px;">
@@ -62,118 +65,30 @@
         <span class="d-block ">{{timeLineStatusList[tabSelected?.typeScheduleStatus]?.name}}</span>
       </p>
     </div>
-  </div>
-</app-card>
-
-
-<app-card class="mb-3">
-  <h2 class="h5">Questionários    <span class="d-block text-danger">[Pendente API]</span></h2>
-  <div class="table-responsive">
-    <table class="table table-striped ">
-      <thead>
-      <tr>
-        <th></th>
-        <th >Questionário</th>
-        <th >Disponibilizado</th>
-        <th >Assunto</th>
-        <th >Situação</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let item of listQuizByFamily">
-        <td>
-          <app-control-checkbox>
-          </app-control-checkbox>
-        </td>
-        <td>{{ item.number || '-' }}</td>
-        <td>{{ item.name || '-' }}</td>
-        <td>{{ item.cpf || '-' }}</td>
-        <td>{{ item.email || '-' }}</td>
-      </tr>
-      </tbody>
-    </table>
-  </div>
-</app-card>
-
-<app-card class="mb-3">
-  <h2 class="h5">Curso    <span class="d-block text-danger">[Pendente API]</span></h2>
-  <div class="table-responsive">
-    <table class="table table-striped ">
-      <thead>
-      <tr>
-        <th></th>
-        <th >Curso</th>
-        <th >Início e Término</th>
-        <th >Horário</th>
-        <th >Status</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let item of listCourseByFamily">
-        <td>
-          <app-control-checkbox>
-          </app-control-checkbox>
-        </td>
-        <td>{{ item.number || '-' }}</td>
-        <td>{{ item.name || '-' }}</td>
-        <td>{{ item.cpf || '-' }}</td>
-        <td>{{ item.email || '-' }}</td>
-      </tr>
-      </tbody>
-    </table>
-  </div>
-</app-card>
-
-<app-card class="mb-3">
-  <h2 class="h5">Enquete    <span class="d-block text-danger">[Pendente API]</span></h2>
-  <div class="table-responsive">
-    <table class="table table-striped ">
-      <thead>
-      <tr>
-        <th></th>
-        <th >Enquete</th>
-        <th >Disponibilizado</th>
-        <th >Status</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let item of listSurveyByFamily">
-        <td>
-          <app-control-checkbox>
-          </app-control-checkbox>
-        </td>
-        <td>{{ item.number || '-' }}</td>
-        <td>{{ item.name || '-' }}</td>
-        <td>{{ item.cpf || '-' }}</td>
-      </tr>
-      </tbody>
-    </table>
-  </div>
-</app-card>
-
-<!--
-
-  <ul class="nav nav-tabs" id="myTab" role="tablist">
-    <li class="nav-item" style="width: 25%;">
-      <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Reunião PGM</a>
-    </li>
-    <li class="nav-item" style="width: 20%;">
-      <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Escolha do imóvel</a>
-    </li>
-    <li class="nav-item" style="width: 20%;">
-      <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Mudança</a>
-    </li>
-    <li class="nav-item" style="width: 30%;">
-      <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Acompanhamento pós-mudança</a>
-    </li>
-  </ul>
-  <div class="tab-content" id="myTabContent">
-    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-
-
+    <div class="col-lg-auto " *ngIf="tabSelected?.typeSubject == 7 && tabSelected?.stageSituation == 'active'">
+      <button type="button" class="btn btn-outline-success"
+              (click)="confirmChange(tabSelected)"> Confirmar mudança
+      </button>
     </div>
-    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
-    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
-
   </div>
--->
+</app-card>
+
+<app-card class="mb-3" *ngIf="tabSelected?.typeSubject == 7 && tabSelected?.typeSubject == 8 ">
+  <app-schedules-list [list]="listSchedulesByFamily"></app-schedules-list>
+</app-card>
+
+<app-card class="mb-3" *ngIf="tabSelected?.typeSubject == 2 || tabSelected?.typeSubject == 7">
+  <app-questionnaries-avaliable-list [list]="listQuizByFamily"></app-questionnaries-avaliable-list>
+</app-card>
+
+<app-card class="mb-3" *ngIf="tabSelected?.typeSubject == 4 ">
+  <app-matchs-list [list]="listPropertiesInterest"></app-matchs-list>
+</app-card>
+
+<app-card class="mb-3">
+  <app-courses-list [list]="listCourseByFamily"></app-courses-list>
+</app-card>
+
+<app-card class="mb-3">
+  <app-polls-list [list]="listPollsByFamily"></app-polls-list>
+</app-card>
