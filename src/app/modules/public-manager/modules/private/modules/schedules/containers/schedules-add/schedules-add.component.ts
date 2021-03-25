@@ -4,6 +4,12 @@ import { MegaleiosAlertService } from 'src/app/utils/modules/megaleios-alert/meg
 import { ActivatedRoute, Router } from '@angular/router';
 import { takeUntil } from 'rxjs/operators';
 import { OnDestroyClass } from 'src/app/utils/classes/on-destroy.class';
+import {
+  dateAndTimeToSeconds,
+  dateAndTimeToString,
+  dateToSeconds,
+  dateToString
+} from '../../../../../../../../utils/functions/date.function';
 
 @Component({
   selector: 'app-schedules-add',
@@ -24,6 +30,8 @@ export class SchedulesAddComponent extends OnDestroyClass {
   }
 
   handleFormSubmit(value: any): void {
+    value.date = dateToString(value.date) + ' ' + value.time;
+    value.date = dateAndTimeToSeconds(value.date);
     if (this.formLoading === false) {
       this.formLoading = true;
       this.httpService.post('Schedule/Register', value)

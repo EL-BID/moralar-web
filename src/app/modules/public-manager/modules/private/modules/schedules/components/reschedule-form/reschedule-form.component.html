@@ -1,12 +1,26 @@
 <form [formGroup]="form" (ngSubmit)="handleSubmit()">
-  <app-control-field>
-    <label for="date">Data</label>
-    <app-control-date-picker id="date"
-      [dayMin]="dayMin"
-      formControlName="date">
-    </app-control-date-picker>
-    <app-control-error [control]="form.controls.date"></app-control-error>
-  </app-control-field>
+  <div class="row">
+    <div class="col-12">
+      <app-control-field>
+        <label for="date">Data</label>
+        <app-control-date-picker id="date"
+                                 [dayMin]="dayMin"
+                                 formControlName="date">
+        </app-control-date-picker>
+        <app-control-error [control]="form.controls.date"></app-control-error>
+      </app-control-field>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-6">
+      <app-control-field>
+        <label for="time">Horário</label>
+        <input type="time" id="time" formControlName="time" >
+        <app-control-error [control]="form.controls.time"></app-control-error>
+      </app-control-field>
+    </div>
+  </div>
+
   <app-control-field>
     <label for="typeSubject">Assunto</label>
     <select id="typeSubject" formControlName="typeSubject">

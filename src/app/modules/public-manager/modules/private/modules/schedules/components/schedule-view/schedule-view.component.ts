@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {SCHEDULE_STATUS_LIST, SCHEDULE_TYPE_LIST} from '../../../../../../../../utils/interfaces/schedules.interface';
 import { sortBy } from 'lodash';
-import {dateToString} from "../../../../../../../../utils/functions/date.function";
+import {dateAndTimeToString} from '../../../../../../../../utils/functions/date.function';
 @Component({
   selector: 'app-schedule-view',
   templateUrl: './schedule-view.component.html',
@@ -23,7 +23,7 @@ export class ScheduleViewComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.data = dateToString(this.schedule.date);
+    this.data = dateAndTimeToString(this.schedule.date);
   }
 
 }

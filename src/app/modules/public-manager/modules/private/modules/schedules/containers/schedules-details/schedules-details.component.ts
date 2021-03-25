@@ -6,6 +6,7 @@ import { OnDestroyClass } from 'src/app/utils/classes/on-destroy.class';
 import { MegaleiosAlertService } from 'src/app/utils/modules/megaleios-alert/megaleios-alert.service';
 import { ModalComponent } from 'src/app/utils/modules/shared/components/modal/modal.component';
 import { HttpService } from 'src/app/utils/services/http/http.service';
+import {dateAndTimeToSeconds, dateToString} from '../../../../../../../../utils/functions/date.function';
 
 @Component({
   selector: 'app-schedules-details',
@@ -31,6 +32,7 @@ export class SchedulesDetailsComponent extends OnDestroyClass implements OnInit 
   }
 
   ngOnInit(): void {
+    console.log('ok');
     this.httpService.get(`Schedule/Detail/${this.activatedRoute.snapshot.paramMap.get('scheduleId')}`)
       .pipe(takeUntil(this.onDestroy))
       .subscribe((response: any) => this.schedule = response.data);
@@ -44,13 +46,15 @@ export class SchedulesDetailsComponent extends OnDestroyClass implements OnInit 
   handleRescheduleFormSubmit(value: any): void {
     if (this.rescheduleFormLoading === false) {
       this.rescheduleFormLoading = true;
+      value.date = dateToString(value.date) + ' ' + value.time;
+      value.date = dateAndTimeToSeconds(value.date);
       value.id = this.schedule.id;
       this.httpService.post('Schedule/ChangeStatus', value)
         .pipe(takeUntil(this.onDestroy))
         .subscribe((response: any) => {
           this.megaleiosAlertService.success(response.message);
           this.rescheduleNgbModalRef.close();
-          this.ngOnInit();
+          location.reload();
           this.rescheduleFormLoading = false;
         }, (response: any) => {
           this.megaleiosAlertService.error(response.message);

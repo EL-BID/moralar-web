@@ -4,10 +4,10 @@ import { DateTime } from 'luxon';
 import { FormComponentClass } from 'src/app/utils/classes/form-component.class';
 import { trimWhiteSpace } from 'src/app/utils/functions/validators.function';
 import { SCHEDULE_TYPE_LIST } from 'src/app/utils/interfaces/schedules.interface';
-import {takeUntil} from "rxjs/operators";
-import {HttpService} from "../../../../../../../../utils/services/http/http.service";
-import {ActivatedRoute, Params, Router} from "@angular/router";
-import {FormDataModel, generateFormData} from "../../../../../../../../utils/functions/generate-form-data.function";
+import {takeUntil} from 'rxjs/operators';
+import {HttpService} from '../../../../../../../../utils/services/http/http.service';
+import {ActivatedRoute, Params, Router} from '@angular/router';
+import {FormDataModel, generateFormData} from '../../../../../../../../utils/functions/generate-form-data.function';
 
 @Component({
   selector: 'app-schedule-form',
@@ -32,7 +32,10 @@ export class ScheduleFormComponent extends FormComponentClass implements OnInit{
     pageSize: 10,
     search: {
       search: '',
-      typeProfile: '0'
+      number: '',
+      holderName: '',
+      holderCpf: '',
+      status: '',
     },
     order: {
       column: '0',
@@ -54,6 +57,7 @@ export class ScheduleFormComponent extends FormComponentClass implements OnInit{
       typeSubject: [null, Validators.required],
       place: [null, Validators.compose([trimWhiteSpace, Validators.required])],
       description: [null, Validators.required],
+      time: [null, Validators.required],
     });
   }
 ngOnInit(): void {
@@ -84,5 +88,4 @@ ngOnInit(): void {
         this.list = response.data;
       });
   }
-
 }
