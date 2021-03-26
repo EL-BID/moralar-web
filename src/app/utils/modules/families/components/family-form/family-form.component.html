@@ -218,322 +218,323 @@
       </p>
     </app-card>
   </form>
+  <form [formGroup]="priorizationForm">
+    <h2 class="h5">Critérios de priorização</h2>
+    <form [formGroup]="workFront">
+      <div class="form-row align-items-center mb-12">
+        <div class="col-12">
+          <b>Frente de obras</b>
+        </div>
+        <div class="col-auto">
+          <app-control-radio formControlName="value" value="true" id="workFront-yes"></app-control-radio>
+        </div>
+        <div class="col-auto">
+          <label class="mb-0" for="workFront-yes">SIM</label>
+        </div>
+        <div class="col-auto">
+          <app-control-radio formControlName="value" value="false" id="workFront-no"></app-control-radio>
+        </div>
+        <div class="col-auto">
+          <label class="mb-0" for="workFront-no">NÃO</label>
+        </div>
 
-  <h2 class="h5">Critérios de priorização</h2>
-  <form [formGroup]="workFront">
-    <div class="form-row align-items-center mb-12">
-      <div class="col-12">
-        <b>Frente de obras</b>
       </div>
-      <div class="col-auto">
-        <app-control-radio formControlName="value" value="true" id="workFront-yes"></app-control-radio>
-      </div>
-      <div class="col-auto">
-        <label class="mb-0" for="workFront-yes">SIM</label>
-      </div>
-      <div class="col-auto">
-        <app-control-radio formControlName="value" value="false" id="workFront-no"></app-control-radio>
-      </div>
-      <div class="col-auto">
-        <label class="mb-0" for="workFront-no">NÃO</label>
-      </div>
+    </form>
+    <br>
+    <form [formGroup]="permanentDisabled">
+      <div class="form-row align-items-center mb-12">
+        <div class="col-12">
+          <b>Deficiência permanente que demande imóvel acessível</b>
+        </div>
+        <div class="col-auto">
+          <app-control-radio formControlName="value" value="true"
+                             id="permanentDisabled-yes"></app-control-radio>
+        </div>
+        <div class="col-auto">
+          <label class="mb-0" for="permanentDisabled-yes">SIM</label>
+        </div>
+        <div class="col-auto">
+          <app-control-radio formControlName="value" value="false"
+                             id="permanentDisabled-no"></app-control-radio>
+        </div>
+        <div class="col-auto">
+          <label class="mb-0" for="permanentDisabled-no">NÃO</label>
+        </div>
 
-    </div>
-  </form>
-  <br>
-  <form [formGroup]="permanentDisabled">
-    <div class="form-row align-items-center mb-12">
-      <div class="col-12">
-        <b>Deficiência permanente que demande imóvel acessível</b>
       </div>
-      <div class="col-auto">
-        <app-control-radio formControlName="value" value="true"
-                           id="permanentDisabled-yes"></app-control-radio>
-      </div>
-      <div class="col-auto">
-        <label class="mb-0" for="permanentDisabled-yes">SIM</label>
-      </div>
-      <div class="col-auto">
-        <app-control-radio formControlName="value" value="false"
-                           id="permanentDisabled-no"></app-control-radio>
-      </div>
-      <div class="col-auto">
-        <label class="mb-0" for="permanentDisabled-no">NÃO</label>
-      </div>
+    </form>
+    <br>
+    <form [formGroup]="elderlyOverEighty">
+      <div class="form-row align-items-center mb-12">
+        <div class="col-12">
+          <b>Idoso mais de 80 anos</b>
+        </div>
+        <div class="col-auto">
+          <app-control-radio formControlName="value" value="true"
+                             id="elderlyOverEighty-yes"></app-control-radio>
+        </div>
+        <div class="col-auto">
+          <label class="mb-0" for="elderlyOverEighty-yes">SIM</label>
+        </div>
+        <div class="col-auto">
+          <app-control-radio formControlName="value" value="false"
+                             id="elderlyOverEighty-no"></app-control-radio>
+        </div>
+        <div class="col-auto">
+          <label class="mb-0" for="elderlyOverEighty-no">NÃO</label>
+        </div>
 
-    </div>
-  </form>
-  <br>
-  <form [formGroup]="elderlyOverEighty">
-    <div class="form-row align-items-center mb-12">
-      <div class="col-12">
-        <b>Idoso mais de 80 anos</b>
       </div>
-      <div class="col-auto">
-        <app-control-radio formControlName="value" value="true"
-                           id="elderlyOverEighty-yes"></app-control-radio>
-      </div>
-      <div class="col-auto">
-        <label class="mb-0" for="elderlyOverEighty-yes">SIM</label>
-      </div>
-      <div class="col-auto">
-        <app-control-radio formControlName="value" value="false"
-                           id="elderlyOverEighty-no"></app-control-radio>
-      </div>
-      <div class="col-auto">
-        <label class="mb-0" for="elderlyOverEighty-no">NÃO</label>
-      </div>
+    </form>
+    <br>
+    <form [formGroup]="yearsInSextyAndSeventyNine">
+      <div class="form-row align-items-center mb-12">
+        <div class="col-12">
+          <b>Idoso 60 - 79 anos</b>
+        </div>
+        <div class="col-auto">
+          <app-control-radio formControlName="value" value="true"
+                             id="yearsInSextyAndSeventyNine-yes"></app-control-radio>
+        </div>
+        <div class="col-auto">
+          <label class="mb-0" for="yearsInSextyAndSeventyNine-yes">SIM</label>
+        </div>
+        <div class="col-auto">
+          <app-control-radio formControlName="value" value="false"
+                             id="yearsInSextyAndSeventyNine-no"></app-control-radio>
+        </div>
+        <div class="col-auto">
+          <label class="mb-0" for="yearsInSextyAndSeventyNine-no">NÃO</label>
+        </div>
 
-    </div>
-  </form>
-  <br>
-  <form [formGroup]="yearsInSextyAndSeventyNine">
-    <div class="form-row align-items-center mb-12">
-      <div class="col-12">
-        <b>Idoso 60 - 79 anos</b>
       </div>
-      <div class="col-auto">
-        <app-control-radio formControlName="value" value="true"
-                           id="yearsInSextyAndSeventyNine-yes"></app-control-radio>
-      </div>
-      <div class="col-auto">
-        <label class="mb-0" for="yearsInSextyAndSeventyNine-yes">SIM</label>
-      </div>
-      <div class="col-auto">
-        <app-control-radio formControlName="value" value="false"
-                           id="yearsInSextyAndSeventyNine-no"></app-control-radio>
-      </div>
-      <div class="col-auto">
-        <label class="mb-0" for="yearsInSextyAndSeventyNine-no">NÃO</label>
-      </div>
+    </form>
+    <br>
+    <form [formGroup]="womanServedByProtectiveMeasure">
+      <div class="form-row align-items-center mb-12">
+        <div class="col-12">
+          <b>Mulher atendida por medida protetiva</b>
+        </div>
+        <div class="col-auto">
+          <app-control-radio formControlName="value" value="true"
+                             id="womanServedByProtectiveMeasure-yes"></app-control-radio>
+        </div>
+        <div class="col-auto">
+          <label class="mb-0" for="womanServedByProtectiveMeasure-yes">SIM</label>
+        </div>
+        <div class="col-auto">
+          <app-control-radio formControlName="value" value="false"
+                             id="womanServedByProtectiveMeasure-no"></app-control-radio>
+        </div>
+        <div class="col-auto">
+          <label class="mb-0" for="womanServedByProtectiveMeasure-no">NÃO</label>
+        </div>
 
-    </div>
-  </form>
-  <br>
-  <form [formGroup]="womanServedByProtectiveMeasure">
-    <div class="form-row align-items-center mb-12">
-      <div class="col-12">
-        <b>Mulher atendida por medida protetiva</b>
       </div>
-      <div class="col-auto">
-        <app-control-radio formControlName="value" value="true"
-                           id="womanServedByProtectiveMeasure-yes"></app-control-radio>
-      </div>
-      <div class="col-auto">
-        <label class="mb-0" for="womanServedByProtectiveMeasure-yes">SIM</label>
-      </div>
-      <div class="col-auto">
-        <app-control-radio formControlName="value" value="false"
-                           id="womanServedByProtectiveMeasure-no"></app-control-radio>
-      </div>
-      <div class="col-auto">
-        <label class="mb-0" for="womanServedByProtectiveMeasure-no">NÃO</label>
-      </div>
+    </form>
+    <br>
+    <form [formGroup]="femaleBreadWinner">
+      <div class="form-row align-items-center mb-12">
+        <div class="col-12">
+          <b>Mulher chefe de família</b>
+        </div>
+        <div class="col-auto">
+          <app-control-radio formControlName="value" value="true"
+                             id="femaleBreadWinner-yes"></app-control-radio>
+        </div>
+        <div class="col-auto">
+          <label class="mb-0" for="femaleBreadWinner-yes">SIM</label>
+        </div>
+        <div class="col-auto">
+          <app-control-radio formControlName="value" value="false"
+                             id="femaleBreadWinner-no"></app-control-radio>
+        </div>
+        <div class="col-auto">
+          <label class="mb-0" for="femaleBreadWinner-no">NÃO</label>
+        </div>
 
-    </div>
-  </form>
-  <br>
-  <form [formGroup]="femaleBreadWinner">
-    <div class="form-row align-items-center mb-12">
-      <div class="col-12">
-        <b>Mulher chefe de família</b>
       </div>
-      <div class="col-auto">
-        <app-control-radio formControlName="value" value="true"
-                           id="femaleBreadWinner-yes"></app-control-radio>
-      </div>
-      <div class="col-auto">
-        <label class="mb-0" for="femaleBreadWinner-yes">SIM</label>
-      </div>
-      <div class="col-auto">
-        <app-control-radio formControlName="value" value="false"
-                           id="femaleBreadWinner-no"></app-control-radio>
-      </div>
-      <div class="col-auto">
-        <label class="mb-0" for="femaleBreadWinner-no">NÃO</label>
-      </div>
+    </form>
+    <br>
+    <form [formGroup]="singleParent">
+      <div class="form-row align-items-center mb-12">
+        <div class="col-12">
+          <b>Monoparental (pai e mãe)</b>
+        </div>
+        <div class="col-auto">
+          <app-control-radio formControlName="value" value="true" id="singleParent-yes"></app-control-radio>
+        </div>
+        <div class="col-auto">
+          <label class="mb-0" for="singleParent-yes">SIM</label>
+        </div>
+        <div class="col-auto">
+          <app-control-radio formControlName="value" value="false" id="singleParent-no"></app-control-radio>
+        </div>
+        <div class="col-auto">
+          <label class="mb-0" for="singleParent-no">NÃO</label>
+        </div>
 
-    </div>
-  </form>
-  <br>
-  <form [formGroup]="singleParent">
-    <div class="form-row align-items-center mb-12">
-      <div class="col-12">
-        <b>Monoparental (pai e mãe)</b>
       </div>
-      <div class="col-auto">
-        <app-control-radio formControlName="value" value="true" id="singleParent-yes"></app-control-radio>
-      </div>
-      <div class="col-auto">
-        <label class="mb-0" for="singleParent-yes">SIM</label>
-      </div>
-      <div class="col-auto">
-        <app-control-radio formControlName="value" value="false" id="singleParent-no"></app-control-radio>
-      </div>
-      <div class="col-auto">
-        <label class="mb-0" for="singleParent-no">NÃO</label>
-      </div>
+    </form>
+    <br>
+    <form [formGroup]="familyWithMoreThanFivePeople">
+      <div class="form-row align-items-center mb-12">
+        <div class="col-12">
+          <b>Família com mais de 5 pessoas</b>
+        </div>
+        <div class="col-auto">
+          <app-control-radio formControlName="value" value="true"
+                             id="familyWithMoreThanFivePeople-yes"></app-control-radio>
+        </div>
+        <div class="col-auto">
+          <label class="mb-0" for="familyWithMoreThanFivePeople-yes">SIM</label>
+        </div>
+        <div class="col-auto">
+          <app-control-radio formControlName="value" value="false"
+                             id="familyWithMoreThanFivePeople-no"></app-control-radio>
+        </div>
+        <div class="col-auto">
+          <label class="mb-0" for="familyWithMoreThanFivePeople-no">NÃO</label>
+        </div>
 
-    </div>
-  </form>
-  <br>
-  <form [formGroup]="familyWithMoreThanFivePeople">
-    <div class="form-row align-items-center mb-12">
-      <div class="col-12">
-        <b>Família com mais de 5 pessoas</b>
       </div>
-      <div class="col-auto">
-        <app-control-radio formControlName="value" value="true"
-                           id="familyWithMoreThanFivePeople-yes"></app-control-radio>
-      </div>
-      <div class="col-auto">
-        <label class="mb-0" for="familyWithMoreThanFivePeople-yes">SIM</label>
-      </div>
-      <div class="col-auto">
-        <app-control-radio formControlName="value" value="false"
-                           id="familyWithMoreThanFivePeople-no"></app-control-radio>
-      </div>
-      <div class="col-auto">
-        <label class="mb-0" for="familyWithMoreThanFivePeople-no">NÃO</label>
-      </div>
+    </form>
+    <br>
+    <form [formGroup]="childUnderEighteen">
+      <div class="form-row align-items-center mb-12">
+        <div class="col-12">
+          <b>Filho(s) menor(es) de 18 anos na composição familiar</b>
+        </div>
+        <div class="col-auto">
+          <app-control-radio formControlName="value" value="true"
+                             id="childUnderEighteen-yes"></app-control-radio>
+        </div>
+        <div class="col-auto">
+          <label class="mb-0" for="childUnderEighteen-yes">SIM</label>
+        </div>
+        <div class="col-auto">
+          <app-control-radio formControlName="value" value="false"
+                             id="childUnderEighteen-no"></app-control-radio>
+        </div>
+        <div class="col-auto">
+          <label class="mb-0" for="childUnderEighteen-no">NÃO</label>
+        </div>
 
-    </div>
-  </form>
-  <br>
-  <form [formGroup]="childUnderEighteen">
-    <div class="form-row align-items-center mb-12">
-      <div class="col-12">
-        <b>Filho(s) menor(es) de 18 anos na composição familiar</b>
       </div>
-      <div class="col-auto">
-        <app-control-radio formControlName="value" value="true"
-                           id="childUnderEighteen-yes"></app-control-radio>
-      </div>
-      <div class="col-auto">
-        <label class="mb-0" for="childUnderEighteen-yes">SIM</label>
-      </div>
-      <div class="col-auto">
-        <app-control-radio formControlName="value" value="false"
-                           id="childUnderEighteen-no"></app-control-radio>
-      </div>
-      <div class="col-auto">
-        <label class="mb-0" for="childUnderEighteen-no">NÃO</label>
-      </div>
+    </form>
+    <br>
+    <form [formGroup]="headOfHouseholdWithoutIncome">
+      <div class="form-row align-items-center mb-12">
+        <div class="col-12">
+          <b>Chefe de família sem renda *</b>
+        </div>
+        <div class="col-auto">
+          <app-control-radio formControlName="value" value="true"
+                             id="headOfHouseholdWithoutIncome-yes"></app-control-radio>
+        </div>
+        <div class="col-auto">
+          <label class="mb-0" for="headOfHouseholdWithoutIncome-yes">SIM</label>
+        </div>
+        <div class="col-auto">
+          <app-control-radio formControlName="value" value="false"
+                             id="headOfHouseholdWithoutIncome-no"></app-control-radio>
+        </div>
+        <div class="col-auto">
+          <label class="mb-0" for="headOfHouseholdWithoutIncome-no">NÃO</label>
+        </div>
 
-    </div>
-  </form>
-  <br>
-  <form [formGroup]="headOfHouseholdWithoutIncome">
-    <div class="form-row align-items-center mb-12">
-      <div class="col-12">
-        <b>Chefe de família sem renda *</b>
       </div>
-      <div class="col-auto">
-        <app-control-radio formControlName="value" value="true"
-                           id="headOfHouseholdWithoutIncome-yes"></app-control-radio>
-      </div>
-      <div class="col-auto">
-        <label class="mb-0" for="headOfHouseholdWithoutIncome-yes">SIM</label>
-      </div>
-      <div class="col-auto">
-        <app-control-radio formControlName="value" value="false"
-                           id="headOfHouseholdWithoutIncome-no"></app-control-radio>
-      </div>
-      <div class="col-auto">
-        <label class="mb-0" for="headOfHouseholdWithoutIncome-no">NÃO</label>
-      </div>
+    </form>
+    <br>
+    <form [formGroup]="benefitOfContinuedProvision">
+      <div class="form-row align-items-center mb-12">
+        <div class="col-12">
+          <b>Benefício de prestação continuada - BPC **</b>
+        </div>
+        <div class="col-auto">
+          <app-control-radio formControlName="value" value="true"
+                             id="benefitOfContinuedProvision-yes"></app-control-radio>
+        </div>
+        <div class="col-auto">
+          <label class="mb-0" for="benefitOfContinuedProvision-yes">SIM</label>
+        </div>
+        <div class="col-auto">
+          <app-control-radio formControlName="value" value="false"
+                             id="benefitOfContinuedProvision-no"></app-control-radio>
+        </div>
+        <div class="col-auto">
+          <label class="mb-0" for="benefitOfContinuedProvision-no">NÃO</label>
+        </div>
 
-    </div>
-  </form>
-  <br>
-  <form [formGroup]="benefitOfContinuedProvision">
-    <div class="form-row align-items-center mb-12">
-      <div class="col-12">
-        <b>Benefício de prestação continuada - BPC **</b>
       </div>
-      <div class="col-auto">
-        <app-control-radio formControlName="value" value="true"
-                           id="benefitOfContinuedProvision-yes"></app-control-radio>
-      </div>
-      <div class="col-auto">
-        <label class="mb-0" for="benefitOfContinuedProvision-yes">SIM</label>
-      </div>
-      <div class="col-auto">
-        <app-control-radio formControlName="value" value="false"
-                           id="benefitOfContinuedProvision-no"></app-control-radio>
-      </div>
-      <div class="col-auto">
-        <label class="mb-0" for="benefitOfContinuedProvision-no">NÃO</label>
-      </div>
+    </form>
+    <br>
+    <form [formGroup]="familyPurse">
+      <div class="form-row align-items-center mb-12">
+        <div class="col-12">
+          <b>Bolsa família</b>
+        </div>
+        <div class="col-auto">
+          <app-control-radio formControlName="value" value="true" id="familyPurse-yes"></app-control-radio>
+        </div>
+        <div class="col-auto">
+          <label class="mb-0" for="familyPurse-yes">SIM</label>
+        </div>
+        <div class="col-auto">
+          <app-control-radio formControlName="value" value="false" id="familyPurse-no"></app-control-radio>
+        </div>
+        <div class="col-auto">
+          <label class="mb-0" for="familyPurse-no">NÃO</label>
+        </div>
 
-    </div>
-  </form>
-  <br>
-  <form [formGroup]="familyPurse">
-    <div class="form-row align-items-center mb-12">
-      <div class="col-12">
-        <b>Bolsa família</b>
       </div>
-      <div class="col-auto">
-        <app-control-radio formControlName="value" value="true" id="familyPurse-yes"></app-control-radio>
-      </div>
-      <div class="col-auto">
-        <label class="mb-0" for="familyPurse-yes">SIM</label>
-      </div>
-      <div class="col-auto">
-        <app-control-radio formControlName="value" value="false" id="familyPurse-no"></app-control-radio>
-      </div>
-      <div class="col-auto">
-        <label class="mb-0" for="familyPurse-no">NÃO</label>
-      </div>
+    </form>
+    <br>
+    <form [formGroup]="involuntaryCohabitation">
+      <div class="form-row align-items-center mb-12">
+        <div class="col-12">
+          <b>Coabitação involuntária</b>
+        </div>
+        <div class="col-auto">
+          <app-control-radio formControlName="value" value="true"
+                             id="involuntaryCohabitation-yes"></app-control-radio>
+        </div>
+        <div class="col-auto">
+          <label class="mb-0" for="involuntaryCohabitation-yes">SIM</label>
+        </div>
+        <div class="col-auto">
+          <app-control-radio formControlName="value" value="false"
+                             id="involuntaryCohabitation-no"></app-control-radio>
+        </div>
+        <div class="col-auto">
+          <label class="mb-0" for="involuntaryCohabitation-no">NÃO</label>
+        </div>
 
-    </div>
-  </form>
-  <br>
-  <form [formGroup]="involuntaryCohabitation">
-    <div class="form-row align-items-center mb-12">
-      <div class="col-12">
-        <b>Coabitação involuntária</b>
       </div>
-      <div class="col-auto">
-        <app-control-radio formControlName="value" value="true"
-                           id="involuntaryCohabitation-yes"></app-control-radio>
-      </div>
-      <div class="col-auto">
-        <label class="mb-0" for="involuntaryCohabitation-yes">SIM</label>
-      </div>
-      <div class="col-auto">
-        <app-control-radio formControlName="value" value="false"
-                           id="involuntaryCohabitation-no"></app-control-radio>
-      </div>
-      <div class="col-auto">
-        <label class="mb-0" for="involuntaryCohabitation-no">NÃO</label>
-      </div>
+    </form>
+    <br>
+    <form [formGroup]="familyIncomeOfUpTwoMinimumWages">
+      <div class="form-row align-items-center mb-12">
+        <div class="col-12">
+          <b>Renda familiar de até 2 salários mínimos</b>
+        </div>
+        <div class="col-auto">
+          <app-control-radio formControlName="value" value="true"
+                             id="familyIncomeOfUpTwoMinimumWages-yes"></app-control-radio>
+        </div>
+        <div class="col-auto">
+          <label class="mb-0" for="familyIncomeOfUpTwoMinimumWages-yes">SIM</label>
+        </div>
+        <div class="col-auto">
+          <app-control-radio formControlName="value" value="false"
+                             id="familyIncomeOfUpTwoMinimumWages-no"></app-control-radio>
+        </div>
+        <div class="col-auto">
+          <label class="mb-0" for="familyIncomeOfUpTwoMinimumWages-no">NÃO</label>
+        </div>
 
-    </div>
-  </form>
-  <br>
-  <form [formGroup]="familyIncomeOfUpTwoMinimumWages">
-    <div class="form-row align-items-center mb-12">
-      <div class="col-12">
-        <b>Renda familiar de até 2 salários mínimos</b>
       </div>
-      <div class="col-auto">
-        <app-control-radio formControlName="value" value="true"
-                           id="familyIncomeOfUpTwoMinimumWages-yes"></app-control-radio>
-      </div>
-      <div class="col-auto">
-        <label class="mb-0" for="familyIncomeOfUpTwoMinimumWages-yes">SIM</label>
-      </div>
-      <div class="col-auto">
-        <app-control-radio formControlName="value" value="false"
-                           id="familyIncomeOfUpTwoMinimumWages-no"></app-control-radio>
-      </div>
-      <div class="col-auto">
-        <label class="mb-0" for="familyIncomeOfUpTwoMinimumWages-no">NÃO</label>
-      </div>
-
-    </div>
+    </form>
   </form>
   <br>
 
