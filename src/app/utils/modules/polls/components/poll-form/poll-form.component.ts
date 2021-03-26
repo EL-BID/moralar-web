@@ -26,7 +26,7 @@ export class PollFormComponent extends FormComponentClass implements OnInit{
     super();
     this.form = this.formBuilder.group({
       title: [null, Validators.compose([trimWhiteSpace, Validators.required])],
-      typeQuiz: [0],
+      typeQuiz: [1],
       questionRegister:
         this.questReg = this.formBuilder.group({
         question: this.formBuilder.array([])

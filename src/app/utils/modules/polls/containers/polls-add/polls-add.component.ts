@@ -30,7 +30,7 @@ export class PollsAddComponent extends OnDestroyClass {
         .pipe(takeUntil(this.onDestroy))
         .subscribe((response: any) => {
           this.megaleiosAlertService.success(response.message);
-          this.router.navigate(['Quiz/LoadData'], { relativeTo: this.activatedRoute });
+          this.router.navigate(['../'], { relativeTo: this.activatedRoute });
         }, (response: any) => {
           this.megaleiosAlertService.error(response.message);
           this.formLoading = false;
