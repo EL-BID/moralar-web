@@ -10,10 +10,14 @@ import { FormDataModel } from 'src/app/utils/functions/generate-form-data.functi
   styleUrls: ['./availables-list.component.sass']
 })
 export class AvailablesListComponent extends ListContainerClass {
-
   formDataModel: FormDataModel = {
     columns: [
-      { data: 'created', name: 'Created', searchable: true }
+      { data: 'created', name: 'Created', searchable: true },
+      { data: 'holderCpf', name: 'HolderCpf', searchable: true },
+      { data: 'holderName', name: 'HolderName', searchable: true },
+      { data: 'holderNumber', name: 'HolderNumber', searchable: true },
+      { data: 'status', name: 'Status', searchable: true },
+      { data: 'title', name: 'Title', searchable: true },
     ],
     page: 1,
     pageSize: 10,
@@ -30,7 +34,7 @@ export class AvailablesListComponent extends ListContainerClass {
     }
   };
 
-  uri = 'Quiz';
+  uriCustom = 'QuizFamily/LoadDataQuizAvailable';
 
   constructor(
     private activatedRoute: ActivatedRoute,

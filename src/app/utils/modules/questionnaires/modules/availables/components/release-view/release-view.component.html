@@ -1,22 +1,22 @@
 <app-card>
   <h2 class="h5">Morador</h2>
   <div class="row">
-    <div class="col-lg-2">
+    <div class="col-lg-auto">
       <p>
         <span class="view-label">Cadastro</span>
-        <span class="d-block ">{{release.holderNumber || '-'}}</span>
+        <span class="d-block ">{{release.family.holder.number || '-'}}</span>
       </p>
     </div>
-    <div class="col-lg-4">
+    <div class="col-lg-auto">
       <p>
         <span class="view-label">Titular</span>
-        <span class="d-block ">{{release.holderName || '-'}}</span>
+        <span class="d-block ">{{release.family.holder.name || '-'}}</span>
       </p>
     </div>
-    <div class="col-lg-2">
+    <div class="col-lg-auto">
       <p>
         <span class="view-label">CPF</span>
-        <span class="d-block ">{{release.holderCpf || '-'  | mask: '000.000.000-99'}}</span>
+        <span class="d-block ">{{release.family.holder.cpf || '-'  | mask: '000.000.000-99'}}</span>
       </p>
     </div>
   </div>
@@ -25,11 +25,11 @@
 
 <div class="row">
   <div class="col-lg-12">
-    <h2 class="h4">{{release.title}}</h2>
+    <h2 class="h4">{{release.quiz.title}}</h2>
   </div>
 </div>
 <app-card class="mb-3">
-  <div class="row" *ngFor="let quest of release.questionViewModel">
+  <div class="row" *ngFor="let quest of release.quiz.questionViewModel">
     <div class="col-lg-12">
       <h2 class="h5">{{quest.nameQuestion}}</h2>
     </div>

@@ -21,7 +21,7 @@ export class AvailablesDetailsComponent extends OnDestroyClass implements OnInit
   }
 
   ngOnInit(): void {
-    this.httpService.get(`Quiz/Detail/${this.activatedRoute.snapshot.paramMap.get('quizId')}`)
+    this.httpService.get(`QuizFamily/Detail/${this.activatedRoute.snapshot.paramMap.get('quizId')}`)
       .pipe(takeUntil(this.onDestroy))
       .subscribe((response: any) => {
         this.release = response.data;

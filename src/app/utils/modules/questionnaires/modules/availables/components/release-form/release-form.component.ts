@@ -29,7 +29,7 @@ export class ReleaseFormComponent extends FormComponentClass implements OnInit{
     pageSize: 10,
     search: {
       search: '',
-      typeProfile: '0'
+      typeQuiz: 0
     },
     order: {
       column: '0',
@@ -52,10 +52,7 @@ export class ReleaseFormComponent extends FormComponentClass implements OnInit{
   }
 
   ngOnInit(): void {
-    this.activatedRoute.queryParams
-      .subscribe((params: Params) => {
-        this.getListQuiz();
-      });
+    this.getListQuiz();
   }
 
   public addFamiliesSelected(e) {
