@@ -59,14 +59,14 @@ export class AddressFormComponent implements OnChanges, OnInit {
         this.megaleiosAlertService.error(response.message);
       });
 
-    this.form.controls.zipCode.valueChanges
+    this.form.controls.cep.valueChanges
       .pipe(debounceTime(1000), distinctUntilChanged())
-      .subscribe((zipCode: null | string) => {
-        if (this.form.controls.zipCode.valid) {
-          this.megaleiosService.get(`City/GetInfoFromZipCode/${zipCode}`)
+      .subscribe((cep: null | string) => {
+        if (this.form.controls.cep.valid) {
+          this.megaleiosService.get(`City/GetInfoFromZipCode/${cep}`)
             .pipe(
               map((response: any) => {
-                delete response.data.zipCode;
+                delete response.data.cep;
                 delete response.data.number;
                 delete response.data.complement;
                 return response;
