@@ -44,7 +44,7 @@ export class QuestionnariesAvaliableListComponent extends ListContainerClass {
   }
 
   handleDetails(): void {
-    this.router.navigate(['/gestor-publico/app/questionarios/disponiveis/', this.listSelected[0].quizId]);
+    this.router.navigate(['/gestor-publico/app/questionarios/disponiveis/', this.listSelected[0].quizFamilyId]);
   }
 
 }

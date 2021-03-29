@@ -11,6 +11,10 @@ const routes: Routes = [
     loadChildren: () => import('./modules/public-manager/public-manager.module').then(m => m.PublicManagerModule)
   },
   {
+    path: 'professional',
+    loadChildren: () => import('./modules/professional/professional.module').then(m => m.ProfessionalModule)
+  },
+  {
     path: '**',
     redirectTo: 'administrador',
     pathMatch: 'full'

@@ -1,0 +1,18 @@
+<form [formGroup]="listSearchForm">
+  <div class="row">
+    <div class="col-lg-3">
+      <app-control-field>
+        <label for="number">Número do cadastro</label>
+        <input type="tel" id="number" formControlName="number">
+        <app-control-error [control]="listSearchForm.controls.number"></app-control-error>
+      </app-control-field>
+    </div>
+    <div class="col-lg-3">
+      <app-control-field>
+        <label for="holderName">Número do Imóvel</label>
+        <input type="text" id="holderName" formControlName="holderName">
+        <app-control-error [control]="listSearchForm.controls.holderName"></app-control-error>
+      </app-control-field>
+    </div>
+  </div>
+</form>

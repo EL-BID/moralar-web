@@ -4,6 +4,7 @@ import {takeUntil} from 'rxjs/operators';
 import {HttpService} from 'src/app/utils/services/http/http.service';
 import {FormDataModel, generateFormData} from '../functions/generate-form-data.function';
 import {OnDestroyClass} from './on-destroy.class';
+import {dateToString} from '../functions/date.function';
 
 @Directive()
 export abstract class ListContainerClass extends OnDestroyClass implements OnInit {
@@ -81,6 +82,15 @@ export abstract class ListContainerClass extends OnDestroyClass implements OnIni
         this._httpService.post(uri, generateFormData(this.formDataModel))
           .pipe(takeUntil(this.onDestroy))
           .subscribe((response: any) => {
+            let i;
+            for (i = 0; response.data.length > i; i++) {
+              if (response.data[i]?.date) {
+                response.data[i].date = dateToString(+response.data[i].date);
+              }
+              if (response.data[i]?.created) {
+                response.data[i].created = dateToString(+response.data[i].created);
+              }
+            }
             this.list = response.data;
             this.listSize = response.recordsTotal;
             this.listSizeFiltered = response.recordsFiltered;
@@ -89,6 +99,15 @@ export abstract class ListContainerClass extends OnDestroyClass implements OnIni
         this._httpService.get(uri, generateFormData(this.formDataModel))
           .pipe(takeUntil(this.onDestroy))
           .subscribe((response: any) => {
+            let i;
+            for (i = 0; response.data.length > i; i++) {
+              if (response.data[i]?.date) {
+                response.data[i].date = dateToString(+response.data[i].date);
+              }
+              if (response.data[i]?.created) {
+                response.data[i].created = dateToString(+response.data[i].created);
+              }
+            }
             this.list = response.data;
             this.listSize = response.recordsTotal;
             this.listSizeFiltered = response.recordsFiltered;

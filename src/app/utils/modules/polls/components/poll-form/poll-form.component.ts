@@ -38,9 +38,7 @@ export class PollFormComponent extends FormComponentClass implements OnInit{
 
   ngOnInit(): void {
     if (this.formData) {
-
       for (let i = 0; this.formData.questionViewModel.length > i; i++) {
-
         this.questionsForm.push(
           this.formBuilder.group({
             nameQuestion: [this.formData.questionViewModel[i].nameQuestion, Validators.compose([trimWhiteSpace, Validators.required])],
@@ -48,14 +46,7 @@ export class PollFormComponent extends FormComponentClass implements OnInit{
             description:  [this.formData.questionViewModel[i].description]
           })
         );
-        for (let j = 0; this.formData.questionViewModel[i].description.length > j; j++) {
-         // console.log(this.questionsForm.value[i].description[j]);
-         // this.questionsForm.value[i].description.push({description: this.formData.questionViewModel[i].description[j].description}) ;
-          // this.questionsForm.value[i].description.push(this.formData.questionViewModel[i].description[j]);
-        }
       }
-      // this.form.controls.questionRegister.value.question = this.formData.questionViewModel;
-      // console.log(this.form);
     }
   }
 
@@ -76,28 +67,13 @@ export class PollFormComponent extends FormComponentClass implements OnInit{
     this.questionsForm.removeAt(index);
   }
 
-  private createDescriptionForm(): FormGroup {
-    return this.formBuilder.group({
-      description: ''
-    });
-  }
-
-  onChangeTypeResponse() {   // switch (this.desc.controls.typeResponse.value) {
-   //   case 0: this.desc.value.description = []; break;
-   // }
-  }
-
 
   addDescForm(i): void {
-    // this.desc[i].value = 'AAAA';
    this.questionsForm.value[i].description.push({description: ''}) ;
-   //   console.log();
-
   }
 
   removeDescForm(i, j): void {
-    // console.log(this.questionsForm.value[i].description[j]);
-    // document.getElementById(`description-${j}`).value = '';
+    i.splice(j, 1);
   }
 
 }

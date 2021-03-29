@@ -62,6 +62,10 @@ const routes: Routes = [
         loadChildren: () => import('src/app/modules/public-manager/modules/private/modules/notifications/notifications.module').then(m => m.NotificationsModule)
       },
       {
+        path: 'perfis',
+        loadChildren: () => import('src/app/utils/modules/profiles/profiles.module').then(m => m.ProfilesModule)
+      },
+      {
         path: '**',
         redirectTo: 'dashboard',
         pathMatch: 'full'

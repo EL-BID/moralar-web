@@ -64,6 +64,11 @@
     </div>
   </form>
 
+  <h2 class="h5">Endereço</h2>
+  <app-address-form
+    [form]="adressForm">
+  </app-address-form>
+
   <form [formGroup]="spouseForm">
     <h2 class="h5">Dados do cônjuge</h2>
     <div class="row">
@@ -541,9 +546,10 @@
   <app-button
     buttonType="submit"
     buttonClass="btn-dark"
-    [buttonDisabled]="form.valid === false || formLoading === true"
+    [buttonDisabled]=" formLoading === true"
     [buttonLoading]="formLoading">
     {{formData?.id.length > 0 ? 'Atualizar' : 'Adicionar'}}
   </app-button>
 </form>
-
+<br>
+<pre>{{ form.value | json }}</pre>

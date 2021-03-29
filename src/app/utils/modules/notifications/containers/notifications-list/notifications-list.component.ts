@@ -34,7 +34,7 @@ export class NotificationsListComponent extends ListContainerClass {
     }
   };
 
-  uri = 'Course';
+  uri = 'Notification';
 
   constructor(
     activatedRoute: ActivatedRoute,

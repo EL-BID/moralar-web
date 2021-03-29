@@ -12,7 +12,8 @@ import {
   faBell,
   faQuestionCircle,
   faBook,
-  faBellSlash
+  faBellSlash,
+  faUserAlt
 } from '@fortawesome/free-solid-svg-icons';
 import { UserService } from 'src/app/utils/services/user/user.service';
 import { HttpService } from 'src/app/utils/services/http/http.service';
@@ -40,6 +41,7 @@ export class PrivateComponent extends OnDestroyClass implements OnInit, OnDestro
   faQuestionCircle = faQuestionCircle;
   faBook = faBook;
   faBellSlash = faBellSlash;
+  faUser = faUserAlt ;
 
   user: any;
 

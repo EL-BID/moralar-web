@@ -15,6 +15,7 @@ export class FamilyFormComponent extends FormComponentClass implements OnInit {
   genderList: any[] = sortBy(GENDER_LIST, 'name');
   schoolingList: any[] = SCHOOLING_LIST;
   degreeOfKinshipList: any[] = DEGREE_OF_KINSHIP_LIST;
+  adressForm: FormGroup;
   holderForm: FormGroup;
   spouseForm: FormGroup;
   financialForm: FormGroup;
@@ -44,6 +45,19 @@ export class FamilyFormComponent extends FormComponentClass implements OnInit {
   ) {
     super();
     // FORM FILHOS
+    this.adressForm = this.formBuilder.group({
+      streetAddress: [null, Validators.required],
+      number: [null, Validators.required],
+      cityName: [null, Validators.required],
+      cityId: [null, Validators.required],
+      stateName: [null, Validators.required],
+      stateUf: [null, Validators.required],
+      stateId: [null, Validators.required],
+      neighborhood: [null, Validators.required],
+      complement: [null, Validators.required],
+      location: ['-', Validators.required],
+      zipCode: [null, Validators.required]
+    });
     this.holderForm = this.formBuilder.group({
       number: [null, Validators.compose([trimWhiteSpace, Validators.required])],
       name: [null, Validators.compose([trimWhiteSpace, Validators.required])],
@@ -99,6 +113,7 @@ export class FamilyFormComponent extends FormComponentClass implements OnInit {
     });
     // FORM PAI
     this.form = this.formBuilder.group({
+      adress: this.adressForm,
       holder: this.holderForm,
       spouse: this.spouseForm,
       members: this.formBuilder.array([]),
