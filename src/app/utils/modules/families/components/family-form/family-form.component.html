@@ -546,7 +546,7 @@
   <app-button
     buttonType="submit"
     buttonClass="btn-dark"
-    [buttonDisabled]=" formLoading === true"
+    [buttonDisabled]="form.valid === false ||  formLoading === true"
     [buttonLoading]="formLoading">
     {{formData?.id.length > 0 ? 'Atualizar' : 'Adicionar'}}
   </app-button>
