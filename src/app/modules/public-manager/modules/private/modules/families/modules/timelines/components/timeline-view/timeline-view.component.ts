@@ -49,7 +49,7 @@ export class TimelineViewComponent extends ListContainerClass implements OnInit 
           if (this.stage[i].children.length > 0) {
             let size;
             size = this.stage[i].children.length - 1;
-            this.stage[i].children[size].created = dateAndTimeToString(this.stage[i].children[size].created);
+            this.stage[i].children[size].date = dateAndTimeToString(this.stage[i].children[size].date);
             // checking stages
             switch (this.stage[i].children[size].typeScheduleStatus) {
               case 0:
@@ -76,7 +76,7 @@ export class TimelineViewComponent extends ListContainerClass implements OnInit 
             }
 
           } else {
-            this.stage[i].created = dateAndTimeToString(this.stage[i].created);
+            this.stage[i].date = dateAndTimeToString(this.stage[i].date);
             // checking stages
             switch (this.stage[i].typeScheduleStatus) {
               case 0:
