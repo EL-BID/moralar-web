@@ -26,7 +26,7 @@
               <div class="col-lg-3">
                 <app-control-field>
                   <label for="typeResponse-{{i}}">Tipo de Resposta</label>
-                  <select id="typeResponse-{{i}}" formControlName="typeResponse" >
+                  <select id="typeResponse-{{i}}" formControlName="typeResponse" (change)="questionForm.value.typeResponse > 0 ? validador = false : validador = true">
                     <option *ngFor="let typeList of questionAnswerTypesList"
                             [ngValue]="typeList.id">
                       {{ typeList.name }}
@@ -44,7 +44,7 @@
                 </button>
               </div>
             </div>
-            <ng-container [ngSwitch]="questionForm.value.typeResponse > 0">
+            <ng-container [ngSwitch]="questionForm.value.typeResponse > 0" >
 
               <div *ngSwitchCase="true">
 
@@ -54,7 +54,12 @@
                       <div class="row">
                         <div class="col-lg-10">
                           <app-control-field>
-                            <input id="description-{{j}}" type="text" [value]="questionForm.value.description[j].description" (keyup)=" questionForm.value.description[j].description = $event.target.value">
+                            <input id="description-{{j}}" type="text" (change)="verifyQuestionsWithDescriptions()"
+                                   [value]="questionForm.value.description[j].description"
+                                   (keyup)=" questionForm.value.description[j].description = $event.target.value">
+                            <div class="d-block invalid-feedback" *ngIf="!questionForm.value.description[j].description">
+                              Por favor, informe esse campo.
+                            </div>
                           </app-control-field>
                         </div>
                         <div class="col-lg-2">
@@ -92,8 +97,11 @@
   <app-button
     buttonType="submit"
     buttonClass="btn-dark"
-    [buttonDisabled]="form.valid === false || formLoading === true"
+    [buttonDisabled]="form.valid === false || questionsForm.controls.length === 0  || validador === false || formLoading === true"
     [buttonLoading]="formLoading">
     {{formData?.id.length > 0 ? 'Atualizar' : 'Adicionar'}}
   </app-button>
 </form>
+{{
+form.valid }} - {{questionsForm.controls.length}} - {{validador}} -{{ formLoading
+}}
