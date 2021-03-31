@@ -44,13 +44,12 @@ export class QuestionnaireFormComponent extends FormComponentClass implements On
 
   ngOnInit(): void {
     if (this.formData) {
-      this.validador = true;
       for (let i = 0; this.formData.questionViewModel.length > i; i++) {
         this.questionsForm.push(
           this.formBuilder.group({
             nameQuestion: [this.formData.questionViewModel[i].nameQuestion, Validators.compose([trimWhiteSpace, Validators.required])],
             typeResponse: [this.formData.questionViewModel[i].typeResponse, Validators.required],
-            description: [this.formData.questionViewModel[i].description, Validators.required]
+            description: [this.formData.questionViewModel[i].description]
           })
         );
       }
