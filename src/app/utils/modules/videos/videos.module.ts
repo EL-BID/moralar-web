@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {ReactiveFormsModule} from '@angular/forms';
-import {MegaleiosFormsModule} from '../../../../../../utils/modules/megaleios-forms/megaleios-forms.module';
-import {SharedModule} from '../../../../../../utils/modules/shared/shared.module';
 import {CURRENCY_MASK_CONFIG, CurrencyMaskModule} from 'ng2-currency-mask';
 import {VideosComponent} from './videos.component';
 // consts
@@ -18,6 +16,8 @@ import {VideoListSearchComponent} from './components/video-list-search/video-lis
 import {VideoFormComponent} from './components/video-form/video-form.component';
 import {VideoViewComponent} from './components/video-view/video-view.component';
 import {VideosRoutingModule} from './videos-routing.module';
+import {MegaleiosFormsModule} from '../megaleios-forms/megaleios-forms.module';
+import {SharedModule} from '../shared/shared.module';
 
 
 @NgModule({

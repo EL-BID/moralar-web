@@ -3,8 +3,8 @@ import {ActivatedRoute, Router} from '@angular/router';
 import { takeUntil } from 'rxjs/operators';
 import { OnDestroyClass } from 'src/app/utils/classes/on-destroy.class';
 import { HttpService } from 'src/app/utils/services/http/http.service';
-import {MegaleiosAlertService} from "../../../../../../../../utils/modules/megaleios-alert/megaleios-alert.service";
-import {dateToSeconds} from "../../../../../../../../utils/functions/date.function";
+import {MegaleiosAlertService} from '../../../megaleios-alert/megaleios-alert.service';
+import {dateToSeconds} from '../../../../functions/date.function';
 
 @Component({
   selector: 'app-videos-details',
@@ -25,9 +25,9 @@ export class VideosDetailsComponent extends OnDestroyClass implements OnInit {
   }
 
   ngOnInit(): void {
-    this.httpService.get(`Video/Detail/${this.activatedRoute.snapshot.paramMap.get('videoId')}`)
-      .pipe(takeUntil(this.onDestroy))
-      .subscribe((response: any) => this.video = response.data);
+ //   this.httpService.get(`Video/Detail/${this.activatedRoute.snapshot.paramMap.get('videoId')}`)
+ //     .pipe(takeUntil(this.onDestroy))
+ //     .subscribe((response: any) => this.video = response.data);
   }
 
   handleFormSubmit(value: any): void {

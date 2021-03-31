@@ -5,9 +5,9 @@ import { FormDataModel } from 'src/app/utils/functions/generate-form-data.functi
 import { HttpService } from 'src/app/utils/services/http/http.service';
 import {takeUntil} from 'rxjs/operators';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {MegaleiosAlertService} from '../../../../../../../../utils/modules/megaleios-alert/megaleios-alert.service';
-import {ModalConfirmData} from '../../../../../../../../utils/modules/shared/components/modal-confirm/modal-confirm.interface';
-import {ModalConfirmComponent} from '../../../../../../../../utils/modules/shared/components/modal-confirm/modal-confirm.component';
+import {MegaleiosAlertService} from '../../../megaleios-alert/megaleios-alert.service';
+import {ModalConfirmData} from '../../../shared/components/modal-confirm/modal-confirm.interface';
+import {ModalConfirmComponent} from '../../../shared/components/modal-confirm/modal-confirm.component';
 
 @Component({
   selector: 'app-videos-list',

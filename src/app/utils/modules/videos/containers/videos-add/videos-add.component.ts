@@ -4,7 +4,7 @@ import { takeUntil } from 'rxjs/operators';
 import { OnDestroyClass } from 'src/app/utils/classes/on-destroy.class';
 import { MegaleiosAlertService } from 'src/app/utils/modules/megaleios-alert/megaleios-alert.service';
 import { HttpService } from 'src/app/utils/services/http/http.service';
-import {dateToSeconds} from '../../../../../../../../utils/functions/date.function';
+import {dateToSeconds} from '../../../../functions/date.function';
 
 @Component({
   selector: 'app-videos-add',

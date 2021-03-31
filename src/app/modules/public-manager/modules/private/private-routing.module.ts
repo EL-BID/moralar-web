@@ -39,7 +39,7 @@ const routes: Routes = [
       },
       {
         path: 'videos',
-        loadChildren: () => import('src/app/modules/public-manager/modules/private/modules/videos/videos.module').then(m => m.VideosModule)
+        loadChildren: () => import('src/app/utils/modules/videos/videos.module').then(m => m.VideosModule)
       },
       {
         path: 'questionarios',
