@@ -45,7 +45,7 @@ export class PropertyFormComponent extends FormComponentClass {
       neighborhood: [null, Validators.required],
       complement: [null, Validators.required],
       location: ['-', Validators.required],
-      zipCode: [null, Validators.required]
+      cep: [null, Validators.required]
     });
     this.residencialPropertyFeaturesForm = this.formBuilder.group({
       propertyValue: [null, Validators.required],
@@ -80,7 +80,7 @@ export class PropertyFormComponent extends FormComponentClass {
   }
 
   private createPhotoFormControl(): FormControl {
-    return this.formBuilder.control(null, Validators.required);
+    return this.formBuilder.control(null);
   }
 
   canAddPhotoFormControl(): boolean {
