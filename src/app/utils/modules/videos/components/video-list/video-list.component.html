@@ -18,8 +18,8 @@
           </app-control-checkbox>
         </td>
         <td>{{ item.title || '-' }}</td>
-        <td>{{ item.startDate || '-' }}</td>
-        <td>{{ item.endDate || '-' }}</td>
+        <td>{{ item.created | date: 'dd/MM/yyy' }}</td>
+        <td>{{ item.amountViewed || '-' }}</td>
         <td>
           <div class="custom-control custom-switch">
             <input
