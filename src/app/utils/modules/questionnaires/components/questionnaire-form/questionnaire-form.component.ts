@@ -47,6 +47,7 @@ export class QuestionnaireFormComponent extends FormComponentClass implements On
       for (let i = 0; this.formData.questionViewModel.length > i; i++) {
         this.questionsForm.push(
           this.formBuilder.group({
+            id: [this.formData.questionViewModel[i].id],
             nameQuestion: [this.formData.questionViewModel[i].nameQuestion, Validators.compose([trimWhiteSpace, Validators.required])],
             typeResponse: [this.formData.questionViewModel[i].typeResponse, Validators.required],
             description: [this.formData.questionViewModel[i].description]
