@@ -172,7 +172,7 @@ export class FamilyFormComponent extends FormComponentClass implements OnInit {
           })
         );
       }
-      this.addressForm.patchValue(this.formData.address);
+      this.addressForm.patchValue(this.formData?.address);
     }
   }
 
