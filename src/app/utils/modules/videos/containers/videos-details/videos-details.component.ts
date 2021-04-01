@@ -33,9 +33,6 @@ export class VideosDetailsComponent extends OnDestroyClass implements OnInit {
   handleFormSubmit(value: any): void {
     if (this.formLoading === false) {
       this.formLoading = true;
-      for (let i = 0; value.members.length > i; i++) {
-        value.members[i].birthday =  dateToSeconds(value.members[i].birthday);
-      }
       this.httpService.post('Video/Edit', value)
         .pipe(takeUntil(this.onDestroy))
         .subscribe((response: any) => {
