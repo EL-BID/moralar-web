@@ -13,7 +13,7 @@
         <td>{{ item.datePublish || '-' }}</td>
         <td>{{ item.image || '-' }}</td>
         <td>{{ item.description || '-' }}</td>
-        <td>{{ item.created || '-' }}</td>
+        <td>{{ item.created | date: 'dd/MM/yyyy' || '-' }}</td>
       </tr>
     </tbody>
   </table>
