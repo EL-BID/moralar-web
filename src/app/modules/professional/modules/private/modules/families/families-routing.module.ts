@@ -9,7 +9,7 @@ const routes: Routes = [
     children: [
       {
         path: 'linhas-do-tempo',
-        loadChildren: () => import('./modules/timelines/timelines.module').then(m => m.TimelinesModule)
+        loadChildren: () => import('src/app/utils/modules/families/modules/timelines/timelines.module').then(m => m.TimelinesModule)
       },
       {
         path: '',
