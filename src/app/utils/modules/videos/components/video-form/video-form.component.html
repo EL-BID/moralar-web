@@ -35,6 +35,6 @@
     buttonClass="btn-dark"
     [buttonDisabled]="form.valid === false || formLoading === true"
     [buttonLoading]="formLoading">
-    {{form.controls.Title ? 'Atualizar' : 'Adicionar'}}
+    {{form.controls.id > 0 ? 'Atualizar' : 'Adicionar'}}
   </app-button>
 </form>

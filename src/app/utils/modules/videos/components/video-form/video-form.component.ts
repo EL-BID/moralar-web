@@ -36,7 +36,6 @@ export class VideoFormComponent extends FormComponentClass implements OnInit {
       this.httpService.get(`Video/Detail/${this.activatedRoute.snapshot.paramMap.get('videoId')}`)
         .pipe(takeUntil(this.onDestroy))
         .subscribe((response: any) => {
-          console.log(response.data.id)
           this.form.controls.Title.setValue(response.data.title);
           this.form.controls.Thumbnail.setValue(response.data.name);
           this.form.controls.url.setValue(response.data.url);
