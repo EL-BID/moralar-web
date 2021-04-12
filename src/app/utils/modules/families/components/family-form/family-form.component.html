@@ -21,14 +21,14 @@
         </app-control-field>
         <app-control-field>
           <label for="birthdate">Data de nascimento</label>
-          <input type="date" id="birthdate" formControlName="birthday" [readOnly]="formData?.holder.birthday">
+          <input type="date" [max]="dayMax" (change)="checkDate($event.target.value)" id="birthdate"  formControlName="birthday" [readOnly]="formData?.holder.birthday">
           <app-control-error [control]="holderForm.controls.birthday"></app-control-error>
         </app-control-field>
       </div>
       <div class="col-lg-6">
         <app-control-field>
           <label>Gênero</label>
-          <select id="gender" formControlName="genre">
+          <select id="genre" formControlName="genre">
             <option [ngValue]="null">Selecione uma opção</option>
             <option *ngFor="let gender of genderList"
                     [ngValue]="gender.id">
@@ -80,7 +80,7 @@
         </app-control-field>
         <app-control-field>
           <label for="spouseBirthdate">Data de nascimento</label>
-          <input type="date" id="spouseBirthdate" formControlName="birthday">
+          <input type="date" [max]="dayMax" (change)="checkDate($event.target.value)" id="spouseBirthdate" formControlName="birthday">
           <app-control-error [control]="spouseForm.controls.birthday"></app-control-error>
         </app-control-field>
       </div>
@@ -127,7 +127,7 @@
           </app-control-field>
           <app-control-field>
             <label for="memberBirthdate-{{i}}">Data de nascimento</label>
-            <input type="date" id="memberBirthdate-{{i}}" formControlName="birthday">
+            <input type="date" [max]="dayMax" (change)="checkDate($event.target.value)" id="memberBirthdate-{{i}}" formControlName="birthday">
             <app-control-error [control]="memberForm.get('birthday')"></app-control-error>
           </app-control-field>
           <app-control-field>
@@ -546,7 +546,7 @@
   <app-button
     buttonType="submit"
     buttonClass="btn-dark"
-    [buttonDisabled]="form.valid === false ||  formLoading === true"
+    [buttonDisabled]="checkDateValidator === false || form.valid === false ||  formLoading === true"
     [buttonLoading]="formLoading">
     {{formData?.id.length > 0 ? 'Atualizar' : 'Adicionar'}}
   </app-button>

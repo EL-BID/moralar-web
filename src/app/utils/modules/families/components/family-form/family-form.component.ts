@@ -4,6 +4,8 @@ import {sortBy} from 'lodash';
 import {FormComponentClass} from 'src/app/utils/classes/form-component.class';
 import {isCpfValid, trimWhiteSpace} from 'src/app/utils/functions/validators.function';
 import {GENDER_LIST, SCHOOLING_LIST, DEGREE_OF_KINSHIP_LIST} from 'src/app/utils/interfaces/families.interface';
+import {DateTime} from 'luxon';
+import {MegaleiosAlertService} from '../../../megaleios-alert/megaleios-alert.service';
 
 @Component({
   selector: 'app-family-form',
@@ -11,7 +13,8 @@ import {GENDER_LIST, SCHOOLING_LIST, DEGREE_OF_KINSHIP_LIST} from 'src/app/utils
   styleUrls: ['./family-form.component.sass']
 })
 export class FamilyFormComponent extends FormComponentClass implements OnInit {
-
+  dayMax = DateTime.local().toFormat('yyyy-MM-dd');
+  checkDateValidator = false;
   genderList: any[] = sortBy(GENDER_LIST, 'name');
   schoolingList: any[] = SCHOOLING_LIST;
   degreeOfKinshipList: any[] = DEGREE_OF_KINSHIP_LIST;
@@ -41,7 +44,8 @@ export class FamilyFormComponent extends FormComponentClass implements OnInit {
   }
 
   constructor(
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private megaleiosAlertService: MegaleiosAlertService
   ) {
     super();
     // FORM FILHOS
@@ -54,8 +58,8 @@ export class FamilyFormComponent extends FormComponentClass implements OnInit {
       stateUf: [null, Validators.required],
       stateId: [null, Validators.required],
       neighborhood: [null, Validators.required],
-      complement: [null, Validators.required],
-      location: ['-', Validators.required],
+      complement: [null],
+      location: ['-'],
       cep: [null, Validators.required]
     });
     this.holderForm = this.formBuilder.group({
@@ -64,9 +68,9 @@ export class FamilyFormComponent extends FormComponentClass implements OnInit {
       cpf: [null, Validators.compose([Validators.required, isCpfValid])],
       birthday: [null, Validators.required],
       genre: [null],
-      email: [null, Validators.compose([trimWhiteSpace, Validators.email])],
+      email: [null, Validators.email],
       phone: [null, trimWhiteSpace],
-      scholarity: [null, Validators.required],
+      scholarity: [null],
     });
     this.spouseForm = this.formBuilder.group({
       name: [null, trimWhiteSpace],
@@ -78,7 +82,7 @@ export class FamilyFormComponent extends FormComponentClass implements OnInit {
       familyIncome: [null, Validators.required],
       propertyValueForDemolished: [null, Validators.required],
       maximumPurchase: [null, Validators.required],
-      incrementValue: [null, Validators.required],
+      incrementValue: [null],
     });
     this.workFront = this.formBuilder.group({rate: 1, value: 'false'});
     this.permanentDisabled = this.formBuilder.group({rate: 2, value: 'false'});
@@ -178,11 +182,11 @@ export class FamilyFormComponent extends FormComponentClass implements OnInit {
 
   private createMemberForm(): FormGroup {
     return this.formBuilder.group({
-      name: [null, Validators.compose([trimWhiteSpace, Validators.required])],
-      birthday: [null, Validators.required],
-      genre: [null, Validators.required],
-      kinShip: [null, Validators.required],
-      scholarity: [null, Validators.required]
+      name: [null, trimWhiteSpace],
+      birthday: [null],
+      genre: [null],
+      kinShip: [null],
+      scholarity: [null]
     });
   }
 
@@ -192,6 +196,50 @@ export class FamilyFormComponent extends FormComponentClass implements OnInit {
 
   removeMemberForm(index: number): void {
     this.membersForm.removeAt(index);
+    // validator date
+    if (this.holderForm.controls.birthday) {
+      let i;
+      for (i = 0; i < 1; i++) {
+        if (this.holderForm.controls.birthday.value > this.dayMax || !this.holderForm.controls.birthday.value) {
+          this.megaleiosAlertService.error('Data com formato inválido');
+          this.checkDateValidator = false;
+          break;
+        }
+      }
+    }
+
+    if (this.spouseForm.controls.birthday) {
+      let i;
+      for (i = 0; i < 1; i++) {
+        if (this.spouseForm.controls.birthday.value > this.dayMax || !this.spouseForm.controls.birthday.value) {
+          this.megaleiosAlertService.error('Data com formato inválido');
+          this.checkDateValidator = false;
+          break;
+        }
+      }
+    }
+
+    if (this.membersForm.length) {
+      let i;
+      for (i = 0; i < this.membersForm.length; i++) {
+          if (this.membersForm.controls[i].value.birthday > this.dayMax || !this.membersForm.controls[i].value.birthday) {
+            this.megaleiosAlertService.error('Data com formato inválido');
+            this.checkDateValidator = false;
+            break;
+          }
+      }
+    }
+  }
+
+  checkDate(value){
+    this.checkDateValidator = false;
+    if (value > this.dayMax) {
+      this.megaleiosAlertService.error('Data com formato inválido');
+      return false;
+    } else {
+      this.checkDateValidator = true;
+      return true;
+    }
   }
 
 }
