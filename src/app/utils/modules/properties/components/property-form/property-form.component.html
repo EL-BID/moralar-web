@@ -81,7 +81,7 @@
       <div class="col-lg-6">
         <app-control-field>
           <label for="squareFootage">Metragem quadrada</label>
-          <input type="number" id="squareFootage" formControlName="squareFootage">
+          <input type="number" min="0" id="squareFootage" formControlName="squareFootage">
           <app-control-error [control]="residencialPropertyFeaturesForm.controls.squareFootage"></app-control-error>
         </app-control-field>
       </div>
