@@ -9,7 +9,7 @@ import { trimWhiteSpace } from 'src/app/utils/functions/validators.function';
   styleUrls: ['./administrator-form.component.sass']
 })
 export class AdministratorFormComponent extends FormComponentClass {
-
+  passwordCurrent;
   constructor(
     formBuilder: FormBuilder
   ) {
@@ -18,10 +18,14 @@ export class AdministratorFormComponent extends FormComponentClass {
     this.form = formBuilder.group({
       name: [null, Validators.compose([trimWhiteSpace, Validators.required])],
       email: [null, Validators.compose([trimWhiteSpace, Validators.required, Validators.email])],
-      login: [null, genericValidator],
       password: [null, genericValidator],
-      passwordConfirm: [null, genericValidator]
+      passwordCurrent: [null],
+      passwordConfirm: [null, Validators.compose([trimWhiteSpace, Validators.required])],
+      passwordCurrentWritten: [null, Validators.compose([trimWhiteSpace, Validators.required])],
+      id: [null],
     });
+
+    this.passwordCurrent = this.form.controls.passwordCurrent;
   }
 
 }

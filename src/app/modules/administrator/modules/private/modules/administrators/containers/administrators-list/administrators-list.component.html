@@ -8,15 +8,6 @@
       Adicionar
     </button>
   </div>
-  <div class="col-auto">
-    <button
-      type="button"
-      class="btn btn-outline-dark"
-      [disabled]="listSelected.length !== 1"
-      (click)="handleDetails()">
-      Detalhes
-    </button>
-  </div>
 </div>
 <app-administrator-list-search
   [listSearchData]="formDataModel.search"
