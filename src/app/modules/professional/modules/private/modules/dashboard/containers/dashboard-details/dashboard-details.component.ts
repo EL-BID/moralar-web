@@ -25,7 +25,7 @@ export class DashboardDetailsComponent extends OnDestroyClass implements OnInit{
       .pipe(takeUntil(this.onDestroy))
       .subscribe((response: any) => {
         this.dashboardManager = response.data;
-        this.megaleiosAlertService.success(response.message);
+       // this.megaleiosAlertService.success(response.message);
       }, (response: any) => {
         this.megaleiosAlertService.error(response.message);
       });
