@@ -26,7 +26,7 @@ export class VideoFormComponent extends FormComponentClass implements OnInit {
     this.form = this.formBuilder.group({
       Title: [null, Validators.compose([trimWhiteSpace, Validators.required])],
       Thumbnail: [null, Validators.required],
-      url: [null, Validators.required],
+      url: [null, Validators.compose([trimWhiteSpace, Validators.required])],
       id: []
     });
   }
