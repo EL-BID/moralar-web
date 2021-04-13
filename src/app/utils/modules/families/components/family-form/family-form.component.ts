@@ -68,7 +68,7 @@ export class FamilyFormComponent extends FormComponentClass implements OnInit {
       cpf: [null, Validators.compose([Validators.required, isCpfValid])],
       birthday: [null, Validators.required],
       genre: [null],
-      email: [null, Validators.email],
+      email: [null, Validators.compose([trimWhiteSpace, Validators.email])],
       phone: [null, trimWhiteSpace],
       scholarity: [null],
     });

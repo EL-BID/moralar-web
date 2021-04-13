@@ -28,6 +28,7 @@ export class FamiliesAddComponent extends OnDestroyClass {
   handleFormSubmit(value: any): void {
     if (this.formLoading === false) {
       this.formLoading = true;
+      if (value.holder.email === '') { value.holder.email = null; }
       value.holder.birthday = dateToSeconds(value.holder.birthday);
       value.spouse.birthday = dateToSeconds(value.spouse.birthday);
       for (let i = 0; value.members.length > i; i++) {
