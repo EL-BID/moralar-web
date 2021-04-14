@@ -56,13 +56,22 @@
           <li>
             <button
               type="button"
-              routerLink="familias/linhas-do-tempo">
+              routerLink="familias">
               <fa-icon
                 class="mr-2"
                 [icon]="faHouseUser">
               </fa-icon>
-              Linha do tempo das Famílias
+              Famílias
             </button>
+            <ul>
+              <li routerLinkActive="active">
+                <button
+                  type="button"
+                  routerLink="familias/linhas-do-tempo">
+                  Linhas do tempo
+                </button>
+              </li>
+            </ul>
           </li>
           <li>
             <button
@@ -133,13 +142,22 @@
           <li>
             <button
               type="button"
-              routerLink="questionarios/disponiveis">
+              routerLink="questionarios">
               <fa-icon
                 class="mr-2"
                 [icon]="faQuestionCircle">
               </fa-icon>
               Questionários
             </button>
+            <ul>
+              <li routerLinkActive="active">
+                <button
+                  type="button"
+                  routerLink="questionarios/disponiveis">
+                  Disponíveis
+                </button>
+              </li>
+            </ul>
           </li>
           <li>
             <button
