@@ -77,7 +77,7 @@ export class PrivateComponent extends OnDestroyClass implements OnInit, OnDestro
   }
 
   logOut(): void {
-    this.router.navigate(['/professional']);
+    this.router.navigate(['/profissional']);
   }
 
 }
