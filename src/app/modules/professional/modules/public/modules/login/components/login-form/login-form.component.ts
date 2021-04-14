@@ -16,11 +16,12 @@ export class LoginFormComponent extends FormComponentClass {
     public changeDetectorRef: ChangeDetectorRef
   ) {
     super();
-    const cpf = environment.showDefaultLogin ? '30634164015' : null;
-    const password = environment.showDefaultLogin ? '123456' : null;
+    const cpf = environment.showDefaultLogin ? '' : null;
+    const password = environment.showDefaultLogin ? '' : null;
     this.form = formBuilder.group({
       cpf: [cpf, Validators.compose([trimWhiteSpace, Validators.required, isCpfValid])],
       password: [password, Validators.compose([trimWhiteSpace, Validators.required])],
+      typeUserProfile: 1,
       rememberMe: [false]
     });
   }

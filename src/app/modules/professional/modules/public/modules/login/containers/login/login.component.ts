@@ -32,7 +32,7 @@ export class LoginComponent extends OnDestroyClass {
         .subscribe((response: any) => {
           this.authenticationService.setAuthentication(response.data, value.rememberMe);
           this.megaleiosAlertService.success(response.message);
-          this.router.navigate(['/professional/app']);
+          this.router.navigate(['/professional']);
         }, (response: any) => {
           this.megaleiosAlertService.error(response.message);
           this.formLoading = false;
