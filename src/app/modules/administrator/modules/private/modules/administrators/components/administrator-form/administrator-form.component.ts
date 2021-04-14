@@ -21,7 +21,7 @@ export class AdministratorFormComponent extends FormComponentClass {
       password: [null, genericValidator],
       passwordCurrent: [null],
       passwordConfirm: [null, Validators.compose([trimWhiteSpace, Validators.required])],
-      passwordCurrentWritten: [null, Validators.compose([trimWhiteSpace, Validators.required])],
+      passwordCurrentWritten: [null, trimWhiteSpace],
       id: [null],
     });
 
