@@ -25,15 +25,21 @@
     <div class="col-lg-6">
       <app-control-field>
         <label for="startDate">Data de Início</label>
-        <input type="date" id="startDate" formControlName="startDate">
+        <input type="date" id="startDate" formControlName="startDate"
+               [min]="dayMin" (blur)="checkDate($event.target.value)" >
         <app-control-error [control]="form.controls.startDate"></app-control-error>
       </app-control-field>
     </div>
     <div class="col-lg-6">
       <app-control-field>
         <label for="endDate">Data de Término</label>
-        <input type="date" id="endDate" formControlName="endDate">
+        <input type="date" id="endDate" formControlName="endDate"
+               [min]="dayMin" (blur)="checkDate($event.target.value)">
         <app-control-error [control]="form.controls.endDate"></app-control-error>
+        <div class="d-block invalid-feedback"
+             *ngIf="form.value.endDate && form.value.startDate > form.value.endDate">
+          Data de término menor que a data de ínicio
+        </div>
       </app-control-field>
     </div>
   </div>
@@ -78,15 +84,23 @@
     <div class="col-lg-6">
       <app-control-field>
         <label for="startTargetAudienceAge">De</label>
-        <input type="number" id="startTargetAudienceAge" formControlName="startTargetAudienceAge">
+        <select id="startTargetAudienceAge" formControlName="startTargetAudienceAge" (change)="checkIntervalPublicTarget()">
+          <option  *ngFor='let list of listInterval' [ngValue]="list" >{{ list }}</option>
+        </select>
         <app-control-error [control]="form.controls.startTargetAudienceAge"></app-control-error>
       </app-control-field>
     </div>
     <div class="col-lg-6">
       <app-control-field>
         <label for="endTargetAudienceAge">Até</label>
-        <input type="number" id="endTargetAudienceAge" formControlName="endTargetAudienceAge">
+        <select id="endTargetAudienceAge" formControlName="endTargetAudienceAge" (change)="checkIntervalPublicTarget()">
+          <option  *ngFor='let list of listInterval' [ngValue]="list" >{{ list }}</option>
+        </select>
         <app-control-error [control]="form.controls.endTargetAudienceAge"></app-control-error>
+        <div class="d-block invalid-feedback"
+             *ngIf="form.value.startTargetAudienceAge > form.value.endTargetAudienceAge">
+          Intervalor final menor que o intervalor inicial
+        </div>
       </app-control-field>
     </div>
   </div>
@@ -118,7 +132,7 @@
   <app-button
     buttonType="submit"
     buttonClass="btn-dark"
-    [buttonDisabled]="form.valid === false || formLoading === true"
+    [buttonDisabled]="form.valid === false || formLoading === false || checkDateValidator === false || checkIntervalValidator === false"
     [buttonLoading]="formLoading">
     Adicionar
   </app-button>

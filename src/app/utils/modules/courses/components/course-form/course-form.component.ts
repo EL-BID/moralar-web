@@ -4,6 +4,8 @@ import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angul
 import { trimWhiteSpace } from 'src/app/utils/functions/validators.function';
 import {GENDER_LIST} from '../../../../interfaces/courses.interface';
 import {sortBy} from 'lodash';
+import {DateTime} from 'luxon';
+import {MegaleiosAlertService} from '../../../megaleios-alert/megaleios-alert.service';
 @Component({
   selector: 'app-course-form',
   templateUrl: './course-form.component.html',
@@ -12,25 +14,46 @@ import {sortBy} from 'lodash';
 export class CourseFormComponent extends FormComponentClass {
   genderList: any[] = sortBy(GENDER_LIST, 'name');
   numberOfVacanciesList: any[] = new Array(21);
+  listInterval: any[] = new Array();
+  dayMin = DateTime.local().toFormat('yyyy-MM-dd');
+  checkDateValidator = false;
+  checkIntervalValidator = false;
   constructor(
     private formBuilder: FormBuilder,
-    public changeDetectorRef: ChangeDetectorRef
+    public changeDetectorRef: ChangeDetectorRef,
+    private megaleiosAlertService: MegaleiosAlertService
   ) {
     super();
     this.form = this.formBuilder.group({
       title: [null, Validators.compose([trimWhiteSpace, Validators.required])],
       img: [null, Validators.required],
-      startDate: [null, Validators.required],
-      endDate: [null, Validators.required],
+      startDate: [this.dayMin, Validators.required],
+      endDate: [this.dayMin, Validators.required],
       place: [null, Validators.required],
       schedule: [null, Validators.required],
       workLoad: [null, Validators.required],
       description: [null, Validators.required],
-      startTargetAudienceAge: [null, Validators.required],
-      endTargetAudienceAge: [null, Validators.required],
+      startTargetAudienceAge: [15, Validators.required],
+      endTargetAudienceAge: [80, Validators.required],
       typeGenre: [null, Validators.required],
       numberOfVacancies: [null, Validators.required],
     });
+    for (let i = 15; i <= 80; i++) {
+      this.listInterval.push(i);
+    }
+  }
+
+  checkDate(value){
+    this.checkDateValidator = false;
+    if (value < this.dayMin || value > '3000-01-01') {
+      this.megaleiosAlertService.error('Data com formato inválido');
+    } else {
+      this.checkDateValidator = true;
+    }
+  }
+
+  checkIntervalPublicTarget(){
+    this.checkIntervalValidator = this.form.value.endTargetAudienceAge >= this.form.value.startTargetAudienceAge;
   }
 
 }
