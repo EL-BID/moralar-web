@@ -11,7 +11,7 @@ const routes: Routes = [
     loadChildren: () => import('./modules/public-manager/public-manager.module').then(m => m.PublicManagerModule)
   },
   {
-    path: 'professional',
+    path: 'profissional',
     loadChildren: () => import('./modules/professional/professional.module').then(m => m.ProfessionalModule)
   },
   {
