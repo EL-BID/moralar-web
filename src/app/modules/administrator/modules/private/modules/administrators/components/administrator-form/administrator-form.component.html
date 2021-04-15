@@ -15,10 +15,10 @@
         <label for="passwordCurrentWritten">Senha atual</label>
         <input type="password" id="passwordCurrentWritten" formControlName="passwordCurrentWritten">
         <div class="d-block invalid-feedback"
-             *ngIf="form.value.passwordCurrentWritten && passwordCurrent.value != form.value.passwordCurrentWritten">
+             *ngIf="form.value.passwordCurrentWritten && form.value.passwordCurrent != form.value.passwordCurrentWritten">
           Senha incorreta
         </div>
-        <div class="d-block valid-feedback" *ngIf="form.value.passwordCurrentWritten  && passwordCurrent.value == form.value.passwordCurrentWritten">
+        <div class="d-block valid-feedback" *ngIf="form.value.passwordCurrentWritten  && form.value.passwordCurrent == form.value.passwordCurrentWritten">
           Senha correta
         </div>
       </app-control-field>
@@ -28,14 +28,14 @@
   <div class="form-row">
     <div class="col-lg-6">
       <app-control-field>
-        <label for="password">Senha</label>
+        <label for="password">{{formData ? 'Nova ': ''}}Senha</label>
         <input type="password" id="password" formControlName="password">
         <app-control-error [control]="form.controls.password"></app-control-error>
       </app-control-field>
     </div>
     <div class="col-lg-6">
       <app-control-field>
-        <label for="passwordConfirm">Confirmação da senha</label>
+        <label for="passwordConfirm">Confirmação da {{formData ? 'nova ': ''}}senha</label>
         <input type="password" id="passwordConfirm" formControlName="passwordConfirm">
         <app-control-error [control]="form.controls.passwordConfirm"></app-control-error>
         <div class="d-block invalid-feedback"
@@ -49,20 +49,18 @@
       </app-control-field>
     </div>
   </div>
-  <div [ngSwitch]="form.value.id?.length > 0" class="form-row">
+  <div [ngSwitch]="!formData" class="form-row">
     <app-button *ngSwitchCase="true"
       buttonType="submit"
       buttonClass="btn-dark"
-      [buttonDisabled]="form.valid === false || formLoading === true || form.value.password != form.value.passwordConfirm || passwordCurrent.value == form.value.passwordCurrentWritten"
-      [buttonLoading]="formLoading">
-      {{ formData ? 'Alterar' : 'Adicionar' }}
+      [buttonDisabled]="form.valid === false || formLoading === true || form.value.password != form.value.passwordConfirm "
+      [buttonLoading]="formLoading">Adicionar
     </app-button>
     <app-button *ngSwitchCase="false"
       buttonType="submit"
       buttonClass="btn-dark"
-      [buttonDisabled]="form.valid === false || formLoading === true || form.value.password != form.value.passwordConfirm"
-      [buttonLoading]="formLoading">
-      {{ formData ? 'Alterar' : 'Adicionar' }}
+      [buttonDisabled]="form.valid === false || formLoading === true || form.value.password != form.value.passwordConfirm || form.value.passwordCurrent === null || form.value.passwordCurrent != form.value.passwordCurrentWritten"
+      [buttonLoading]="formLoading">Alterar
     </app-button>
   </div>
 </form>

@@ -47,6 +47,7 @@ export class PrivateComponent extends OnDestroyClass implements OnInit, OnDestro
             .pipe(takeUntil(this.onDestroy))
             .subscribe((response: any) => {
               response.data.passwordCurrent = response.data.password;
+              response.data.password = null;
               this.userService.user = response.data;
             });
         }
