@@ -33,6 +33,7 @@ export class ProfilesAddComponent extends OnDestroyClass {
         .pipe(takeUntil(this.onDestroy))
         .subscribe((response: any) => {
           this.megaleiosAlertService.success(response.message);
+          this.formLoading = false;
         }, (response: any) => {
           this.megaleiosAlertService.error(response.message);
           this.formLoading = false;
