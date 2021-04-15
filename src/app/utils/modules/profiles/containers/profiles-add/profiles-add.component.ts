@@ -27,8 +27,6 @@ export class ProfilesAddComponent extends OnDestroyClass {
   handleFormSubmit(value: any): void {
     if (this.formLoading === false) {
       this.formLoading = true;
-      value.startDate = dateToSeconds(value.startDate);
-      value.endDate = dateToSeconds(value.endDate);
       this.httpService.post('Profile/Update', value)
         .pipe(takeUntil(this.onDestroy))
         .subscribe((response: any) => {

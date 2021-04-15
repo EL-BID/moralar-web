@@ -16,7 +16,7 @@ import {takeUntil} from 'rxjs/operators';
   templateUrl: './change-password-form.component.html',
   styleUrls: ['./change-password-form.component.sass']
 })
-export class ChangePasswordFormComponent extends FormComponentClass {
+export class ChangePasswordFormComponent extends FormComponentClass implements OnInit{
   genderList: any[] = sortBy(GENDER_LIST, 'name');
   numberOfVacanciesList: any[] = new Array(21);
   cpFormLoading = false;
@@ -32,11 +32,18 @@ export class ChangePasswordFormComponent extends FormComponentClass {
     public megaleiosAlertService: MegaleiosAlertService
   ) {
     super();
+    const genericValidator = Validators.compose([trimWhiteSpace, Validators.required, Validators.minLength(6), Validators.maxLength(12)]);
     this.form = this.formBuilder.group({
-      currentPassword: [null, Validators.required],
-      newPassword: [null, Validators.required],
-      confirmPassword: [null, Validators.required]
+      currentPassword: [null, Validators.compose([trimWhiteSpace, Validators.minLength(6), Validators.maxLength(12)])],
+      newPassword: [null, genericValidator],
+      confirmPassword: [null, genericValidator],
     });
+  }
+
+  ngOnInit(): void {
+    if (this.formData.value.password === null && this.formData) {
+      this.megaleiosAlertService.error('Problema ao obter dados - /GetInfo(Current password)');
+    }
   }
 
   ChangePassword() {

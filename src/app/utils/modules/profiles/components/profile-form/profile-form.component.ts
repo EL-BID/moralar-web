@@ -30,10 +30,12 @@ export class ProfileFormComponent extends FormComponentClass implements OnInit{
     super();
     this.form = this.formBuilder.group({
       name: [null, Validators.compose([trimWhiteSpace, Validators.required])],
-      email: [null, Validators.required],
+      email: [null, Validators.compose([trimWhiteSpace, Validators.required, Validators.email])],
       phone: [null],
       cpf: [null],
-      jobPost: [null, Validators.required],
+      jobPost: [null, Validators.compose([trimWhiteSpace, Validators.required])],
+      password: [null],
+      id: [null],
     });
   }
 
@@ -44,6 +46,8 @@ export class ProfileFormComponent extends FormComponentClass implements OnInit{
         this.form.controls.email.setValue(response?.email);
         this.form.controls.phone.setValue(response?.phone);
         this.form.controls.jobPost.setValue(response?.jobPost);
+        this.form.controls.password.setValue(response?.password);
+        this.form.controls.id.setValue(response?.id);
 
       });
   }
