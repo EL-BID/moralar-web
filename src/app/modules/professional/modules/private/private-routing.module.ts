@@ -10,10 +10,6 @@ const routes: Routes = [
     component: PrivateComponent,
     children: [
       {
-        path: 'administrador',
-        loadChildren: () => import('./modules/administrator/administrator.module').then(m => m.AdministratorModule)
-      },
-      {
         path: 'dashboard',
         loadChildren: () => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule)
       },

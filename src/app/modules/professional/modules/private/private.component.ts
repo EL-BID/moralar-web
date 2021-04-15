@@ -64,7 +64,10 @@ export class PrivateComponent extends OnDestroyClass implements OnInit, OnDestro
         } else {
           this.httpService.get('Profile/GetInfo')
             .pipe(takeUntil(this.onDestroy))
-            .subscribe((response: any) => this.userService.user = response.data);
+            .subscribe((response: any) => {
+              response.data.passwordCurrent = response.data.password;
+              this.userService.user = response.data;
+            });
         }
       });
   }
