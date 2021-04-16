@@ -66,10 +66,11 @@ export class MatchViewComponent implements OnInit{
           this.httpService.post('ResidencialProperty/ChoiceProperty', post)
             .subscribe((response: any) => {
               this.megaleiosAlertService.success(response.message);
-              this.router.navigate(['../'], { relativeTo: this.activatedRoute });
+              // this.router.navigate(['../'], { relativeTo: this.activatedRoute });
             }, (response: any) => {
               this.megaleiosAlertService.error(response.message);
             });
+          this.ngOnInit();
         }
       })
       .catch(() => { });

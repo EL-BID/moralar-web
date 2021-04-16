@@ -21,17 +21,23 @@
             <div class="col-auto">
               <button
                 type="button"
-                class="btn btn-dark"
+                class="btn btn-dark" *ngIf="item.typeStatusResidencial == 0"
                 (click)="handleDatailsFamily(item)">
                 Detalhes
               </button>
             </div>
-            <div class="col-auto">
+            <div class="col-auto" *ngIf="item.typeStatusResidencial == 0">
               <button
                 type="button"
                 class="btn btn-outline-success"
                 (click)="sellProperty(item.id)"
               > Vender
+              </button>
+            </div>
+
+            <div class="col-auto" *ngIf="item.typeStatusResidencial == 1">
+              <button type="button" class="btn btn-success"   (click)="handleDatailsFamily(item)">
+                Contemplado
               </button>
             </div>
           </div>
