@@ -6,7 +6,7 @@ import {QUESTIONANSWER_TYPES_LIST} from 'src/app/utils/interfaces/questionnaires
 import {FormDataModel, generateFormData} from '../../../../../../functions/generate-form-data.function';
 import {takeUntil} from 'rxjs/operators';
 import {HttpService} from '../../../../../../services/http/http.service';
-import {ActivatedRoute, Params} from '@angular/router';
+import {ActivatedRoute, Params, Router} from '@angular/router';
 
 
 
@@ -19,16 +19,21 @@ import {ActivatedRoute, Params} from '@angular/router';
 export class ReleaseFormComponent extends FormComponentClass implements OnInit{
   listFamilySelected: any;
   listQuiz: any;
-
+  list: any[] = [];
   formDataModel: FormDataModel = {
     columns: [
-      { data: 'id',    name: 'Id',    searchable: true },
-      { data: 'title', name: 'Title', searchable: true }
+      { data: 'number',    name: 'Number',    searchable: true },
+      { data: 'holderName', name: 'HolderName', searchable: true },
+      { data: 'holderCpf',     name: 'SchedulesComponentCpf',     searchable: true }
     ],
     page: 1,
     pageSize: 10,
     search: {
       search: '',
+      number: '',
+      holderName: '',
+      holderCpf: '',
+      status: '',
       typeQuiz: 0
     },
     order: {
@@ -40,19 +45,40 @@ export class ReleaseFormComponent extends FormComponentClass implements OnInit{
   constructor(
     private httpService: HttpService,
     protected activatedRoute: ActivatedRoute,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    protected router: Router
   ) {
     super();
     this.form = this.formBuilder.group({
       quizId: [null, Validators.required],
       allFamily: 'false',
-      familyId: this.formBuilder.array([])
+      familyId: [null]
 
     });
   }
 
   ngOnInit(): void {
-    this.getListQuiz();
+    this.activatedRoute.queryParams
+      .subscribe((params: Params) => {
+        this.formDataModel.search.search = params.search !== undefined ? params.search : this.formDataModel.search.search;
+        this.formDataModel.search.number = params.number !== undefined ? params.number : this.formDataModel.search.number;
+        this.formDataModel.search.holderName = params.holderName !== undefined ? params.holderName : this.formDataModel.search.holderName;
+        this.formDataModel.search.holderCpf = params.holderCpf !== undefined ? params.holderCpf : this.formDataModel.search.holderCpf;
+        this.formDataModel.search.status = params.status !== undefined ? params.status : this.formDataModel.search.status;
+        this.formDataModel.order.column = params.column !== undefined ? params.column : this.formDataModel.order.column;
+        this.formDataModel.order.direction = params.direction !== undefined ? params.direction : this.formDataModel.order.direction;
+        this.formDataModel.page = params.page !== undefined ? parseFloat(params.page) : this.formDataModel.page;
+        this.formDataModel.pageSize = params.pageSize !== undefined ? parseFloat(params.pageSize) : this.formDataModel.pageSize;
+        this.getList();
+        this.getListQuiz();
+      });
+  }
+  getList(): void {
+    this.httpService.post(`Family/LoadData`, generateFormData(this.formDataModel))
+      .pipe(takeUntil(this.onDestroy))
+      .subscribe((response: any) => {
+        this.list = response.data;
+      });
   }
 
   public addFamiliesSelected(e) {
@@ -61,11 +87,16 @@ export class ReleaseFormComponent extends FormComponentClass implements OnInit{
 
 
   getListQuiz(): void {
-    this.httpService.post(`Quiz/LoadData`, generateFormData(this.formDataModel))
+    this.httpService.get(`Quiz/GetByName`)
       .pipe(takeUntil(this.onDestroy))
       .subscribe((response: any) => {
         this.listQuiz = response.data;
       });
+  }
+
+  getFamily(e) {
+    this.form.value.familyId = null;
+    this.router.navigate([], { relativeTo: this.activatedRoute, queryParams: e, queryParamsHandling: 'merge' });
   }
 
 
